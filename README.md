@@ -11,6 +11,13 @@ Mini-projet entreprise 🎓 géstion des ressources humaines.
 - Dotnet 6 | 7
 - PostgreSQL
 
+## Configutaion de la base de donnée
+
+modifier votre mot de passe et nom d'utilisateur dans
+
+```
+  S5-RH/appsettings.json
+```
 ## Mise en marche
 ```
 Dotnet run
@@ -49,3 +56,23 @@ Pour les messages de commit, il faut commencer par le type de commit, suivi d'un
 - `test`: pour les ajouts de tests
 - `perf`: pour les améliorations de performances
 > exemple : `feat: add login feature`
+
+### EntityFramework
+
+syntaxe pour la methode insert dans une base
+```
+ public IActionResult Index()
+  {
+    Test test = new Test
+      {
+        Id = 1,
+        Name = "ok"
+       };
+      using (var _context = ApplicationDbContextFactory.Create())
+      {
+        _context.test.Add(test);
+        _context.SaveChanges();   
+      }
+    return View();
+  }
+```
