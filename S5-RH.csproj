@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>S5_RH</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="npgsql" Version="7.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\back\" />
+    <Folder Include="Controllers\front\" />
+    <Folder Include="Models\back\" />
+    <Folder Include="Models\front\" />
+    <Folder Include="Views\back\" />
+    <Folder Include="Views\front\" />
+  </ItemGroup>
+
+</Project>

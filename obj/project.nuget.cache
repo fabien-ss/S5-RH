@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bTt2Mo8TcgpTj3jXcXDK7mrPJrStEjsT92u7iitEubdTo11UPafIy3QHUaPk6yUa7fgbceOqAjF5Vw+w6rgogA==",
+  "success": true,
+  "projectFilePath": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\S5-RH.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PROACTIF\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\PROACTIF\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}
