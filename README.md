@@ -6,10 +6,10 @@
 Mini-projet entreprise 🎓 géstion des ressources humaines.
 </div>
 
-
-
 ### Prérequis
+
 - Dotnet 6 | 7
+- PostgreSQL
 
 ## Mise en marche
 ```
