@@ -59,20 +59,44 @@ Pour les messages de commit, il faut commencer par le type de commit, suivi d'un
 
 ### EntityFramework
 
-syntaxe pour la methode insert dans une base
+syntaxe crud
 ```
- public IActionResult Index()
+
+Create
+
+  using (var context = ApplicationDbContextFactory.Create())
   {
-    Test test = new Test
-      {
-        Id = 1,
-        Name = "ok"
-       };
-      using (var _context = ApplicationDbContextFactory.Create())
-      {
-        _context.test.Add(test);
-        _context.SaveChanges();   
-      }
-    return View();
+      context.Tests.Add(test);
+      context.SaveChanges();
   }
+
+Read
+
+  using (var context = ApplicationDbContextFactory.Create())
+  {
+      var tests = context.Tests.ToList();
+      return View(tests);
+  }
+
+Update
+
+  using (var context = ApplicationDbContextFactory.Create())
+  {
+      context.Tests.Update(test);
+      context.SaveChanges();
+  }
+
+Delete
+
+  using (var context = ApplicationDbContextFactory.Create())
+    {
+        var test = context.Tests.FirstOrDefault(t => t.Id == id);
+        if (test != null)
+        {
+            context.Tests.Remove(test);
+            context.SaveChanges();
+        }
+        return RedirectToAction("Index");
+    }
+
 ```
