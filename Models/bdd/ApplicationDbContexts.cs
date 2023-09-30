@@ -20,5 +20,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Sexe> Sexe { get; set; }
     public DbSet<SituationMatrimoniale> SituationMatrimoniale { get; set; }
     public DbSet<Note> Note { get; set; }
+    public DbSet<CandidatCv> CandidatCv { get; set; }
+    public DbSet<Candidature> Candidature { get; set; }
     // ...
 }
