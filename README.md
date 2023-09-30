@@ -60,34 +60,34 @@ Pour les messages de commit, il faut commencer par le type de commit, suivi d'un
 ### EntityFramework
 
 syntaxe crud
-```
+
 
 Create
-
+```
   using (var context = ApplicationDbContextFactory.Create())
   {
       context.Tests.Add(test);
       context.SaveChanges();
   }
-
+```
 Read
-
+```
   using (var context = ApplicationDbContextFactory.Create())
   {
       var tests = context.Tests.ToList();
       return View(tests);
   }
-
+```
 Update
-
+```
   using (var context = ApplicationDbContextFactory.Create())
   {
       context.Tests.Update(test);
       context.SaveChanges();
   }
-
+```
 Delete
-
+```
   using (var context = ApplicationDbContextFactory.Create())
     {
         var test = context.Tests.FirstOrDefault(t => t.Id == id);
@@ -98,5 +98,4 @@ Delete
         }
         return RedirectToAction("Index");
     }
-
 ```
