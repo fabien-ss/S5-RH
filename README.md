@@ -62,7 +62,7 @@ Pour les messages de commit, il faut commencer par le type de commit, suivi d'un
 syntaxe crud
 
 
-Create
+- Create
 ```
   using (var context = ApplicationDbContextFactory.Create())
   {
@@ -70,7 +70,7 @@ Create
       context.SaveChanges();
   }
 ```
-Read
+- Read
 ```
   using (var context = ApplicationDbContextFactory.Create())
   {
@@ -78,7 +78,7 @@ Read
       return View(tests);
   }
 ```
-Update
+- Update
 ```
   using (var context = ApplicationDbContextFactory.Create())
   {
@@ -86,7 +86,7 @@ Update
       context.SaveChanges();
   }
 ```
-Delete
+- Delete
 ```
   using (var context = ApplicationDbContextFactory.Create())
     {
