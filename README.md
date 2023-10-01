@@ -99,3 +99,13 @@ syntaxe crud
         return RedirectToAction("Index");
     }
 ```
+
+Donnée temporaire utile pour les actions transactionnelles
+```
+   var donnee = TempData["MaDonnee"] as string;
+
+    // Effectuez d'autres opérations avec la donnée
+
+    // Une fois que vous avez terminé avec TempData, vous pouvez le vider
+    TempData.Clear();
+```
