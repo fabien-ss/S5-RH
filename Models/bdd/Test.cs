@@ -10,8 +10,8 @@ public class Test
 
     [Required]
     [Column("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [NotMapped]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 }
