@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using S5_RH.Models;
+using S5_RH.Models.back.Annonce;
 
 namespace S5_RH.Controllers.Annonce;
 
@@ -12,9 +13,21 @@ public class AnnonceController : Controller
     {
         _logger = logger;
     }
+
+    [HttpPost]
+    public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
+    {
+        if (ModelState.IsValid)
+        {
+            TempData["NouvelleAnnonce"] = this;
+            return RedirectToAction("Qualification", "Annonce");
+        }
+        return Redirect("/");
+    }
     
     public IActionResult NouvelleAnnonce()
     {
+        
         // listes des services
         ViewData["students"] = "Nouvelle Annonce";
         return View();
@@ -22,7 +35,8 @@ public class AnnonceController : Controller
     
     public IActionResult Qualification()
     {
-        return View();
+        Models.back.Annonce.Qualification qualification = new Qualification();
+        return View(qualification);
     }
     
     public IActionResult Questionnaire()

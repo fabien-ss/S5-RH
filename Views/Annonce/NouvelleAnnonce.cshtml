@@ -1,35 +1,39 @@
+@model S5_RH.Models.back.Annonce.NouvelleAnnonce
+
 <div class="container">
-    <form>
+    @using (Html.BeginForm("TraitementAnnonce", "Annonce", FormMethod.Post))
+    {
+        @Html.ValidationSummary();
         <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <h1>Nouvelle Annonce</h1>
             <div class="col-6">
                 <div class="form-floating mb-3 champs">
-                    <select class="form-select rounded-0" id="Poste">
+                    <select class="form-select rounded-0" id="Poste" name="IdService">
                         <option>Informaticien</option>
                     </select>
                     <label for="Poste">Poste</label>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="datetime-local" class="form-control rounded-0" id="dateDebut">
+                    <input type="datetime-local" class="form-control rounded-0" id="dateDebut" name="Debut">
                     <label for="dateDebut">Début</label>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="datetime-local" class="form-control rounded-0" id="dateFin">
+                    <input type="datetime-local" class="form-control rounded-0" id="dateFin" name="Fin">
                     <label for="dateFin">Fin</label>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <textarea class="form-control rounded-0" id="description"></textarea>
+                    <textarea class="form-control rounded-0" id="description" style="height: 190px;" name="Description"></textarea>
                     <label for="description">Description</label>
                 </div>
             </div>
             <div class="col-6">
 
                 <div class="form-floating mb-3 champs">
-                    <input type="number" class="form-control rounded-0" id="Chargedetravail" placeholder="Heure total">
+                    <input type="number" class="form-control rounded-0" id="Chargedetravail" placeholder="Heure total" name="ChargeDeTravail">
                     <label for="Chargedetravail">Charge de travail</label>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="number" class="form-control rounded-0" id="jourHomme">
+                    <input type="number" class="form-control rounded-0" id="jourHomme" name="JourHomme">
                     <label for="jourHomme">Jour/Homme</label>
                 </div>
                 <div class="form-group mb-3 champs">
@@ -39,7 +43,7 @@
 
             </div>
         </div>
-    </form>
+    }
 </div>
 <style>
     .champs

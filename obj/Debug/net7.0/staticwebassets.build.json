@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "00UbTHGwy8f/uwQP8Mul4I8HLzqUhmiHZ51mku1XV/U=",
+  "Hash": "lLcfRCJ9E/fev+zma8Yszm6Q2MrZId4t2DhLx+bgUsU=",
   "Source": "S5-RH",
   "BasePath": "_content/S5-RH",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\footer.css"
+    },
+    {
+      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\css\\link.css",
+      "SourceId": "S5-RH",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
+      "BasePath": "_content/S5-RH",
+      "RelativePath": "css/link.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\link.css"
     },
     {
       "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\css\\site.css",

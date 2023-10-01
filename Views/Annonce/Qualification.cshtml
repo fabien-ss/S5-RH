@@ -1,59 +1,73 @@
+@model S5_RH.Models.back.Annonce.Qualification;
+
 <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
     <form>
         <div class="row mt-5">
             <div class="col-3">
                 <h2>Diplôme</h2>
                 
-                <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
-                    <div class="input-group-prepend">
-                        <div class="form-control rounded-0 bg-primary bg-opacity-25">Master</div>
+                @foreach (var diplome in Model.Diplomes)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@diplome.Details</div>
+                        </div>
+                        <input type="hidden" value="@diplome.IdDiplome" name="DiplomeId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientDiplome[]">
+                            <option>Recommendé</option>
+                        </select>
                     </div>
-                    
-                    <select class="form-control rounded-0" id="master">
-                        <option>Recommendé</option>
-                    </select>
-                </div>
+                }
                 
             </div>
             <div class="col-3">
                 <h2>Expérience</h2>
-                <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
-                    <div class="input-group-prepend">
-                        <div class="form-control rounded-0 bg-primary bg-opacity-25">Aucune</div>
+                @foreach (var experience in Model.Experiences)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@experience.Details </div>
+                        </div>
+                        <input type="hidden" value="@experience.IdExperience" name="ExperienceId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientExperience[]">
+                            <option>Recommendé</option>
+                        </select>
                     </div>
-                    
-                    <select class="form-control rounded-0" id="master">
-                        <option>Recommendé</option>
-                    </select>
-                </div>
+                }
                 
             </div>
             <div class="col-3">
                 <h2>Sexe</h2>
-                <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
-                    <div class="input-group-prepend">
-                        <div class="form-control rounded-0 bg-primary bg-opacity-25">Homme</div>
+                @foreach (var sexe in Model.Sexe)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@sexe.Details</div>
+                        </div>
+                        <input type="hidden" value="@sexe.IdSexe" name="SexeID[]"/>        
+                        <select class="form-control rounded-0" id="master" name="CoefficientSexe[]">
+                            <option>Recommendé</option>
+                        </select>
                     </div>
-                    
-                    <select class="form-control rounded-0" id="sexe">
-                        <option>Recommendé</option>
-                    </select>
-                </div>
+                }
             </div>
             
             <div class="col-3">
                 <h2>Situation</h2>
-                <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
-                    <div class="input-group-prepend">
-                        <div class="form-control rounded-0 bg-primary bg-opacity-25">Situation</div>
+                @foreach (var situation in Model.Situation)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@situation.Details</div>
+                        </div>
+                        <input type="hidden" value="@situation.IdSituationMatrimoniale" name="SituationId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientSituation[]">
+                            <option>Recommendé</option>
+                        </select>
                     </div>
-                    
-                    <select class="form-control rounded-0" id="master">
-                        <option>Recommendé</option>
-                    </select>
-                </div>
+                }
             </div>
         </div>
-        <button class="btn btn-primary mt-5">Valider</button>
-    </form>
-</div>
+        <button class="btn btn-primary mt-5" type="submit">Valider</button>
+        </form>
+    </div>
