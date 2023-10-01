@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class CandidatCv {
     [Key]
     [Column("id_candidat_cv")]
-    int IdCandidatCv { get; set; }
+    public int IdCandidatCv { get; set; }
     [Column("id_candidature")]
-    int IdCandidature { get; set; }
+    public int IdCandidature { get; set; }
     [Column("id_diplome")]
-    int IdDiplome { get; set; }
+    public int IdDiplome { get; set; }
     [Column("id_sexe")]
-    int IdSexe { get; set; }
+    public int IdSexe { get; set; }
     [Column("id_situation_matrimoniale")]
-    int IdSituationMatrimoniale { get; set; }
+    public int IdSituationMatrimoniale { get; set; }
 }

@@ -10,7 +10,7 @@ public static class ApplicationDbContextFactory
             .AddJsonFile("appsettings.json")
             .Build();
 
-        string connectionString = configuration.GetConnectionString("DefaultConnection");
+        string? connectionString = configuration.GetConnectionString("DefaultConnection");
 
         var options = new DbContextOptionsBuilder<ApplicationDbContext>()
             .UseNpgsql(connectionString)

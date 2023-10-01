@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Note {
     [Key]
     [Column("id_candidature")]
-    int IdCandidature { get; set;}
+    public int IdCandidature { get; set;}
     [Column("note")]
-    double Valeur { get; set;}
+    public double Valeur { get; set;}
 }

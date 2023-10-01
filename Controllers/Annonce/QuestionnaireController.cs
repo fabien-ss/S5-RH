@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using S5_RH.Models.back.Annonce;
+using S5_RH.Models.bdd.orm;
+using Question = S5_RH.Models.back.Annonce.Question;
+using Diplome = S5_RH.Models.bdd.orm.Diplome;
 namespace S5_RH.Controllers.Annonce;
 
     public class QuestionnaireController : Controller
@@ -7,25 +9,39 @@ namespace S5_RH.Controllers.Annonce;
         [HttpPost]
         public ActionResult InsertionQuestionnaire()
         {
-            int nombreDeQuestion = int.Parse(HttpContext.Request.Form["nombreDeQuestion"]);
+            // id_annonce
+            var nombreDeQuestion = int.Parse(HttpContext.Request.Form["nombreDeQuestion"]);
             for (int i = 1; i <= nombreDeQuestion; i++)
             {
-                string NomQuestion = $"question{i}_question";
-                string question = HttpContext.Request.Form[NomQuestion];
-                string NomReponse = $"question{i}_reponse[]"; 
-                string[] reponses = HttpContext.Request.Form[NomReponse];
-                string Validation = $"question{i}_reponse_validation[]";
-                string[] validite = HttpContext.Request.Form[Validation];
+                var nomQuestion = $"question{i}_question";
+                var question = HttpContext.Request.Form[nomQuestion];
+                var nomResponse = $"question{i}_reponse[]";
+                var responses = HttpContext.Request.Form[nomResponse];
+                var validation = $"question{i}_reponse_validation[]";
+                var validity = HttpContext.Request.Form[validation];
                
-                Question Question = new Question
+                Question question1 = new Question
                 {
                     Quest = question,
-                    Reponses = reponses,
-                    Valeur = validite
+                    Reponses = responses,
+                    Valeur = validity
                 };
-                Console.WriteLine(Question.Quest);
-                Console.WriteLine(Question.Reponses.Length);
-                Console.WriteLine(Question.Valeur.Length);
+                question1.TraitementInsertionQuestion();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            Diplome diplome = new Diplome
+            {
+                Details = "zaedsqdsq"
+            };
+            using (var context = ApplicationDbContextFactory.Create())
+            {
+                context.Diplome.Add(diplome);
+                context.SaveChanges();
             }
             return RedirectToAction("Index", "Home");
         }

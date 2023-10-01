@@ -8,11 +8,10 @@
 </head>
 <body>
     <form action="/Questionnaire/InsertionQuestionnaire" method="post">
-    <div class="container" id="formQuestionniare">
-        <div id="buttonQuestion">
-            <button class="btn btn-default mt-3" id="ajoutQuestion" onclick="ajouterQuestion()" type="button">
-                Ajouter question <i class="fas fa-plus"></i>
-            </button>
+    <div class="container" id="formQuestionniare" style="padding-top: 5%; padding-bottom: 5%;">
+        <div class="input-group" style="">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <button type="button" class="btn btn-outline-primary">search</button>
         </div>
         <div class="form-group" style="margin-left: 1%;" id="questionForm">
             <div class="row" id="questions">
@@ -20,9 +19,14 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="nombreDeQuestion" name="nombreDeQuestion">
+        <input type="hidden" id="nombreDeQuestion" name="nombreDeQuestion">
+        <div id="buttonQuestion">
+            <button class="btn btn-default mt-3" id="ajoutQuestion" onclick="ajouterQuestion()" type="button">
+                Ajouter question <i class="fas fa-plus"></i>
+            </button>
+        </div>
     </form>
-    <script src="/js/questionnaire/generateQuestion.js">
+    <script src="/js/questionnaire/generateQuestion.js" async>
     </script>
 </body>
 </html>

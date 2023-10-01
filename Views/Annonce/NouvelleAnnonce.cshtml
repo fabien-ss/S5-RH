@@ -1,40 +1,49 @@
 <div class="container">
-    <div class="row">
-        <form>
-        <div class="col-6">
-                <div class="form-group">
-                    <label for="Poste">Poste</label>
-                    <select class="form-control" id="Poste">
+    <form>
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
+            <h1>Nouvelle Annonce</h1>
+            <div class="col-6">
+                <div class="form-floating mb-3 champs">
+                    <select class="form-select rounded-0" id="Poste">
                         <option>Informaticien</option>
                     </select>
+                    <label for="Poste">Poste</label>
                 </div>
-                <div class="form-group">
+                <div class="form-floating mb-3 champs">
+                    <input type="datetime-local" class="form-control rounded-0" id="dateDebut">
                     <label for="dateDebut">Début</label>
-                    <input type="datetime-local" class="form-control" id="dateDebut">
                 </div>
-                <div class="form-group">
+                <div class="form-floating mb-3 champs">
+                    <input type="datetime-local" class="form-control rounded-0" id="dateFin">
                     <label for="dateFin">Fin</label>
-                    <input type="datetime-local" class="form-control" id="dateFin">
                 </div>
-                <div class="form-group">
+                <div class="form-floating mb-3 champs">
+                    <textarea class="form-control rounded-0" id="description"></textarea>
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description"></textarea>
-                </div>  
-        </div>
-        <div class="col-6">
-
-                <div class="form-group">
-                    <label for="Chargedetravail">Charge de travail</label>
-                    <input type="number" class="form-control" id="Chargedetravail" placeholder="Heure total">
-                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <div class="form-group">
-                    <label for="jourHomme">Jour/Homme</label>
-                    <input type="number" class="form-control" id="jourHomme">
-                </div>  
-                <button type="submit" class="btn btn-primary form-control mt-5">Submit</button>
+            </div>
+            <div class="col-6">
 
+                <div class="form-floating mb-3 champs">
+                    <input type="number" class="form-control rounded-0" id="Chargedetravail" placeholder="Heure total">
+                    <label for="Chargedetravail">Charge de travail</label>
+                </div>
+                <div class="form-floating mb-3 champs">
+                    <input type="number" class="form-control rounded-0" id="jourHomme">
+                    <label for="jourHomme">Jour/Homme</label>
+                </div>
+                <div class="form-group mb-3 champs">
+                    <input type="file" class="form-control rounded-0" id="documentAnnonce" placeholder="Importer un fichier">
+                </div>
+                <button type="submit" class="btn btn-primary form-control rounded-0 mt-5">Submit</button>
+
+            </div>
         </div>
-        </form>
-    </div>
+    </form>
 </div>
+<style>
+    .champs
+    {
+        margin-top: 2%;
+    }
+</style>

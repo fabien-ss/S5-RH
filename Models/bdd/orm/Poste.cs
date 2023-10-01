@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Poste {
     [Key]
     [Column("id_poste")]
-    int IdPoste { get; set;}
+    public int IdPoste { get; set;}
     [Column("id_service")]
-    int IdService { get; set;}
+    public int IdService { get; set;}
     [Column("details")]
-    string? Details { get; set;}
+    public string? Details { get; set;}
 }

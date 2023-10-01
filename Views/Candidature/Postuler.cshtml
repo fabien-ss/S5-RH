@@ -1,0 +1,75 @@
+<div class="container">
+    <form>
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
+            <h1>Details candidature</h1>
+            <div class="col-6 border-1">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0" id="Nom" name="nom" required="">
+                    <label for="Nom">Nom</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0" id="prenom" name="nom" required>
+                    <label for="prenom">Prenom</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="datetime-local" name="dateDeNaissance" class="form-control rounded-0" id="dateDeNaissance" required>
+                    <label for="dateDeNaissance">Date de naissance</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" name="telephone" class="form-control rounded-0" id="telephone">
+                    <label for="telephone">Téléphone</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea name="motivation" class="form-control rounded-0" id="motivation" required>
+                        
+                    </textarea>
+                    <label for="motivation">Motivation (facultatif)</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="file" class="form-control rounded-0" name="photo" id="photoRecente" required>
+                </div>
+            </div>
+            <div class="col-6 border-1">
+                <div class="form-floating mb-3">
+                    <select class="form-control rounded-0" name="diplome" id="diplome" required>
+                        <option></option>
+                    </select>
+                    <label for="diplome">Diplôme</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-control rounded-0" name="experience" id="experience" required>
+                        <option></option>
+                    </select>
+                    <label for="experience">Expérience</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select class="form-control rounded-0" name="sexe" id="sexe" required>
+                        <option></option>
+                    </select>
+                    <label for="sexe">Sexe</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <select name="situationMatrimoniale" class="form-control rounded-0" id="situationMatrimoniale" required>
+                        <option></option>
+                    </select>
+                    <label for="situationMatrimoniale">Situation matrimoniale</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <textarea name="hobies" class="form-control rounded-0" id="hobies" required>
+                        
+                    </textarea>
+                    <label for="hobies">Hobies</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="file" name="documents[]" class="form-control rounded-0" id="documentDiplome" required>
+                   
+                </div>
+                <button type="submit" class="btn btn-primary mt-5" style="float: right;">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
