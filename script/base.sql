@@ -65,6 +65,7 @@ question varchar(255) not null
 
 drop table reponse;
 create table reponse(
+id_question int references question(id_question),
 id_reponse serial primary key,
 reponse varchar(255) not null,
 verite int not null -- 0 si faux 1 si vrai

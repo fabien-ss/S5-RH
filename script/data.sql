@@ -15,9 +15,10 @@ INSERT INTO annonce (id_service, debut, fin, details) VALUES
 (3, '2023-10-10', '2023-10-25', 'Développeur Web Full Stack recherché');
 
 INSERT INTO diplome (details) VALUES
-('Licence en Gestion des Ressources Humaines'),
-('Master en Comptabilité'),
-('Baccalauréat en Informatique');
+('Doctorat');
+('Master'),
+('Licence'),
+('Baccalauréat'),
 
 INSERT INTO experience (details) VALUES
 ('+5 ans'),
@@ -34,10 +35,10 @@ INSERT INTO situation_matrimoniale (details) VALUES
 ('Divorcé(e)');
 
 -- Remplacez les valeurs des colonnes id_annonce, diplome, experience, sexe, et situation_matrimoniale
-INSERT INTO qualification (id_annonce, diplome, experience, sexe, situation_matrimoniale) VALUES
-(1, 'Licence en Gestion des Ressources Humaines', '5 ans d''expérience en RH', 'Homme', 'Célibataire'),
-(2, 'Master en Comptabilité', '3 ans d''expérience en comptabilité', 'Femme', 'Marié(e)'),
-(3, 'Baccalauréat en Informatique', '2 ans d''expérience en développement web', 'Homme', 'Célibataire');
+INSERT INTO qualification (id_annonce, dimplome, experience, sexe, situation_matrimoniale) VALUES
+(1, '1=4;2=3;3=1;4=0', '1=3;2=1;3=1'; '1=2;2=1', '1=1;2=1;3=2'),
+(2, '1=1;2=1;3=2;4=4', '1=1,2=1,3=3', '1=2;2=1', '1=1;2=2;3=1'),
+(3, '1=1;2=3;3=1;4=3', '1=2,2=2,3=2', '1=2;2=1', '1=1;2=2;3=2');
 
 INSERT INTO question (question) VALUES
 ('Avez-vous de l''expérience en gestion des ressources humaines?'),
