@@ -7,46 +7,112 @@
     <link rel="stylesheet" href="/lib/fontawesome-free-6.4.2-web/css/all.css">
 </head>
 <body>
-    <div class="form-group" style="margin-left: 1%;">
-        <button class="btn btn-primary mt-3" onclick="ajouterQuestion()">
-            <i class="fas fa-plus"></i>
-        </button>
-        <div class="row" id="questions">
-            <!-- Les questions et réponses seront ajoutées ici -->
+    <div class="container" id="formQuestionniare">
+        <div id="buttonQuestion">
+            <button class="btn btn-default mt-3" id="ajoutQuestion" onclick="ajouterQuestion()" type="button">
+                Ajouter question <i class="fas fa-plus"></i>
+            </button>
+        </div>
+        <div class="form-group" style="margin-left: 1%;" id="questionForm">
+            <div class="row" id="questions">
+
+            </div>
         </div>
     </div>
-
     <script>
+        var canGenerate = true;
         var countQuestion = 0;
         function ajouterQuestion() {
-            countQuestion += 1;
-            var questionDiv = document.getElementById("questions");
-            var nouvelleQuestion = document.createElement("div");
-            nouvelleQuestion.className = "form-group mt-3";
-            nouvelleQuestion.innerHTML = `
-            <label class="Question mt-3">Entrée la question</label>
-            <input type="text" class="form-control" name="question"/>
-            <button class="btn btn-primary mt-3" onclick="ajouterReponse(this)"><i class="fas fa-plus"></i></button>
-            <div class="row" id="reponses">
-                <!-- Les réponses seront ajoutées ici -->
-            </div>
-            `;
-            questionDiv.appendChild(nouvelleQuestion);
+            if(canGenerate == true){
+                countQuestion += 1;
+                const questionName = `question${countQuestion}_question[]`;
+                var questionDiv = document.getElementById("questions");
+                var nouvelleQuestion = document.createElement("div");
+                var divName = `div${countQuestion}_question[]`;
+                var buttonName = `ajouter${countQuestion}_question[]`;
+                nouvelleQuestion.className = "form-group mt-3";
+                nouvelleQuestion.innerHTML = `
+                <div class = "col-12">
+                    <label class="Question mt-3">Entrée la question</label>
+                    <input type="text" class="form-control" name="${questionName}" id="${questionName}" />
+                        <div class="row mt-3" id="reponses">
+                        </div>
+                    <button class="btn btn-default mt-3" id="${buttonName}" onclick="ajouterReponse(this)" type="button"><i class="fas fa-plus"></i></button>
+                    <button class="btn btn-default mt-3" onclick="valider(this)" type="button"><i class="fas fa-check"></i></button>
+                </div>
+                `;
+                questionDiv.appendChild(nouvelleQuestion);
+                canGenerate = false;
+            }
         }
+        function valider(button){
+            canGenerate = true;
+            const questionName = `question${countQuestion}_question[]`;
+            var question = document.getElementById(questionName);
+            question.setAttribute("readonly", "readonly");
+            var buttonName = `ajouter${countQuestion}_question[]`;
+            var elementASupprimer = document.getElementById(buttonName);
+            validateResponse();
+            elementASupprimer.remove();
+            button.remove();
+            createValidationButton();
+        }
+        function validateResponse(){
+            var divName = `.div${countQuestion}_reponse\\[\\]`;
+            var divsAvecLaMemeClasse = document.querySelectorAll(divName);
+            divsAvecLaMemeClasse.forEach(function(section){
+                var inputs = section.querySelectorAll('input');
+                inputs.forEach(function(input){
+                    input.setAttribute('readonly', 'readonly');
+                    input.setAttribute('disabled', 'disabled');
+                });
+            });
 
+            }
         function ajouterReponse(button) {
             var reponseDiv = button.parentElement.querySelector("#reponses");
             var nouvelleReponse = document.createElement("div");
-            nouvelleReponse.className = "col-2";
-            const name = countQuestion + "reponse[]";
-            nouvelleReponse.setAttribute("name", name);
+            nouvelleReponse.className = "col-3";
+            const name = `question${countQuestion}_reponse[]`;
+            const validation = `question${countQuestion}_reponse_validation[]`;
+            const divName = `div${countQuestion}_reponse[]`;
             nouvelleReponse.innerHTML = `
-            <div class="form-group mt-3">
-                <input type="text" class="form-control" name="reponse"/>
-                <input type="checkbox"/>
+            <div class="form-inline ${divName} " id="">
+                <input type="text" class="form-control" name="${name}"/>
+                <input type="checkbox" name="${validation}" value=1/>
             </div>
             `;
             reponseDiv.appendChild(nouvelleReponse);
+        }
+        function verrouillerChamps() {
+            var inputs = document.querySelectorAll("questionForm input");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].readOnly = true;
+            }
+            var boutonVerrouillage = document.getElementById("buttonVerrouiller");
+            boutonVerrouillage.disabled = true;
+        }
+        function createValidationButton() {
+            var existingButton = document.getElementById("validationButton");
+            if (!existingButton) {
+                var validationButton = document.createElement("button");
+                validationButton.setAttribute("class","btn btn-default mt-3");
+                validationButton.textContent = "Valider";
+                validationButton.id = "validationButton";
+                validationButton.addEventListener("click", validation(validationButton));
+                var buttonsContainer = document.getElementById("buttonQuestion");
+                buttonsContainer.appendChild(validationButton);
+            }
+        }
+        function envoyer(button){
+            button.setAttribute("type", "submit");
+            button.setAttribute("class", "btn btn-primary mt-3");
+            button.textContent="Envoyer";
+            var ajoutButton=document.getElementById("ajoutQuestion");
+            ajoutButton.remove("click", validation);
+        }
+        function validation(validationButton){
+            envoyer(validationButton);
         }
     </script>
 </body>
