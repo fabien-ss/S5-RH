@@ -1,19 +1,53 @@
-<div class="container">
-    <input class="btn btn-primary" type="submit" value="Ajouter Question"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Questions et Réponses</title>
+    <link rel="stylesheet" href="/lib/fontawesome-free-6.4.2-web/css/all.css">
+</head>
+<body>
     <div class="form-group" style="margin-left: 1%;">
-        <label class="Question mt-3">Entrée la question</label>
-        <input type="text" id="Question" class="form-control"/>
-        <button class="btn btn-primary mt-3">Réponse +</button>
-        <div class="row" id="reponse">
-            <div class="col-1">
-                <div class="form-group mt-3">
-                    <input type="text" class="form-control" name=""/>
-                    <input type="checkbox"/>
-                </div>
-            </div>
+        <button class="btn btn-primary mt-3" onclick="ajouterQuestion()">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div class="row" id="questions">
+            <!-- Les questions et réponses seront ajoutées ici -->
         </div>
     </div>
-</div>
 
-<script>
-</script>
+    <script>
+        var countQuestion = 0;
+        function ajouterQuestion() {
+            countQuestion += 1;
+            var questionDiv = document.getElementById("questions");
+            var nouvelleQuestion = document.createElement("div");
+            nouvelleQuestion.className = "form-group mt-3";
+            nouvelleQuestion.innerHTML = `
+            <label class="Question mt-3">Entrée la question</label>
+            <input type="text" class="form-control" name="question"/>
+            <button class="btn btn-primary mt-3" onclick="ajouterReponse(this)"><i class="fas fa-plus"></i></button>
+            <div class="row" id="reponses">
+                <!-- Les réponses seront ajoutées ici -->
+            </div>
+            `;
+            questionDiv.appendChild(nouvelleQuestion);
+        }
+
+        function ajouterReponse(button) {
+            var reponseDiv = button.parentElement.querySelector("#reponses");
+            var nouvelleReponse = document.createElement("div");
+            nouvelleReponse.className = "col-2";
+            const name = countQuestion + "reponse[]";
+            nouvelleReponse.setAttribute("name", name);
+            nouvelleReponse.innerHTML = `
+            <div class="form-group mt-3">
+                <input type="text" class="form-control" name="reponse"/>
+                <input type="checkbox"/>
+            </div>
+            `;
+            reponseDiv.appendChild(nouvelleReponse);
+        }
+    </script>
+</body>
+</html>
