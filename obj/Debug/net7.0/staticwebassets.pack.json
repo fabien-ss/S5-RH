@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestion.js",
+      "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestion.js"
+    },
+    {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
