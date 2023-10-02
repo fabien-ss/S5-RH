@@ -17,7 +17,15 @@ public class NouvelleAnnonce
     public int ChargeDeTravail { get; set; }
     [Required(ErrorMessage = "Jour/Homme requis")]
     public int JourHomme { get; set; }
+    public List<Service> Services { get; set; }
 
+    public NouvelleAnnonce()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            Services = context.Service.ToList();
+        }
+    }
     public void SauvegardeTemporaire()
     {
     }

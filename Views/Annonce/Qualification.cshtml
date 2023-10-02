@@ -1,7 +1,9 @@
 @model S5_RH.Models.back.Annonce.Qualification;
 
 <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
-    <form>
+    @using (Html.BeginForm())
+    {
+        
         <div class="row mt-5">
             <div class="col-3">
                 <h2>Diplôme</h2>
@@ -81,5 +83,6 @@
             </div>
         </div>
         <button class="btn btn-primary mt-5" type="submit">Valider</button>
-        </form>
-    </div>
+        </>
+    }
+</div>

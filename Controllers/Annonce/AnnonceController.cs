@@ -21,6 +21,7 @@ public class AnnonceController : Controller
     {
         if (ModelState.IsValid)
         {
+            // Tsy maintsy avadika Json fa tsy zaka le objet
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
         } 
@@ -32,6 +33,8 @@ public class AnnonceController : Controller
         
         // listes des services
         ViewData["students"] = "Nouvelle Annonce";
+        NouvelleAnnonce nouvelleAnnonce = new NouvelleAnnonce();
+        ViewData["services"] = nouvelleAnnonce.Services;
         return View();
     }
     

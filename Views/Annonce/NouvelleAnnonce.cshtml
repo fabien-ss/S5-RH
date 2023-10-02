@@ -1,3 +1,6 @@
+@{
+    List<Service> services = (List<Service>)ViewData["services"];
+}
 @model S5_RH.Models.back.Annonce.NouvelleAnnonce
 
 <div class="container">
@@ -9,10 +12,12 @@
             <div class="col-6">
                 <div class="form-floating mb-3 champs">
                     <select class="form-select rounded-0" id="Poste" name="IdService">
-                        <option>Informaticien</option>
+                        @foreach (var serv in services)
+                        {
+                            <option value="@serv.IdService">@serv.Nom</option>
+                        }
                     </select>
                     <label for="Poste">Poste</label>
-                    
                 </div>
                 <div class="form-floating mb-3 champs">
                     <input type="datetime-local" class="form-control rounded-0" id="dateDebut" name="Debut">
