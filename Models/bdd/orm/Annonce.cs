@@ -10,7 +10,7 @@ public class Annonce {
     [Column("id_service")]
     public int IdService { get; set; }
     [Column("debut")]
-    public DateTime Debut { get; set; }
+    public DateTime? Debut { get; set; }
     [Column("fin")]
     public DateTime? Fin { get; set;}
     [Column("details")]
