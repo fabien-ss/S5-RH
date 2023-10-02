@@ -14,10 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\back\" />
-    <Folder Include="Controllers\front\" />
     <Folder Include="Models\back\" />
-    <Folder Include="Models\front\" />
     <Folder Include="Views\back\" />
     <Folder Include="Views\front\" />
   </ItemGroup>

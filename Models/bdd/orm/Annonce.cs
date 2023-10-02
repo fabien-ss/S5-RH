@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Annonce {
     [Key]
     [Column("id_annonce")]
-    int IdAnnoce { get; set; }
+    public int IdAnnoce { get; set; }
     [Column("id_service")]
-    int IdService { get; set; }
+    public int IdService { get; set; }
     [Column("debut")]
-    TimestampAttribute? Debut { get; set; }
+    public DateTime Debut { get; set; }
     [Column("fin")]
-    TimestampAttribute? Fin { get; set;}
+    public DateTime? Fin { get; set;}
     [Column("details")]
-    string? Details { get; set; }
+    public string? Details { get; set; }
 }

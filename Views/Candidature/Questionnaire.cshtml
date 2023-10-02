@@ -1,0 +1,28 @@
+@model List<S5_RH.Models.bdd.orm.Question>
+
+<form action="">
+    <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
+        <h1>Veuillez répondre à toute les questions.</h1>
+        <div class="row" style="padding-top: 2%; padding-bottom: 5%;">
+            @foreach (var item in Model)
+            {
+                <div class="col-4 mt-3">
+                    <h3>@item.Fanontaniana</h3>
+                    <ul>
+                        @foreach (var r in item.Reponses)
+                        {
+                            <li>
+                                <input type="checkbox"/>
+                                <label>@r.Valimpanontaniana</label>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            <div style="display: flex; grid-gap: 10px;">
+                <button type="submit" class="btn btn-primary mt-5" style="float: right; float: right;">Submit</button>
+                <button type="submit" class="btn btn-secondary mt-5" style="float: right; float: right;">Reset</button>
+            </div>
+        </div>
+    </div>
+</form>

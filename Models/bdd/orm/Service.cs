@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 public class Service {
     [Key]
     [Column("id_service")]
-    int IdService { get; set;}
+    public int IdService { get; set;}
     [Column("nom")]
-    string? Nom { get; set;}
+    public string? Nom { get; set;}
 }

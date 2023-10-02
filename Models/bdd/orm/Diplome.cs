@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Diplome {
     [Key]
     [Column("id_diplome")]
-    int IdDiplome { get; set;}
+    public int IdDiplome { get; set;}
     [Column("details")]
-    string? Details { get; set;}
+    public string? Details { get; set;}
 }

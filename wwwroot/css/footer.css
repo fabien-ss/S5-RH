@@ -1,0 +1,8 @@
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 50px;
+    background-color: #f8f9fa; /* Changez la couleur de fond selon votre préférence */
+    text-align: center; /* Centrez le contenu du pied de page */
+    z-index: 1000; /* Assurez-vous que le pied de page est au-dessus du contenu si nécessaire */
+}
