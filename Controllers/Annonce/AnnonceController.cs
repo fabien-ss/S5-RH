@@ -21,10 +21,25 @@ public class AnnonceController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Tsy maintsy avadika Json fa tsy zaka le objet
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
         } 
+        return RedirectToAction("NouvelleAnnonce");
+    }
+
+    public IActionResult TraitementQualification(QualificationContainer qualification)
+    {
+        if (ModelState.IsValid)
+        {
+            Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
+            NouvelleAnnonce annonce =
+                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
+            // attention mbola tsy misy id_annonce ilay qualif
+            annonce.Sauvegarde(qualif);
+            TempData.Clear();
+        }
+
+        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
     }
     

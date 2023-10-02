@@ -1,7 +1,7 @@
 @model S5_RH.Models.back.Annonce.Qualification;
 
 <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("TraitementQualification", "Annonce", FormMethod.Post))
     {
         
         <div class="row mt-5">
@@ -18,7 +18,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientDiplome[]">
                             @foreach (var coef in Model.Coefficients)
                             {
-                                <option>@coef.Text</option>
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -37,7 +37,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientExperience[]">
                              @foreach (var coef in Model.Coefficients)
                             {
-                                <option>@coef.Text</option>
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientSexe[]">
                             @foreach (var coef in Model.Coefficients)
                             {
-                                <option>@coef.Text</option>
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -75,7 +75,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientSituation[]">
                              @foreach (var coef in Model.Coefficients)
                             {
-                                <option>@coef.Text</option>
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -83,6 +83,5 @@
             </div>
         </div>
         <button class="btn btn-primary mt-5" type="submit">Valider</button>
-        </>
     }
 </div>

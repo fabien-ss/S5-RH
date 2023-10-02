@@ -3,10 +3,15 @@
 <form action="">
     <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
         <h1>Veuillez répondre à toute les questions.</h1>
-        <div class="row" style="padding-top: 2%; padding-bottom: 5%;">
+        <div class="row" style="padding-top: 2%; padding-bottom: 5%; display: inline;">
+            @{ int i = 0; }
             @foreach (var item in Model)
-            {
-                <div class="col-4 mt-3">
+            { 
+                
+                {
+                    i += 1;
+                }
+                <div class="col-12 mt-3">
                     <h3>@item.Fanontaniana</h3>
                     <ul>
                         @foreach (var r in item.Reponses)
@@ -26,3 +31,10 @@
         </div>
     </div>
 </form>
+<style>
+    ul{
+        list-style: none;
+        display: flex;
+        grid-gap: 3%;
+    }
+</style>
