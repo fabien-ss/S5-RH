@@ -9,16 +9,13 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = S5_RH
 build_property.RootNamespace = S5_RH
-build_property.ProjectDir = e:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\
+build_property.ProjectDir = E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = e:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH
+build_property.MSBuildProjectDirectory = E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH
 build_property._RazorSourceGeneratorDebug = 
 
-<<<<<<< HEAD
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Home/Index.cshtml]
-=======
 [E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Annonce/NouvelleAnnonce.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub25jZVxOb3V2ZWxsZUFubm9uY2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,30 +37,29 @@ build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcUXVlc3Rpb25u
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Home/Index.cshtml]
->>>>>>> dev3-Fabien
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Home/Privacy.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/Error.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/_ViewImports.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/_ViewStart.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[e:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/_Layout.cshtml]
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-wamaj6h1b6
