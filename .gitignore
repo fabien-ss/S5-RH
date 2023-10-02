@@ -1,5 +1,5 @@
-obj
+obj/
+bin/
 appsettings.json
-.fleet
-.idea
-bin
+.fleet/
+.idea/
