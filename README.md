@@ -99,3 +99,41 @@ syntaxe crud
         return RedirectToAction("Index");
     }
 ```
+
+Donnée temporaire utile pour les actions transactionnelles
+```
+   var donnee = TempData["MaDonnee"] as string;
+
+    // Effectuez d'autres opérations avec la donnée
+
+    // Une fois que vous avez terminé avec TempData, vous pouvez le vider
+    TempData.Clear();
+```
+
+Upload fichier
+
+```
+[HttpPost]
+public ActionResult Upload(HttpPostedFileBase file)
+{
+    if (file != null && file.ContentLength > 0)
+    {
+        // Récupérez le nom du fichier et sauvegardez-le sur le serveur
+        var fileName = Path.GetFileName(file.FileName);
+        var filePath = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+        file.SaveAs(filePath);
+
+        // Traitez le fichier téléchargé, par exemple, sauvegardez-le dans la base de données ou effectuez d'autres opérations nécessaires
+        // ...
+
+        ViewBag.Message = "Le fichier a été téléchargé avec succès.";
+    }
+    else
+    {
+        ViewBag.Message = "Aucun fichier n'a été sélectionné.";
+    }
+
+    return View();
+}
+
+```
