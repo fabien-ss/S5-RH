@@ -1,6 +1,13 @@
 create database rh;
 \c rh;
 
+
+create table coefficient(
+    id_coefficient serial primary key ,
+    valeur int,
+    text varchar(500)
+);
+
 drop table if exists service;
 create table service(
 id_service serial primary key,

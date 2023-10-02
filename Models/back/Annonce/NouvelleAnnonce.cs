@@ -1,9 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace S5_RH.Models.back.Annonce;
-public class NouvelleAnnonce
-{
+public class NouvelleAnnonce 
+{ 
     
     public int IdServices { get; set; }
     [Required(ErrorMessage = "Date debut requis.")]

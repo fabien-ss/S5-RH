@@ -22,5 +22,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Note> Note { get; set; }
     public DbSet<CandidatCv> CandidatCv { get; set; }
     public DbSet<Candidature> Candidature { get; set; }
+    public DbSet<Coefficient> Coefficient { get; set; }
     // ...
 }

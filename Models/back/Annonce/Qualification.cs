@@ -7,7 +7,7 @@ public class Qualification
     public List<Experience> Experiences { get; set; }
     public List<Sexe> Sexe { get; set; }
     public List<SituationMatrimoniale> Situation { get; set; }
-    public List<string> Coefficient { get; set; }
+    public List<Coefficient> Coefficients { get; set; }
 
     public Qualification()
     {
@@ -17,8 +17,8 @@ public class Qualification
             this.Experiences = context.Experience.ToList();
             this.Sexe = context.Sexe.ToList();
             this.Situation = context.SituationMatrimoniale.ToList();
+            this.Coefficients = context.Coefficient.ToList();
         }
-        
     }
 }
 

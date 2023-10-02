@@ -2,6 +2,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using S5_RH.Models;
 using S5_RH.Models.back.Annonce;
+//using Newtonsoft.Json;  
+using System.Text.Json;
 
 namespace S5_RH.Controllers.Annonce;
 
@@ -19,10 +21,10 @@ public class AnnonceController : Controller
     {
         if (ModelState.IsValid)
         {
-            TempData["NouvelleAnnonce"] = this;
+            TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
-        }
-        return Redirect("/");
+        } 
+        return RedirectToAction("NouvelleAnnonce");
     }
     
     public IActionResult NouvelleAnnonce()

@@ -14,7 +14,10 @@
                         </div>
                         <input type="hidden" value="@diplome.IdDiplome" name="DiplomeId[]"/>
                         <select class="form-control rounded-0" id="master" name="CoefficientDiplome[]">
-                            <option>Recommendé</option>
+                            @foreach (var coef in Model.Coefficients)
+                            {
+                                <option>@coef.Text</option>
+                            }
                         </select>
                     </div>
                 }
@@ -30,7 +33,10 @@
                         </div>
                         <input type="hidden" value="@experience.IdExperience" name="ExperienceId[]"/>
                         <select class="form-control rounded-0" id="master" name="CoefficientExperience[]">
-                            <option>Recommendé</option>
+                             @foreach (var coef in Model.Coefficients)
+                            {
+                                <option>@coef.Text</option>
+                            }
                         </select>
                     </div>
                 }
@@ -46,7 +52,10 @@
                         </div>
                         <input type="hidden" value="@sexe.IdSexe" name="SexeID[]"/>        
                         <select class="form-control rounded-0" id="master" name="CoefficientSexe[]">
-                            <option>Recommendé</option>
+                            @foreach (var coef in Model.Coefficients)
+                            {
+                                <option>@coef.Text</option>
+                            }
                         </select>
                     </div>
                 }
@@ -62,7 +71,10 @@
                         </div>
                         <input type="hidden" value="@situation.IdSituationMatrimoniale" name="SituationId[]"/>
                         <select class="form-control rounded-0" id="master" name="CoefficientSituation[]">
-                            <option>Recommendé</option>
+                             @foreach (var coef in Model.Coefficients)
+                            {
+                                <option>@coef.Text</option>
+                            }
                         </select>
                     </div>
                 }

@@ -72,3 +72,5 @@ INSERT INTO note (id_candidature, note) VALUES
                                             (2, 3.8),
                                             (3, 4.2);
 
+insert  into coefficient (valeur, text )
+    values (5,"Recommendé"), (3,"Acceptable"), (1, "Passable");
