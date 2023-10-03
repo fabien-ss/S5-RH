@@ -17,6 +17,7 @@
     <Folder Include="Models\back\" />
     <Folder Include="Views\back\" />
     <Folder Include="Views\front\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>

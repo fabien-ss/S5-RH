@@ -16,6 +16,11 @@ public class AnnonceController : Controller
         _logger = logger;
     }
 
+    public IActionResult AnnulerAnnonce()
+    {
+        TempData.Clear();
+        return NouvelleAnnonce();
+    }
     [HttpPost]
     public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {
@@ -31,14 +36,11 @@ public class AnnonceController : Controller
     {
         if (ModelState.IsValid)
         {
-            Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
-            NouvelleAnnonce annonce =
-                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
-            // attention mbola tsy misy id_annonce ilay qualif
-            annonce.Sauvegarde(qualif);
-            TempData.Clear();
+            Models.bdd.orm.Qualification qualif = 
+                qualification.ValidateQualification();
+            TempData["Qualification"] = JsonSerializer.Serialize(qualif);
+            return RedirectToAction("Questionnaire");
         }
-
         ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
     }

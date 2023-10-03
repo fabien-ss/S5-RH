@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting.Internal;
 
 namespace S5_RH.Models.back.Annonce;
 public class NouvelleAnnonce 
@@ -18,7 +17,8 @@ public class NouvelleAnnonce
     public int ChargeDeTravail { get; set; }
     [Required(ErrorMessage = "Jour/Homme requis")]
     public int JourHomme { get; set; }
-    
+    [Required(ErrorMessage = "Importer un document")]
+    public IFormFile Document { get; set; }
     public List<Service> Services { get; set; }
     //public Models.bdd.orm.Qualification Qualification { get; set; }
     public NouvelleAnnonce()
@@ -28,8 +28,21 @@ public class NouvelleAnnonce
             Services = context.Service.ToList();
         }
     }
+    // enregistrement du fichier
+    public void SauvegardeFichier()
+    {
+        IHostEnvironment _hostingEnvironment = new HostingEnvironment();
+        string uploads = Path.Combine(_hostingEnvironment.ContentRootPath, "uploads");
+        if (Document.Length > 0)
+        {
+            string filePath = Path.Combine(uploads, Document.FileName);
+            Stream fileStream = new FileStream(filePath, FileMode.Create);
+            Document.CopyToAsync(fileStream);
+            fileStream.Close();
+        }
+    }
     // ici on effectue la sauvegarde de toute les données a propos de l'annonce
-    public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
+    public void Sauvegarde(Models.bdd.orm.Qualification Qualification, Question question1)
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
@@ -44,6 +57,8 @@ public class NouvelleAnnonce
             context.SaveChanges();
             Qualification.IdAnnonce = annonce.IdAnnoce;
             context.Qualification.Add(Qualification);
+            question1.IdAnnonce = annonce.IdAnnoce;
+            question1.TraitementInsertionQuestion();
             context.SaveChanges();
         }
     }
