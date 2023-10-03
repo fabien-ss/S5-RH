@@ -29,14 +29,6 @@
       "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestion.js"
     },
     {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart1.js",
-      "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestionPart1.js"
-    },
-    {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart2.js",
-      "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestionPart2.js"
-    },
-    {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\obfuscated.js",
       "PackagePath": "staticwebassets\\js\\questionnaire\\obfuscated.js"
     },

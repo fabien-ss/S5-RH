@@ -7,6 +7,9 @@ using System.Text.Json;
 
 namespace S5_RH.Controllers.Annonce;
 
+/**
+ * [author] 01kingMaker
+ */
 public class AnnonceController : Controller
 {
     private readonly ILogger<AnnonceController> _logger;
@@ -22,14 +25,16 @@ public class AnnonceController : Controller
         return NouvelleAnnonce();
     }
     [HttpPost]
-    public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
+    public IActionResult NouvelleAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {
         if (ModelState.IsValid)
         {
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
-        } 
-        return RedirectToAction("NouvelleAnnonce");
+        }
+        ViewData["services"] = nouvelleAnnonce.Services;
+        return View(nouvelleAnnonce);
+        //return RedirectToAction("NouvelleAnnonce");
     }
 
     public IActionResult TraitementQualification(QualificationContainer qualification)

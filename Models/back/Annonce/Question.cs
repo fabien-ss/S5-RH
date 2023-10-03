@@ -31,7 +31,6 @@ public class Question
                     };
                     context.Add(reponse);
                 }
-
             context.SaveChanges();
         }
     }
