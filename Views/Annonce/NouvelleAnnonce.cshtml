@@ -4,7 +4,7 @@
 @model S5_RH.Models.back.Annonce.NouvelleAnnonce
 
 <div class="container">
-    @using (Html.BeginForm("NouvelleAnnonce", "Annonce", FormMethod.Post))
+    @using (Html.BeginForm("NouvelleAnnonce", "Annonce", FormMethod.Post, new { enctype = "multipart/form-data"}))
     {
         <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <h1>Nouvelle Annonce</h1>
@@ -48,10 +48,17 @@
                 </div>
                 <div class="form-floating mb-3 champs">
                     <input type="number" class="form-control rounded-0" id="jourHomme" name="JourHomme"
-                           />
+                    />
                     <label for="jourHomme">Jour/Homme</label>
                     <span class="Error">@Html.ValidationMessageFor(annonce => annonce.JourHomme)</span>
                 </div>
+                <div class="form-floating mb-3 champs">
+                    <input type="file" class="form-control rounded-0" id="Document" name="Document"
+                    />
+                    <label for="jourHomme">Jour/Homme</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Document)</span>
+                </div>
+                
                 <button type="submit" class="btn btn-primary form-control rounded-0 mt-5">Suivant</button>
                 <button type="reset" class="btn btn-outline-primary form-control rounded-0 mt-5">Reset</button>
                 
