@@ -15,7 +15,7 @@ public class NouvelleAnnonce
     public string? Description { get; set; }
     [Required(ErrorMessage = "Charge de travail requis.")]
     public int ChargeDeTravail { get; set; }
-    [Required(ErrorMessage = "Jour/Homme requis")]
+    [Required(ErrorMessage = "Jour/Homme requis.")]
     public int JourHomme { get; set; }
      public List<Service> Services { get; set; }
     //public Models.bdd.orm.Qualification Qualification { get; set; }

@@ -1,7 +1,6 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using S5_RH.Models.back.Annonce;
-using S5_RH.Models.bdd.orm;
 using Question = S5_RH.Models.back.Annonce.Question;
 using Diplome = S5_RH.Models.bdd.orm.Diplome;
 using Qualification = S5_RH.Models.bdd.orm.Qualification;

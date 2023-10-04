@@ -4,7 +4,6 @@
 @model S5_RH.Models.back.Annonce.NouvelleAnnonce
 
 <div class="container">
-    @Html.ValidationSummary();
     @using (Html.BeginForm("NouvelleAnnonce", "Annonce", FormMethod.Post))
     {
         <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
@@ -18,32 +17,44 @@
                         }
                     </select>
                     <label for="Poste">Poste</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Services)</span>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="datetime-local" class="form-control rounded-0"  id="dateDebut" name="Debut">
+                    <input type="datetime-local" class="form-control rounded-0"  id="dateDebut" name="Debut"
+                           
+                     />
                     <label for="dateDebut">Début</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Debut)</span>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="datetime-local" class="form-control rounded-0"  id="dateFin" name="Fin">
+                    <input type="datetime-local" class="form-control rounded-0"  id="dateFin" name="Fin"
+                        />
                     <label for="dateFin">Fin</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Fin)</span>
                 </div>
                 <div class="form-floating mb-3 champs">
                     <textarea class="form-control rounded-0" id="description"  style="height: 190px;" name="Description"></textarea>
                     <label for="description">Description</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Description)</span>
                 </div>
             </div>
             <div class="col-6">
 
                 <div class="form-floating mb-3 champs">
-                    <input type="number" class="form-control rounded-0" id="Chargedetravail"  placeholder="Heure total" name="ChargeDeTravail">
+                    <input type="number" class="form-control rounded-0" id="Chargedetravail"  placeholder="Heure total" name="ChargeDeTravail"
+                           />
                     <label for="Chargedetravail">Charge de travail</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.ChargeDeTravail)</span>
                 </div>
                 <div class="form-floating mb-3 champs">
-                    <input type="number" class="form-control rounded-0" id="jourHomme" name="JourHomme">
+                    <input type="number" class="form-control rounded-0" id="jourHomme" name="JourHomme"
+                           />
                     <label for="jourHomme">Jour/Homme</label>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.JourHomme)</span>
                 </div>
+                <button type="submit" class="btn btn-primary form-control rounded-0 mt-5">Suivant</button>
+                <button type="reset" class="btn btn-outline-primary form-control rounded-0 mt-5">Reset</button>
                 
-                <button type="submit" class="btn btn-primary form-control rounded-0 mt-5">Submit</button>
             </div>
         </div>
     }
@@ -52,5 +63,8 @@
     .champs
     {
         margin-top: 2%;
+    }
+    .Error{
+        color:  red;
     }
 </style>
