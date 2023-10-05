@@ -59,20 +59,81 @@ Pour les messages de commit, il faut commencer par le type de commit, suivi d'un
 
 ### EntityFramework
 
-syntaxe pour la methode insert dans une base
+syntaxe crud
+
+
+- Create
 ```
- public IActionResult Index()
+  using (var context = ApplicationDbContextFactory.Create())
   {
-    Test test = new Test
-      {
-        Id = 1,
-        Name = "ok"
-       };
-      using (var _context = ApplicationDbContextFactory.Create())
-      {
-        _context.test.Add(test);
-        _context.SaveChanges();   
-      }
-    return View();
+      context.Tests.Add(test);
+      context.SaveChanges();
   }
+```
+- Read
+```
+  using (var context = ApplicationDbContextFactory.Create())
+  {
+      var tests = context.Tests.ToList();
+      return View(tests);
+  }
+```
+- Update
+```
+  using (var context = ApplicationDbContextFactory.Create())
+  {
+      context.Tests.Update(test);
+      context.SaveChanges();
+  }
+```
+- Delete
+```
+  using (var context = ApplicationDbContextFactory.Create())
+    {
+        var test = context.Tests.FirstOrDefault(t => t.Id == id);
+        if (test != null)
+        {
+            context.Tests.Remove(test);
+            context.SaveChanges();
+        }
+        return RedirectToAction("Index");
+    }
+```
+
+Donnée temporaire utile pour les actions transactionnelles
+```
+   var donnee = TempData["MaDonnee"] as string;
+
+    // Effectuez d'autres opérations avec la donnée
+
+    // Une fois que vous avez terminé avec TempData, vous pouvez le vider
+    TempData.Clear();
+```
+
+Upload fichier
+
+```
+[HttpPost]
+public ActionResult Upload(HttpPostedFileBase file)
+{
+    if (file != null && file.ContentLength > 0)
+    {
+        // Récupérez le nom du fichier et sauvegardez-le sur le serveur
+        var fileName = Path.GetFileName(file.FileName);
+        var filePath = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+        file.SaveAs(filePath);
+
+        // Traitez le fichier téléchargé, par exemple, sauvegardez-le dans la base de données ou effectuez d'autres opérations nécessaires
+        // ...
+
+        ViewBag.Message = "Le fichier a été téléchargé avec succès.";
+    }
+    else
+    {
+        ViewBag.Message = "Aucun fichier n'a été sélectionné.";
+    }
+
+    return View();
+}
+
 ```

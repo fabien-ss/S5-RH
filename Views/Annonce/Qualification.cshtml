@@ -1,0 +1,87 @@
+@model S5_RH.Models.back.Annonce.Qualification;
+
+<div class="container" style="padding-top: 5%; padding-bottom: 5%;">
+    @using (Html.BeginForm("TraitementQualification", "Annonce", FormMethod.Post))
+    {
+        
+        <div class="row mt-5">
+            <div class="col-3">
+                <h2>Diplôme</h2>
+                
+                @foreach (var diplome in Model.Diplomes)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@diplome.Details</div>
+                        </div>
+                        <input type="hidden" value="@diplome.IdDiplome" name="DiplomeId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientDiplome[]">
+                            @foreach (var coef in Model.Coefficients)
+                            {
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                            }
+                        </select>
+                    </div>
+                }
+                
+            </div>
+            <div class="col-3">
+                <h2>Expérience</h2>
+                @foreach (var experience in Model.Experiences)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@experience.Details </div>
+                        </div>
+                        <input type="hidden" value="@experience.IdExperience" name="ExperienceId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientExperience[]">
+                             @foreach (var coef in Model.Coefficients)
+                            {
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                            }
+                        </select>
+                    </div>
+                }
+                
+            </div>
+            <div class="col-3">
+                <h2>Sexe</h2>
+                @foreach (var sexe in Model.Sexe)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@sexe.Details</div>
+                        </div>
+                        <input type="hidden" value="@sexe.IdSexe" name="SexeID[]"/>        
+                        <select class="form-control rounded-0" id="master" name="CoefficientSexe[]">
+                            @foreach (var coef in Model.Coefficients)
+                            {
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                            }
+                        </select>
+                    </div>
+                }
+            </div>
+            
+            <div class="col-3">
+                <h2>Situation</h2>
+                @foreach (var situation in Model.Situation)
+                {
+                    <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
+                        <div class="input-group-prepend">
+                            <div class="form-control rounded-0 bg-primary bg-opacity-25">@situation.Details</div>
+                        </div>
+                        <input type="hidden" value="@situation.IdSituationMatrimoniale" name="SituationId[]"/>
+                        <select class="form-control rounded-0" id="master" name="CoefficientSituation[]">
+                             @foreach (var coef in Model.Coefficients)
+                            {
+                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                            }
+                        </select>
+                    </div>
+                }
+            </div>
+        </div>
+        <button class="btn btn-primary mt-5" type="submit">Valider</button>
+    }
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Questions et Réponses</title>
+    <link rel="stylesheet" href="/lib/fontawesome-free-6.4.2-web/css/all.css">
+</head>
+<body>
+    <form action="/Questionnaire/InsertionQuestionnaire" method="post">
+    <div class="container" id="formQuestionniare" style="padding-top: 5%; padding-bottom: 5%;">
+        <div class="input-group" style="">
+            <h1>Questionnaire</h1></div>
+        <div class="form-group" style="margin-left: 1%;" id="questionForm">
+            <div class="row" id="questions">
+
+            </div>
+        </div>
+    </div>
+        <input type="hidden" id="nombreDeQuestion" name="nombreDeQuestion">
+        <div id="buttonQuestion">
+            <button class="btn btn-default mt-3" id="ajoutQuestion" onclick="ajouterQuestion()" type="button">
+                Ajouter question <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </form>
+    <script src="/js/questionnaire/generateQuestion.js" async>
+    </script>
+</body>
+</html>
