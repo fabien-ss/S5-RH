@@ -28,8 +28,6 @@ function ajouterQuestion() {
                     </div>
                 </div>
                 `;
-        //var validateButton = document.getElementById("validateButton");
-        //validateButton.visible = false;
         questionDiv.appendChild(nouvelleQuestion);
         canGenerate = false;
     }
@@ -84,14 +82,6 @@ function validateResponse(){
         });
     });
 
-}
-function attributeValue(check){
-    if(check.checked){
-        check.value = 1;
-    }
-    else{
-        check.value = 2;
-    }
 }
 function verrouillerChamps() {
     var inputs = document.querySelectorAll("questionForm input");

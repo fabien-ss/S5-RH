@@ -3,6 +3,7 @@ using S5_RH.Models.bdd.orm;
 namespace S5_RH.Models.back.Annonce;
 public class Question
 {
+    public int IdAnnonce { get; set; }
     public string? Quest { get; set; }
     public string[]? Reponses { get; set; }
     public string[]? Valeur { get; set; }
@@ -13,12 +14,11 @@ public class Question
         {
             bdd.orm.Question question = new bdd.orm.Question
             {
-                IdAnnonce = 1,
+                IdAnnonce = this.IdAnnonce,
                 Fanontaniana = this.Quest
             };
             context.Add(question);
             context.SaveChanges();
-            Console.WriteLine("id=" + question.IdQuestion);
             var reponses = this.Reponses;
             if (reponses != null)
                 for (int i = 0; i < reponses.Length; i++)
@@ -31,7 +31,6 @@ public class Question
                     };
                     context.Add(reponse);
                 }
-
             context.SaveChanges();
         }
     }

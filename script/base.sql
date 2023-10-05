@@ -73,11 +73,7 @@ id_annonce int references annonce(id_annonce)
 
 drop table if exists reponse;
 create table reponse(
-<<<<<<< HEAD
-id_question int references question(id_question),
-=======
 id_question int references question(id_question), 
->>>>>>> dev3-Fabien
 id_reponse serial primary key,
 reponse varchar(255) not null,
 verite int not null -- 0 si faux 1 si vrai
