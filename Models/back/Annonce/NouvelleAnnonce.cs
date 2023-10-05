@@ -17,8 +17,9 @@ public class NouvelleAnnonce
     public int ChargeDeTravail { get; set; }
     [Required(ErrorMessage = "Jour/Homme requis.")]
     public int JourHomme { get; set; }
-    [Required(ErrorMessage = "Document requis.")]
-    public IFormFile Document { get; set; }
+    //[Required(ErrorM
+    //essage = "Document requis.")]
+  //  public IFormFile Document { get; set; }
      public List<Service> Services { get; set; }
     //public Models.bdd.orm.Qualification Qualification { get; set; }
     public NouvelleAnnonce()
@@ -29,7 +30,7 @@ public class NouvelleAnnonce
         }
     }
     // enregistrement du fichier
- /*   public void SauvegardeFichier()
+ /* c  public void SauvegardeFichier()
     {
         IHostEnvironment _hostingEnvironment = new HostingEnvironment();
         string uploads = Path.Combine(_hostingEnvironment.ContentRootPath, "uploads");

@@ -8,13 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="npgsql" Version="7.0.6" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    <PackageReference Include="Razorpdf" Version="1.0.0" />
+    <PackageReference Include="Syncfusion.Pdf.AspNet.Mvc5" Version="23.1.39" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\back\" />
     <Folder Include="Views\back\" />
     <Folder Include="Views\front\" />
     <Folder Include="wwwroot\uploads\" />
