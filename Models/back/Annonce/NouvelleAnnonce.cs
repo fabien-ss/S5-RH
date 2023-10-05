@@ -17,9 +17,10 @@ public class NouvelleAnnonce
     public int ChargeDeTravail { get; set; }
     [Required(ErrorMessage = "Jour/Homme requis.")]
     public int JourHomme { get; set; }
+    
     //[Required(ErrorM
     //essage = "Document requis.")]
-  //  public IFormFile Document { get; set; }
+    //public IFormFile Document { get; set; }
      public List<Service> Services { get; set; }
     //public Models.bdd.orm.Qualification Qualification { get; set; }
     public NouvelleAnnonce()

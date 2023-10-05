@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using S5_RH.Models.bdd.orm;
+using S5_RH.Models.bdd.orm.fiche;
 
 public class ApplicationDbContext : DbContext
 {
@@ -24,5 +25,14 @@ public class ApplicationDbContext : DbContext
     public DbSet<CandidatCv> CandidatCv { get; set; }
     public DbSet<Candidature> Candidature { get; set; }
     public DbSet<Coefficient> Coefficient { get; set; }
-    // ...
+    // Update Base
+    public DbSet<DetailsContrat> DetailsContrat { get; set; }
+    public DbSet<Employe> Employe { get; set; }
+    public DbSet<FicheDePoste> FicheDePoste { get; set; }
+    public DbSet<Horaire> Horaire { get; set; }
+    public DbSet<MissionEmploye> MissionEmploye { get; set; }
+    public DbSet<TypeAvantage> TypeAvantage { get; set; }
+    public DbSet<TypeContrat> TypeContrat { get; set; }
+    public DbSet<VAvantages> VAvantages { get; set; }
+    public DbSet<VMissions> VMissions { get; set; }
 }

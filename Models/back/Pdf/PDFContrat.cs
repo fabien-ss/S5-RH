@@ -17,11 +17,45 @@ public class PDFContrat
     public string Horaire { get; set; }
     public string Salaire { get; set; }
     public string avantages { get; set; }
-    public string Lieu { get; set; }
     private Document Document { get; set; }
+
+    public PDFContrat(string titre, string path, string societe, string adresse, string responsable, string employe, string duree, string dateDebut, string dateFin, string poste, string departement, string horaire, string salaire, string avantages)
+    {
+        Titre = titre;
+        Path = path;
+        Societe = societe;
+        Adresse = adresse;
+        Responsable = responsable;
+        Employe = employe;
+        Duree = duree;
+        DateDebut = dateDebut;
+        DateFin = dateFin;
+        Poste = poste;
+        Departement = departement;
+        Horaire = horaire;
+        Salaire = salaire;
+        this.avantages = avantages;
+        this.Document = new Document();
+        PdfWriter.GetInstance(Document, new FileStream(this.Path, FileMode.Create));
+        this.Document.Open();
+    }
 
     public PDFContrat()
     {
+        Titre = "Contrat de Travail";
+        Path = "Doc.pdf";
+        Societe = "Soins";
+        Adresse = "Lot K7";
+        Responsable = "Jean Pierre";
+        Employe = "RAKOTO Jean Marc";
+        Duree = "3";
+        DateDebut = "12 Septembre 2023";
+        DateFin = "12 Novembre 2023";
+        Poste = "Developpeur Fullstacl";
+        Departement = "Informatique";
+        Horaire = "8H à 16 H";
+        Salaire = "123123123";
+        this.avantages = avantages;
         this.Document = new Document();
         PdfWriter.GetInstance(Document, new FileStream(this.Path, FileMode.Create));
         this.Document.Open();
@@ -78,7 +112,7 @@ public class PDFContrat
         Contenu.Add(new Chunk(this.avantages));
         Ligne(Contenu, 2);
         Contenu.Add(new Chunk("Lieu de travail : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
-        Contenu.Add(new Chunk("ADES, section Informatique"));
+        Contenu.Add(new Chunk($"{Societe}, section {Departement}"));
         Ligne(Contenu, 4);
 
         Contenu.Add(new Chunk("Au cours de cette période, le contrat pourra être rompu par l'une"));
@@ -94,6 +128,7 @@ public class PDFContrat
     {
         this.Header();
         this.Content();
+        Document.Dispose();
         Document.Close();
     }
 

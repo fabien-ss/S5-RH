@@ -1,5 +1,4 @@
 INSERT INTO service (nom) VALUES
-<<<<<<< HEAD
 ('Service RH'),
 ('Service Finances'),
 ('Service Informatique');
@@ -16,10 +15,10 @@ INSERT INTO annonce (id_service, debut, fin, details) VALUES
 (3, '2023-10-10', '2023-10-25', 'Développeur Web Full Stack recherché');
 
 INSERT INTO diplome (details) VALUES
-('Doctorat');
+('Doctorat'),
 ('Master'),
 ('Licence'),
-('Baccalauréat'),
+('Baccalauréat');
 
 INSERT INTO experience (details) VALUES
 ('+5 ans'),
@@ -37,7 +36,7 @@ INSERT INTO situation_matrimoniale (details) VALUES
 
 -- Remplacez les valeurs des colonnes id_annonce, diplome, experience, sexe, et situation_matrimoniale
 INSERT INTO qualification (id_annonce, dimplome, experience, sexe, situation_matrimoniale) VALUES
-(1, '1=4;2=3;3=1;4=0', '1=3;2=1;3=1'; '1=2;2=1', '1=1;2=1;3=2'),
+(1, '1=4;2=3;3=1;4=0', '1=3;2=1;3=1', '1=2;2=1', '1=1;2=1;3=2'),
 (2, '1=1;2=1;3=2;4=4', '1=1,2=1,3=3', '1=2;2=1', '1=1;2=2;3=1'),
 (3, '1=1;2=3;3=1;4=3', '1=2,2=2,3=2', '1=2;2=1', '1=1;2=2;3=2');
 
@@ -72,11 +71,6 @@ INSERT INTO note (id_candidature, note) VALUES
 (1, 4.5),
 (2, 3.8),
 (3, 4.2);
-
-=======
-                              ('Service RH'),
-                              ('Service Finances'),
-                              ('Service Informatique');
 
 INSERT INTO poste (id_service, details) VALUES
                                             (1, 'Responsable des Ressources Humaines'),
@@ -148,5 +142,4 @@ INSERT INTO note (id_candidature, note) VALUES
                                             (3, 4.2);
 
 insert  into coefficient (valeur, text )
-    values (5,"Recommendé"), (3,"Acceptable"), (1, "Passable");
->>>>>>> dev3-Fabien
+    values (5,'Recommendé'), (3,'Acceptable'), (1, 'Passable');
