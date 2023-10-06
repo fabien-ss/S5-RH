@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lLcfRCJ9E/fev+zma8Yszm6Q2MrZId4t2DhLx+bgUsU=",
+  "Hash": "LDn9/6ZM8ZbyMN5vWxwoPfNuQpQ96W5feZExASYgbn0=",
   "Source": "S5-RH",
   "BasePath": "_content/S5-RH",
   "Mode": "Default",
@@ -151,40 +151,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestion.js"
-    },
-    {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart1.js",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "js/questionnaire/generateQuestionPart1.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestionPart1.js"
-    },
-    {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart2.js",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "js/questionnaire/generateQuestionPart2.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestionPart2.js"
     },
     {
       "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\obfuscated.js",
