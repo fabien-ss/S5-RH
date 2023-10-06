@@ -1,12 +1,16 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("horaire")]
+[Table("v_horaire")]
 public class Horaire
 {
-    [Column("id_horaire")]
-    private int IdHoraire { get; set; }
+    [Key]
+    [Column("id_contrat")]
+    public int IdContrat { get; set; }
     [Column("jour")]
-    private string jour { get; set; }
+    public string Jour { get; set; }
+    [Column("id_jour")]
+    public int jour { get; set; }
     [Column("entree")]
     string entree { get; set; }
     [Column("sortie")]

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/script/Base2.Sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/script/base.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/script/data.sql" dialect="SQLite" />
   </component>

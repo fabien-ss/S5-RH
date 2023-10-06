@@ -6,7 +6,6 @@ CREATE TABLE public.avantage_employe (
 );
 
 
-ALTER TABLE public.avantage_employe OWNER TO postgres;
 
 --
 -- Name: details_contrat; Type: TABLE; Schema: public; Owner: postgres
@@ -19,8 +18,6 @@ CREATE TABLE public.details_contrat (
                                         id_contrat integer
 );
 
-
-ALTER TABLE public.details_contrat OWNER TO postgres;
 
 --
 -- Name: employe; Type: TABLE; Schema: public; Owner: postgres
@@ -37,8 +34,6 @@ CREATE TABLE public.employe (
 );
 
 
-ALTER TABLE public.employe OWNER TO postgres;
-
 --
 -- Name: fiche_de_poste; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -49,8 +44,6 @@ CREATE TABLE public.fiche_de_poste (
                                        id_subordonnee character varying
 );
 
-
-ALTER TABLE public.fiche_de_poste OWNER TO postgres;
 
 --
 -- Name: horaire; Type: TABLE; Schema: public; Owner: postgres
@@ -64,8 +57,6 @@ CREATE TABLE public.horaire (
 );
 
 
-ALTER TABLE public.horaire OWNER TO postgres;
-
 --
 -- Name: mission; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -76,8 +67,6 @@ CREATE TABLE public.mission (
 );
 
 
-ALTER TABLE public.mission OWNER TO postgres;
-
 --
 -- Name: mission_employe; Type: TABLE; Schema: public; Owner: postgres
 --
@@ -87,8 +76,6 @@ CREATE TABLE public.mission_employe (
                                         id_mission integer
 );
 
-
-ALTER TABLE public.mission_employe OWNER TO postgres;
 
 --
 -- Name: tache; Type: TABLE; Schema: public; Owner: postgres
@@ -101,7 +88,6 @@ CREATE TABLE public.tache (
 );
 
 
-ALTER TABLE public.tache OWNER TO postgres;
 
 --
 -- Name: type_avantage; Type: TABLE; Schema: public; Owner: postgres
@@ -113,7 +99,6 @@ CREATE TABLE public.type_avantage (
 );
 
 
-ALTER TABLE public.type_avantage OWNER TO postgres;
 
 --
 -- Name: type_contrat; Type: TABLE; Schema: public; Owner: postgres
@@ -124,8 +109,6 @@ CREATE TABLE public.type_contrat (
                                      nom character varying(500)
 );
 
-
-ALTER TABLE public.type_contrat OWNER TO postgres;
 
 --
 -- Data for Name: avantage_employe; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -290,3 +273,38 @@ select ae.id_employe, ae.id_avantage, nom from avantage_employe ae join type_ava
 CREATE or replace view v_missions as
 select m.nom, me.id_mission, me.id_fiche_de_poste from mission m join mission_employe me
                                                                       on m.id_mission = me.id_mission;
+alter table "public".employe add id_superieur integer;
+
+alter table "public".employe add CONSTRAINT fk_employe_employe FOREIGN key (id_superieur) REFERENCES "public".employe(id_employe);
+
+alter table mission_employe add id_employe integer;
+
+alter table mission_employe add CONSTRAINT fk_mission_employe_employe FOREIGN key (id_employe) REFERENCES employe(id_employe);
+
+drop table fiche_de_poste cascade;
+
+alter table mission_employe drop column id_fiche_de_poste cascade;
+
+drop table mission_employe cascade;
+
+alter table mission add id_poste integer;
+
+alter table mission add CONSTRAINT fk_mission_poste FOREIGN key (id_mission) REFERENCES poste(id_poste);
+
+alter table candidat_cv add id_poste integer;
+
+alter table candidat_cv add CONSTRAINT fk_candidat_cv_poste FOREIGN key (id_poste) REFERENCES poste(id_poste);
+
+alter table employe drop column id_poste cascade;
+
+create table salaire (date_salaire timestamp, id_salaire int not null, 
+salaire double precision, constraint pk_salaire primary key (id_salaire));
+alter table details_contrat alter column  salaire type bigint;
+alter table details_contrat rename column salaire to id_salaire;
+alter table details_contrat add constraint fk_details_contrat_salaire foreign key (id_salaire)
+references salaire(date_salaire);
+
+alter table salaire drop column id_salaire cascade ;
+alter table salaire add id_contrat integer not null;
+alter table  salaire add constraint fk_salaire_details_contrat
+foreign key (id_contrat) references details_contrat(id_details_contrat);

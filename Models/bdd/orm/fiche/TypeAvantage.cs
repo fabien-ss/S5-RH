@@ -5,7 +5,7 @@ namespace S5_RH.Models.bdd.orm.fiche;
 public class TypeAvantage
 {
     [Column("id_avantage")]
-    private int IdAvantage { get; set; }
+    public int IdAvantage { get; set; }
     [Column("nom")]
-    private string Nom { get; set; }
+    public string Nom { get; set; }
 }

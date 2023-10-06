@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class VMissions
 {
     [Column("nom")]
-    private string Nom { get; set; }
+    public string Nom { get; set; }
     [Column("id_fiche_de_poste")]
-    private int IdFicheDePoste { get; set; }
+    public int IdFicheDePoste { get; set; }
     [Column("id_mission")]
-    private int IdMission { get; set; }
+    public int IdMission { get; set; }
 }

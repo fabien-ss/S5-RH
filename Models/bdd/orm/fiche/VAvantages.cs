@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class VAvantages
 {
     [Column("id_employe")]
-    private int IdEmploye;
+    public int IdEmploye;
     [Column("id_avantage")]
-    private int IdAvantage;
+    public int IdAvantage;
     [Column("nom")]
-    private string Nom;
+    public string Nom;
 }

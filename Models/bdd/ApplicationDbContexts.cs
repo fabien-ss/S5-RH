@@ -28,11 +28,10 @@ public class ApplicationDbContext : DbContext
     // Update Base
     public DbSet<DetailsContrat> DetailsContrat { get; set; }
     public DbSet<Employe> Employe { get; set; }
-    public DbSet<FicheDePoste> FicheDePoste { get; set; }
     public DbSet<Horaire> Horaire { get; set; }
-    public DbSet<MissionEmploye> MissionEmploye { get; set; }
     public DbSet<TypeAvantage> TypeAvantage { get; set; }
     public DbSet<TypeContrat> TypeContrat { get; set; }
     public DbSet<VAvantages> VAvantages { get; set; }
     public DbSet<VMissions> VMissions { get; set; }
+    public DbSet<Salaire> Salaire { get; set }
 }

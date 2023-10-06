@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class TypeContrat
 {
     [Column("id_contrat")]
-    private int IdContrat { get; set; }
+    public int IdContrat { get; set; }
     [Column("nom")]
-    private string Nom { get; set; }
+    public string Nom { get; set; }
 }

@@ -2,21 +2,44 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace S5_RH.Models.bdd.orm.fiche;
 [Table("details_contrat")]
 public class DetailsContrat
 {
     [Column("id_details_contrat")]
-    private int IdDetailsContrat { get; set; }
+    public int IdDetailsContrat { get; set; }
     [Column("date_debut")]
-    private DateTime DateDebut { get; set; }
+    public DateTime DateDebut { get; set; }
     [Column("date_fin")]
-    private DateTime DateFin { get; set; }
+    public DateTime DateFin { get; set; }
     [Column("id_contrat")] 
-    private int IdContrat { get; set; }
+    public int IdContrat { get; set; }
     [Column("salaire")]
-    private double Salaire { get; set; }
+    public double Salaire { get; set; }
+    [Column("matricule")]
+    public string Matricule { get; set; }
+    [NotMapped]
+    public List<Salaire> Salaires { get; set; }
+    [NotMapped] 
+    public List<Horaire> Horaires { get; set; }
 
-    public static void Main(string[] args)
+    public void Initializer()
     {
+        
+    }
+
+    public void setSalaires()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            Salaires = context.Salaire.Where(s => IdContrat == this.IdContrat).ToList();
+        }
+    }
+    public void setHoraire()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            Horaires = context.Horaire.ToList();
+        }
     }
 }
