@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+namespace S5_RH.Models.bdd.orm.fiche;
 [Table("v_horaire")]
 public class Horaire
 {

@@ -12,11 +12,6 @@ public class Employe
     [Column("id_details_contrat")]
     public int IdDetailsContrat { get; set; }
    
-    [Column("id_fiche_de_poste")]
-    public int IdFicheDePoste { get; set; }
-   
-    [Column("id_avantage")]
-    public int IdAvantage { get; set; }
     [Column("id_superieur")] 
     public int IdSuperieur { get; set; }
 }

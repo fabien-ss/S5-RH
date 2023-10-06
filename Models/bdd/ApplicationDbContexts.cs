@@ -33,5 +33,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<TypeContrat> TypeContrat { get; set; }
     public DbSet<VAvantages> VAvantages { get; set; }
     public DbSet<VMissions> VMissions { get; set; }
-    public DbSet<Salaire> Salaire { get; set }
+    public DbSet<Salaire> Salaire { get; set; }
 }

@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
-
+namespace S5_RH.Models.bdd.orm.fiche;
 [Table("type_contrat")]
 public class TypeContrat
 {

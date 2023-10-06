@@ -14,8 +14,6 @@ public class DetailsContrat
     public DateTime DateFin { get; set; }
     [Column("id_contrat")] 
     public int IdContrat { get; set; }
-    [Column("salaire")]
-    public double Salaire { get; set; }
     [Column("matricule")]
     public string Matricule { get; set; }
     [NotMapped]
@@ -25,7 +23,8 @@ public class DetailsContrat
 
     public void Initializer()
     {
-        
+        this.setSalaires();
+        this.setHoraire();
     }
 
     public void setSalaires()
@@ -39,7 +38,9 @@ public class DetailsContrat
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            Horaires = context.Horaire.ToList();
+            Horaires = context.Horaire.
+                Where(h => IdContrat == this.IdContrat)
+                .ToList();
         }
     }
 }
