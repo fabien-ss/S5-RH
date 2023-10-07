@@ -1,0 +1,35 @@
+@model S5_RH.Models.back.Embauche.ContratTravail;
+
+@using (Html.BeginForm("ContratEssai", "Contrat", FormMethod.Post))
+{
+    <label>Salaire</label><br/>
+    <input type="text"/>
+    <select>
+        <option value="">Brute</option>
+        <option value="">Net</option>
+    </select>
+    <br/>
+    <label>Contrat à</label>
+    <select>
+        <option value="">Duree déterminée</option>
+        <option value="">Duree indéterminée</option>
+    </select>
+    <br/>
+    <label>Avantages: </label>
+    <ul>
+        <li>
+            <label>Véhicule</label>
+            <input type="checkbox">
+        </li>
+        <li>
+            <label>Téléphone</label>
+            <input type="checkbox">
+        </li>
+        <li>
+            <label>Assistant(e)</label>
+            <input type="checkbox">
+        </li>
+    </ul>
+    <button type="submit">Valider</button>
+    <button type="reset">Annuler</button>
+}
