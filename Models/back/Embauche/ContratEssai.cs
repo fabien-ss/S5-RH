@@ -80,19 +80,30 @@ public class ContratEssai
             context.SaveChanges();
             salaire.IdContrat = detailsContrat.IdDetailsContrat;
             context.Salaire.Add(salaire);
-            foreach (var VARIABLE in avantages)
-            {
-                VARIABLE.IdEmploye = employe.IdEmploye;
-                context.Avantage.Add(VARIABLE);
-            }
             context.SaveChanges();
-            foreach (var VARIABLE in horaires)
+            foreach (var VARIABLE in Avantage)
             {
-                VARIABLE.IdContrat = detailsContrat.IdDetailsContrat;
-                context.Horaire.Add(VARIABLE);
+                Avantage avantage = new Avantage
+                {
+                    IdAvantage = int.Parse(VARIABLE),
+                    IdEmploye = employe.IdEmploye
+                };
+                context.Avantage.Add(avantage);
+                context.SaveChanges();
+            }
+            foreach (var VARIABLE in JourDeTravail)
+            {
+                Horaire horaire = new Horaire
+                {
+                    IdContrat = detailsContrat.IdDetailsContrat,
+                    IdJour = int.Parse(VARIABLE),
+                    Entree = HoraireEntree,
+                    Sortie = HoraireSortie
+                };
+                context.Horaire.Add(horaire);
+                context.SaveChanges();
             }
 
-            context.SaveChanges();
         }
     }
 }
