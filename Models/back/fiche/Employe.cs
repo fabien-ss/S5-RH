@@ -21,7 +21,7 @@ public class Employe : bdd.orm.fiche.Employe
             this.Subordonnees = context.Employe.Where(p => p.IdSuperieur == this.IdEmploye).ToList();
             this.Avantages = context.VAvantages.Where(a => a.IdEmploye == this.IdEmploye).ToList();
             this.DetailsContrat =
-                context.DetailsContrat.Where(d => d.IdDetailsContrat == this.IdDetailsContrat).First();
+                context.DetailsContrat.Where(d => d.IdEmploye == this.IdEmploye).First();
             this.DetailsContrat.Initializer();
         }
     }

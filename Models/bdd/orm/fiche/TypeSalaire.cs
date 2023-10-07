@@ -6,7 +6,14 @@ namespace S5_RH.Models.bdd.orm.fiche;
 public class TypeSalaire{
     [Key]
     [Column("id_type_salaire")]
-    private int IdTypeSalaire { get; set; }
+    public int IdTypeSalaire { get; set; }
     [Column("nom")]
-    private string Nom { get; set; }    
+    public string Nom { get; set; }    
+    public static List<TypeSalaire> ObtenirSalaire()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.TypeSalaire.ToList();
+        }
+    }
 }

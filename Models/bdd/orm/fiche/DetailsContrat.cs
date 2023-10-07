@@ -1,19 +1,21 @@
 using System.ComponentModel.DataAnnotations.Schema;
-
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace S5_RH.Models.bdd.orm.fiche;
 [Table("details_contrat")]
 public class DetailsContrat
 {
+    [Key]
     [Column("id_details_contrat")]
     public int IdDetailsContrat { get; set; }
+    [Column("id_employe")]
+    public int IdEmploye { get; set; }
     [Column("date_debut")]
     public DateTime DateDebut { get; set; }
     [Column("date_fin")]
     public DateTime DateFin { get; set; }
-    [Column("id_contrat")] 
-    public int IdContrat { get; set; }
+    [Column("id_type_contrat")] 
+    public int IdTypeContrat { get; set; }
     [Column("matricule")]
     public string Matricule { get; set; }
     [NotMapped]
@@ -31,7 +33,7 @@ public class DetailsContrat
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            Salaires = context.Salaire.Where(s => IdContrat == this.IdContrat).ToList();
+            Salaires = context.Salaire.Where(s => IdTypeContrat == this.IdTypeContrat).ToList();
         }
     }
     public void setHoraire()
@@ -39,7 +41,7 @@ public class DetailsContrat
         using (var context = ApplicationDbContextFactory.Create())
         {
             Horaires = context.Horaire.
-                Where(h => IdContrat == this.IdContrat)
+                Where(h => IdTypeContrat == this.IdTypeContrat)
                 .ToList();
         }
     }

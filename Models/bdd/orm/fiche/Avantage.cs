@@ -5,13 +5,15 @@ namespace S5_RH.Models.bdd.orm.fiche;
 using System.ComponentModel.DataAnnotations.Schema;
 
 [Keyless]
-[Table("v_avantages")]
-public class VAvantages
-{
+[Table("avantage_employe")]
+public class Avantage
+{ 
+    [Key]
+    [Column("id")]
+    public int Id { get; set; }
     [Column("id_employe")]
-    public int IdEmploye;
+    public int IdEmploye { get; set; }
     [Column("id_avantage")]
-    public int IdAvantage;
-    [Column("nom")]
-    public string Nom;
+    public int IdAvantage { get; set; }
 }
+

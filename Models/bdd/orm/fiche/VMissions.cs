@@ -1,6 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 namespace S5_RH.Models.bdd.orm.fiche;
 using System.ComponentModel.DataAnnotations.Schema;
 
+[Keyless]
 [Table("v_missions")]
 public class VMissions
 {

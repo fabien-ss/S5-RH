@@ -34,4 +34,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<VAvantages> VAvantages { get; set; }
     public DbSet<VMissions> VMissions { get; set; }
     public DbSet<Salaire> Salaire { get; set; }
+    public DbSet<Jour> Jour { get; set; }
+    public DbSet<TypeSalaire> TypeSalaire { get; set; }
+    public DbSet<Avantage> Avantage { get; set; }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using iTextSharp.text;
 
 namespace S5_RH.Models.bdd.orm.fiche;
 
@@ -8,8 +9,16 @@ public class Jour
 {
     [Key]
     [Column("id_jour")]
-    private int IdJour { get; set; }
+    public int IdJour { get; set; }
     [Column("jour")]
-    private string Journee { get; set; }
+    public string Journee { get; set; }
+
+    public static List<Jour> ObtenirListeJour()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Jour.ToList();
+        }
+    }
 }
 

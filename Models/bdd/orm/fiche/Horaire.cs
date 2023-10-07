@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace S5_RH.Models.bdd.orm.fiche;
 [Table("v_horaire")]
 public class Horaire
@@ -10,9 +11,9 @@ public class Horaire
     [Column("jour")]
     public string Jour { get; set; }
     [Column("id_jour")]
-    public int jour { get; set; }
+    public int IdJour { get; set; }
     [Column("entree")]
-    string entree { get; set; }
+    public string Entree { get; set; }
     [Column("sortie")]
-    string sortie { get; set; }
+    public string Sortie { get; set; }
 }
