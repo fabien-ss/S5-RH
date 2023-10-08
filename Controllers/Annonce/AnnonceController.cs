@@ -76,4 +76,12 @@ public class AnnonceController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+    public IActionResult ListeQualification()
+    {
+        
+        // listes des services
+        ViewData["qualif"] = new S5_RH.Models.bdd.orm.Qualification().ListAll();
+        ViewData["Score"] = new S5_RH.Models.bdd.orm.Qualification().GetScore(1);
+        return View();
+    }
 }

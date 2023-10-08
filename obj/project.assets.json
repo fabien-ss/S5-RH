@@ -2,6 +2,27 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "BouncyCastle/1.8.9": {
+        "type": "package",
+        "compile": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/BouncyCastle.Crypto.dll": {}
+        }
+      },
+      "iTextSharp/5.5.13.3": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle": "1.8.9"
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
+        },
+        "runtime": {
+          "lib/itextsharp.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore/7.0.11": {
         "type": "package",
         "dependencies": {
@@ -234,6 +255,33 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Microsoft.NETCore.Platforms/2.1.12": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.Win32.SystemEvents/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "Npgsql/7.0.6": {
         "type": "package",
         "dependencies": {
@@ -268,10 +316,99 @@
             "related": ".xml"
           }
         }
+      },
+      "RazorPDF/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "iTextSharp": "4.1.2"
+        },
+        "compile": {
+          "lib/net45/RazorPDF.dll": {}
+        },
+        "runtime": {
+          "lib/net45/RazorPDF.dll": {}
+        }
+      },
+      "Syncfusion.Pdf.AspNet.Mvc5/23.1.39": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Syncfusion.Compression.Base.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/Syncfusion.Licensing.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/Syncfusion.Pdf.Base.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Syncfusion.Compression.Base.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/Syncfusion.Licensing.dll": {
+            "related": ".xml"
+          },
+          "lib/net45/Syncfusion.Pdf.Base.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "System.Drawing.Common/4.5.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.1.12",
+          "Microsoft.Win32.SystemEvents": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Drawing.Common.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
       }
     }
   },
   "libraries": {
+    "BouncyCastle/1.8.9": {
+      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+      "type": "package",
+      "path": "bouncycastle/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "bouncycastle.1.8.9.nupkg.sha512",
+        "bouncycastle.nuspec",
+        "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
+    "iTextSharp/5.5.13.3": {
+      "sha512": "vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+      "type": "package",
+      "path": "itextsharp/5.5.13.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "gnu-agpl-v3.0.md",
+        "itextsharp.5.5.13.3.nupkg.sha512",
+        "itextsharp.nuspec",
+        "lib/iTextSharp.xml",
+        "lib/itextsharp.dll",
+        "notice.txt"
+      ]
+    },
     "Microsoft.EntityFrameworkCore/7.0.11": {
       "sha512": "r7YGITjQ7v1hYtUXIavjSx+T1itKVPUFAIBN7HaKNjbR8x+gep8w9H3NEchglJOh1woZR4b2MhbSo2YFRZwZDg==",
       "type": "package",
@@ -623,6 +760,43 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.NETCore.Platforms/2.1.12": {
+      "sha512": "TVZ/a86Pcu1XngiqBMFEf5rZNv0erQ+FmGYrolRIMVtSeihOttbpyZhahmYfcxYcsmKzoUZDk1k90zbnav/PAA==",
+      "type": "package",
+      "path": "microsoft.netcore.platforms/2.1.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.2.1.12.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
+        "runtime.json",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Win32.SystemEvents/4.5.0": {
+      "sha512": "LuI1oG+24TUj1ZRQQjM5Ew73BKnZE5NZ/7eAdh1o8ST5dPhUnJvIkiIn2re3MwnkRy6ELRnvEbBxHP8uALKhJw==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "ref/net461/Microsoft.Win32.SystemEvents.dll",
+        "ref/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/netcoreapp2.0/Microsoft.Win32.SystemEvents.dll",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "Npgsql/7.0.6": {
       "sha512": "TAqvwRnm3NJ0QvN7cvu6geJkbI0XPzGVRElVY5hF4gsgA+BnE12x6GM1TLhdeq+7ZKvvo3BD8jXKnXmr3tvdEw==",
       "type": "package",
@@ -664,33 +838,105 @@
         "npgsql.entityframeworkcore.postgresql.nuspec",
         "postgresql.png"
       ]
+    },
+    "RazorPDF/1.0.0": {
+      "sha512": "haoQGv8mJw4SNa+hMz7oKAFy+VTddes5EG4z7wsIv0odjHSXgjG4dAOQ7xrYaBeqioGOfDQHZbo/pstGqSFcfw==",
+      "type": "package",
+      "path": "razorpdf/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/RazorPDF.dll",
+        "lib/net45/RazorPDF.dll",
+        "razorpdf.1.0.0.nupkg.sha512",
+        "razorpdf.nuspec"
+      ]
+    },
+    "Syncfusion.Pdf.AspNet.Mvc5/23.1.39": {
+      "sha512": "Iw8LmzXQYFRQLmAm8+vUbFWmfEeTGl+e+2C7SKflXaBXu0V/yaQBP9/iXLW9qd+hOnibRjtHanTOV8ZC6BlyCg==",
+      "type": "package",
+      "path": "syncfusion.pdf.aspnet.mvc5/23.1.39",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "content/net45/web.config.install.xdt",
+        "content/net45/web.config.uninstall.xdt",
+        "lib/net45/Syncfusion.Compression.Base.dll",
+        "lib/net45/Syncfusion.Compression.Base.xml",
+        "lib/net45/Syncfusion.Licensing.dll",
+        "lib/net45/Syncfusion.Licensing.xml",
+        "lib/net45/Syncfusion.Pdf.Base.dll",
+        "lib/net45/Syncfusion.Pdf.Base.xml",
+        "syncfusion.pdf.aspnet.mvc5.23.1.39.nupkg.sha512",
+        "syncfusion.pdf.aspnet.mvc5.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "System.Drawing.Common/4.5.2": {
+      "sha512": "uie0uAukY9ZUfeJroJh6nRnzlD82ZWemYY5V/grtlQOTRfyhQSCmLXUK/1hrlKo+es64dZrVwGTbP0+vz82t7A==",
+      "type": "package",
+      "path": "system.drawing.common/4.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Drawing.Common.dll",
+        "ref/netstandard2.0/System.Drawing.Common.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "system.drawing.common.4.5.2.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.11",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
+      "Razorpdf >= 1.0.0",
+      "Syncfusion.Pdf.AspNet.Mvc5 >= 23.1.39",
+      "System.Drawing.Common >= 4.5.2",
+      "iTextSharp >= 5.5.13.3",
       "npgsql >= 7.0.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PROACTIF\\.nuget\\packages\\": {},
+    "C:\\Users\\Mamisoa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\S5-RH.csproj",
+      "projectUniqueName": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\S5-RH.csproj",
       "projectName": "S5-RH",
-      "projectPath": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\S5-RH.csproj",
-      "packagesPath": "C:\\Users\\PROACTIF\\.nuget\\packages\\",
-      "outputPath": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\obj\\",
+      "projectPath": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\S5-RH.csproj",
+      "packagesPath": "C:\\Users\\Mamisoa\\.nuget\\packages\\",
+      "outputPath": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\PROACTIF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mamisoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -725,6 +971,22 @@
             "target": "Package",
             "version": "[7.0.11, )"
           },
+          "Razorpdf": {
+            "target": "Package",
+            "version": "[1.0.0, )"
+          },
+          "Syncfusion.Pdf.AspNet.Mvc5": {
+            "target": "Package",
+            "version": "[23.1.39, )"
+          },
+          "System.Drawing.Common": {
+            "target": "Package",
+            "version": "[4.5.2, )"
+          },
+          "iTextSharp": {
+            "target": "Package",
+            "version": "[5.5.13.3, )"
+          },
           "npgsql": {
             "target": "Package",
             "version": "[7.0.6, )"
@@ -749,8 +1011,50 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "iTextSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RazorPDF 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "RazorPDF",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Syncfusion.Pdf.AspNet.Mvc5 23.1.39' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Syncfusion.Pdf.AspNet.Mvc5",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }
