@@ -8,22 +8,31 @@ public class ContratController : Controller{
     
     public IActionResult ContratTravail(){
         ViewData["TypeContrat"] = TypeContrat.ObtenirTypeContrat();
+       //
         ViewData["Jours"] = Jour.ObtenirListeJour();
         ViewData["Avantages"] = TypeAvantage.ObtenirTypeAvantage();
         return View();
     }
-    [HttpGet("/ContratEssai")]
-    public IActionResult ContratEssai(){
+    public IActionResult ContratEssai(int id)
+    {
         ViewData["TypeSalaire"] = TypeSalaire.ObtenirSalaire();
         ViewData["Jours"] = Jour.ObtenirListeJour();
         ViewData["Avantages"] = TypeAvantage.ObtenirTypeAvantage();
+        ViewData["TypeContrat"] = TypeContrat.ObtenirTypeContrat();
+
+        ViewData["Candidat"] = new Models.bdd.orm.Candidature
+        {
+            IdCandidature = id
+        }.ObtenirListeCandidatureById();
+        TempData["IdCandidat"] = id;
         return View();
     }
     public IActionResult Traitement(ContratEssai contratEssai)
     {
         if (ModelState.IsValid)
         {
-            contratEssai.InsertionEssai();
+            object? currentId = TempData["IdCandidat"];
+            contratEssai.InsertionEssai((int)currentId);
             return RedirectToAction("ContratTravail");
         }
         return RedirectToAction("ContratEssai");

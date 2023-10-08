@@ -4,7 +4,6 @@ using Microsoft.Extensions.Hosting.Internal;
 namespace S5_RH.Models.back.Annonce;
 public class NouvelleAnnonce 
 { 
-    
     [Required(ErrorMessage = "Id not set.")]
     public int IdServices { get; set; }
     [Required(ErrorMessage = "Date debut requis.")]
@@ -18,11 +17,8 @@ public class NouvelleAnnonce
     [Required(ErrorMessage = "Jour/Homme requis.")]
     public int JourHomme { get; set; }
     
-    //[Required(ErrorM
-    //essage = "Document requis.")]
-    //public IFormFile Document { get; set; }
      public List<Service> Services { get; set; }
-    //public Models.bdd.orm.Qualification Qualification { get; set; }
+     
     public NouvelleAnnonce()
     {
         using (var context = ApplicationDbContextFactory.Create())
@@ -30,19 +26,6 @@ public class NouvelleAnnonce
             Services = context.Service.ToList();
         }
     }
-    // enregistrement du fichier
- /* c  public void SauvegardeFichier()
-    {
-        IHostEnvironment _hostingEnvironment = new HostingEnvironment();
-        string uploads = Path.Combine(_hostingEnvironment.ContentRootPath, "uploads");
-        if (Document.Length > 0)
-        {
-            string filePath = Path.Combine(uploads, Document.FileName);
-            Stream fileStream = new FileStream(filePath, FileMode.Create);
-            Document.CopyToAsync(fileStream);
-            fileStream.Close();
-        }
-    } */
  
     public void Sauvegarde(Models.bdd.orm.Qualification Qualification, List<Question> questions)
     {

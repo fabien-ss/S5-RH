@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
+using S5_RH.Models.bdd.orm;
 using S5_RH.Models.bdd.orm.fiche;
 
 namespace S5_RH.Models.back.Embauche;
@@ -32,62 +34,25 @@ public class ContratEssai
     public string[] Avantage { get; set; }
 
     
-    public void InsertionEssai()
+    public void InsertionEssai(int IdCandidature)
     {
-        Employe employe = new Employe
-        {
-            IdCandidature = 1
-        };
-        DetailsContrat detailsContrat = new DetailsContrat
-        {
-            DateDebut = this.DateDebut,
-            DateFin = this.DateDebut.AddMonths(this.DureeContrat),
-            IdTypeContrat = 1,
-            Matricule = "None"
-        };
+        //Console.WriteLine("The candidature id = " + this.IdCandidature);
+        this.IdCandidature = IdCandidature;
+        
+        Employe employe = new Employe { IdCandidature = this.IdCandidature };
+        DetailsContrat detailsContrat = new DetailsContrat { DateDebut = this.DateDebut, DateFin = this.DateDebut.AddMonths(this.DureeContrat), IdTypeContrat = 1, Matricule = "None" };
         Salaire salaire = new Salaire
-        {
-            DateSalaire = DateTime.Now,
-            Renumeration = this.Renumeration,
-            IdTypeSalaire =  int.Parse(this.TypeSalaire)
-        };
+        { DateSalaire = DateTime.Now, Renumeration = this.Renumeration, IdTypeSalaire =  int.Parse(this.TypeSalaire) };
         List<Horaire> horaires = new List<Horaire>();
-        foreach (var VARIABLE in JourDeTravail)
-        {
-            Horaire horaire = new Horaire
-            {
-                Sortie = this.HoraireSortie,
-                Entree = this.HoraireSortie,
-                IdJour = int.Parse(VARIABLE)
-            };
-            horaires.Add(horaire);
-        }
+        foreach (var VARIABLE in JourDeTravail) { Horaire horaire = new Horaire { Sortie = this.HoraireSortie, Entree = this.HoraireSortie, IdJour = int.Parse(VARIABLE) }; horaires.Add(horaire); }
         List<Avantage> avantages = new List<Avantage>();
         foreach (var VARIABLE in Avantage)
-        {
-            Avantage avantage = new Avantage
-            {
-                IdAvantage = int.Parse(VARIABLE) 
-            };
-            avantages.Add(avantage);
-        }
+        { Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE) }; avantages.Add(avantage); }
         using (var context = ApplicationDbContextFactory.Create())
-        {
-            context.Employe.Add(employe);
-            context.SaveChanges();
-            detailsContrat.IdEmploye = employe.IdEmploye;
-            context.DetailsContrat.Add(detailsContrat);
-            context.SaveChanges();
-            salaire.IdContrat = detailsContrat.IdDetailsContrat;
-            context.Salaire.Add(salaire);
-            context.SaveChanges();
+        { context.Employe.Add(employe); context.SaveChanges(); detailsContrat.IdEmploye = employe.IdEmploye; context.DetailsContrat.Add(detailsContrat); context.SaveChanges(); salaire.IdContrat = detailsContrat.IdDetailsContrat; context.Salaire.Add(salaire); context.SaveChanges();
             foreach (var VARIABLE in Avantage)
             {
-                Avantage avantage = new Avantage
-                {
-                    IdAvantage = int.Parse(VARIABLE),
-                    IdEmploye = employe.IdEmploye
-                };
+                Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE), IdEmploye = employe.IdEmploye };
                 context.Avantage.Add(avantage);
                 context.SaveChanges();
             }
@@ -104,6 +69,10 @@ public class ContratEssai
                 context.SaveChanges();
             }
 
+            Candidature candidature = context.Candidature.Where(c => c.IdCandidature == (this.IdCandidature)).First();
+            candidature.Etat = 2;
+            context.Candidature.Update(candidature);
+            context.SaveChanges();
         }
     }
 }

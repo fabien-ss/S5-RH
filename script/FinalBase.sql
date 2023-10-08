@@ -119,7 +119,8 @@ CREATE  TABLE "public".candidature (
        nom                  varchar(500)  NOT NULL  ,
        prenom               varchar(500)  NOT NULL  ,
        date_de_naissane     timestamp  NOT NULL  ,
-       contact              varchar(500)  NOT NULL  
+       contact              varchar(500)  NOT NULL  ,
+       etat int default 0
 );
 
 CREATE  TABLE "public".employe (
@@ -160,7 +161,7 @@ CREATE  TABLE "public".reponse (
 CREATE  TABLE "public".avantage_employe (
         id_employe           integer    ,
         id_avantage          integer    ,
-        id                   integer  NOT NULL 
+        id                   serial  
 );
 
 CREATE  TABLE "public".candidat_cv (
@@ -183,6 +184,7 @@ CREATE  TABLE "public".details_contrat (
 );
 
 CREATE  TABLE "public".horaire (
+    id serial primary key ,
        id_contrat           integer    ,
        entree               varchar    ,
        sortie               varchar    ,

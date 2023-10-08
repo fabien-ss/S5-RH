@@ -14,16 +14,13 @@
 <body>
     <header >
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" >
-            <div class="container-fluid">
-                <div style="display: flex;">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RH</a>
-                </div>
+            <div class="container-fluid">   
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 " >
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
@@ -36,19 +33,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Annonce" asp-action="NouvelleAnnonce">Nouvelle annonce</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employe" asp-action="ListeCandidat">Voir Candidat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employe" asp-action="ListeAdmis">Liste des admis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employe" asp-action="ListeAlternance">Liste des personnes en alternance</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employe" asp-action="ListeEmploye">Liste employés</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container root">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-<footer class="border-top footer text-muted fixed-bottom">
+<footer class="border-top footer text-muted fixed-bottom" style="height: 80px;">
     <div class="container" >
         &copy; 2023 - S5_RH - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         MIT
@@ -60,5 +68,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+<style>
+.root{
+    background-image: url("image/media.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 </body>
 </html>

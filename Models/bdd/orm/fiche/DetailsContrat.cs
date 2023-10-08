@@ -22,6 +22,7 @@ public class DetailsContrat
     public List<Salaire> Salaires { get; set; }
     [NotMapped] 
     public List<Horaire> Horaires { get; set; }
+    
 
     public void Initializer()
     {
@@ -33,7 +34,7 @@ public class DetailsContrat
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            Salaires = context.Salaire.Where(s => IdTypeContrat == this.IdTypeContrat).ToList();
+            this.Salaires = context.Salaire.Where(s => IdTypeContrat == this.IdTypeContrat).ToList();
         }
     }
     public void setHoraire()

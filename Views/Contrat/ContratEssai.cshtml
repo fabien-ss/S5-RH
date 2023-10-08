@@ -2,16 +2,23 @@
     List<TypeSalaire> typeSalaire = (List<TypeSalaire>)ViewData["TypeSalaire"];
     List<Jour> Jours = (List<Jour>)ViewData["Jours"];
     List<TypeAvantage> typeAvantages = (List<TypeAvantage>)ViewData["Avantages"];
+    Candidature candidature = (Candidature)ViewData["Candidat"];
 }
 @using S5_RH.Models.bdd.orm.fiche
+@using S5_RH.Models.bdd.orm
 @model S5_RH.Models.back.Embauche.ContratEssai;
 <div class="container">
     <form asp-action="Traitement" asp-controller="Contrat" method="post">
     <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
         @Html.ValidationSummary()
         <h1>Contrat d'essai</h1>
-        <input type="hidden" name="IdCandidature" value="1"/>
-        <div class="col-6 border-1">
+        <input type="hidden" name="IdCandidature" value=@candidature.IdCandidature>
+        <div class="col-3 border-1">
+            <span>Name :</span> @candidature.Nom
+            <span>First name :</span> @candidature.Prenom
+            <img src="image/person.jpg"/>
+        </div>
+        <div class="col-4 border-1">
             <div class="form-floating mb-3">
                 <select class="form-control rounded-0" name="TypeSalaire" id="typesalaire">
                     @foreach (TypeSalaire salaire in typeSalaire)
@@ -50,7 +57,7 @@
                 <span class="Error">@Html.ValidationMessageFor(annonce => annonce.HoraireSortie)</span>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-4">
             
             <div class="form-floating mb-3" style="display: flex; grid-gap: 5%;">
                 @foreach (var jour in Jours)

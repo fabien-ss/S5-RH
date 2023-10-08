@@ -37,4 +37,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<Jour> Jour { get; set; }
     public DbSet<TypeSalaire> TypeSalaire { get; set; }
     public DbSet<Avantage> Avantage { get; set; }
+    public DbSet<Mission> Mission { get; set; }
+    public DbSet<VEmploye> VEmploye { get; set; }
+    public DbSet<DetailsEmploye> DetailsEmploye { get; set; }
+    public DbSet<VHorraire> VHorraires { get; set; }
+    public DbSet<Tache> Taches { get; set; }
 }
