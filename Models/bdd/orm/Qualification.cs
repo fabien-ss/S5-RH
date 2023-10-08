@@ -36,27 +36,27 @@ public class Qualification {
         List<Score> lst = new List<Score>();
         Qualification tmp = new Qualification();
         using (var context = ApplicationDbContextFactory.Create()){
-            tmp = context.Qualification.Where( tmp => tmp.IdQualification == identifiant).ToList()[0] ;
+            tmp = context.Qualification.Where( tmp => tmp.IdAnnonce == identifiant).ToList()[0] ;
         }
 
         foreach( var temp in tmp.Split(tmp.Diplome)){
             String[] str = temp.Split("=", StringSplitOptions.RemoveEmptyEntries);
-            lst.Add( new Score( "Diplome" , str[0] , int.Parse(str[1]) ) );
+            lst.Add( new Score( "Diplome" , int.Parse(str[0]) , int.Parse(str[1]) ) );
         }
 
         foreach( var temp in tmp.Split(tmp.Experience)){
             String[] str = temp.Split("=", StringSplitOptions.RemoveEmptyEntries);
-            lst.Add( new Score( "Experience" , str[0] , int.Parse(str[1]) ) );
+            lst.Add( new Score( "Experience" , int.Parse(str[0]) , int.Parse(str[1]) ) );
         }
 
         foreach( var temp in tmp.Split(tmp.Sexe)){
             String[] str = temp.Split("=", StringSplitOptions.RemoveEmptyEntries);
-            lst.Add( new Score( "Sexe" , str[0] , int.Parse(str[1]) ) );
+            lst.Add( new Score( "Sexe" , int.Parse(str[0]) , int.Parse(str[1]) ) );
         }
 
         foreach( var temp in tmp.Split(tmp.SituationMatrimoniale)){
             String[] str = temp.Split("=", StringSplitOptions.RemoveEmptyEntries);
-            lst.Add( new Score( "SituationMatrimoniale" , str[0] , int.Parse(str[1]) ) );
+            lst.Add( new Score( "SituationMatrimoniale" , int.Parse(str[0]) , int.Parse(str[1]) ) );
         }
         return lst;
     }

@@ -7,9 +7,6 @@ using System.Text.Json;
 
 namespace S5_RH.Controllers.Annonce;
 
-/**
- * [author] 01kingMaker
- */
 public class AnnonceController : Controller
 {
     private readonly ILogger<AnnonceController> _logger;
@@ -19,33 +16,29 @@ public class AnnonceController : Controller
         _logger = logger;
     }
 
-    public IActionResult AnnulerAnnonce()
-    {
-        TempData.Clear();
-        return NouvelleAnnonce();
-    }
     [HttpPost]
-    public IActionResult NouvelleAnnonce(NouvelleAnnonce nouvelleAnnonce)
+    public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {
         if (ModelState.IsValid)
         {
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
-        }
-        ViewData["services"] = nouvelleAnnonce.Services;
-        return View(nouvelleAnnonce);
-        //return RedirectToAction("NouvelleAnnonce");
+        } 
+        return RedirectToAction("NouvelleAnnonce");
     }
 
     public IActionResult TraitementQualification(QualificationContainer qualification)
     {
         if (ModelState.IsValid)
         {
-            Models.bdd.orm.Qualification qualif = 
-                qualification.ValidateQualification();
-            TempData["Qualification"] = JsonSerializer.Serialize(qualif);
-            return RedirectToAction("Questionnaire");
+            Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
+            NouvelleAnnonce annonce =
+                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
+            // attention mbola tsy misy id_annonce ilay qualif
+            annonce.Sauvegarde(qualif);
+            TempData.Clear();
         }
+
         ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
     }

@@ -22,6 +22,15 @@ public class Reponse {
             reponses = context.Reponse
                 .Where(r => r.IdQuestion == this.IdQuestion).ToList();
         }
-        return reponses; //
+        return reponses;
+    }
+
+    public bool CheckResponse( List<int> ids){
+        bool res = true;
+        List<Reponse> lst = this.GetReponseByIdQuestion();
+        foreach( int response in ids ){
+
+        }
+        return res;    
     }
 }
