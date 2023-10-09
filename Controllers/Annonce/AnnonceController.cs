@@ -7,9 +7,6 @@ using System.Text.Json;
 
 namespace S5_RH.Controllers.Annonce;
 
-/**
- * [author] 01kingMaker
- */
 public class AnnonceController : Controller
 {
     private readonly ILogger<AnnonceController> _logger;
@@ -19,33 +16,33 @@ public class AnnonceController : Controller
         _logger = logger;
     }
 
-    public IActionResult AnnulerAnnonce()
-    {
-        TempData.Clear();
-        return NouvelleAnnonce();
-    }
     [HttpPost]
-    public IActionResult NouvelleAnnonce(NouvelleAnnonce nouvelleAnnonce)
+    public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {
         if (ModelState.IsValid)
         {
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
-        }
-        ViewData["services"] = nouvelleAnnonce.Services;
-        return View(nouvelleAnnonce);
-        //return RedirectToAction("NouvelleAnnonce");
+        } 
+        return RedirectToAction("NouvelleAnnonce");
     }
 
     public IActionResult TraitementQualification(QualificationContainer qualification)
     {
         if (ModelState.IsValid)
         {
-            Models.bdd.orm.Qualification qualif = 
-                qualification.ValidateQualification();
-            TempData["Qualification"] = JsonSerializer.Serialize(qualif);
-            return RedirectToAction("Questionnaire");
+            Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
+            NouvelleAnnonce annonce =
+                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
+            // attention mbola tsy misy id_annonce ilay qualif
+            annonce.Sauvegarde(qualif);
+            TempData.Clear();
         }
+<<<<<<< HEAD
+=======
+
+        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
+>>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
         return RedirectToAction("NouvelleAnnonce");
     }
     
@@ -74,5 +71,13 @@ public class AnnonceController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    public IActionResult ListeQualification()
+    {
+        
+        // listes des services
+        ViewData["qualif"] = new S5_RH.Models.bdd.orm.Qualification().ListAll();
+        ViewData["Score"] = new S5_RH.Models.bdd.orm.Qualification().GetScore(1);
+        return View();
     }
 }

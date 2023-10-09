@@ -73,7 +73,7 @@ id_annonce int references annonce(id_annonce)
 
 drop table if exists reponse;
 create table reponse(
-id_question int references question(id_question), 
+id_question int references question(id_question),
 id_reponse serial primary key,
 reponse varchar(255) not null,
 verite int not null -- 0 si faux 1 si vrai
@@ -101,5 +101,7 @@ id_situation_matrimoniale int references situation_matrimoniale(id_situation_mat
 drop table if exists note;
 create table note(
 id_candidature serial primary key,
-note float
+id_annonce int references annonce(id_annonce),
+note_cv float,
+note_question float
 );

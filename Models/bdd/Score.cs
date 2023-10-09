@@ -1,16 +1,13 @@
 namespace S5_RH.Models.bdd;
 
-public class Score {
+public class Score{
+    public string Typa { set; get;}
+    public int Id { set; get;}
+    public int Valeur { set; get;}    
 
-    public string Id { get; set; }
-
-    public string Typa { get; set; }
-
-    public int Valeur { get; set; }
-
-    public Score( string id, string type, int val){
-        Id = id;
+    public Score( string type, int id, int value){
         Typa = type;
-        Valeur = val;
+        Id = id;
+        Valeur = value;
     }
 }

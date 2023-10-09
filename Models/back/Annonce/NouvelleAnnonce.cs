@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.Extensions.Hosting.Internal;
+using System.Runtime.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace S5_RH.Models.back.Annonce;
 public class NouvelleAnnonce 
@@ -14,11 +15,16 @@ public class NouvelleAnnonce
     public string? Description { get; set; }
     [Required(ErrorMessage = "Charge de travail requis.")]
     public int ChargeDeTravail { get; set; }
-    [Required(ErrorMessage = "Jour/Homme requis.")]
+    [Required(ErrorMessage = "Jour/Homme requis")]
     public int JourHomme { get; set; }
     
+<<<<<<< HEAD
      public List<Service> Services { get; set; }
      
+=======
+    public List<Service> Services { get; set; }
+    //public Models.bdd.orm.Qualification Qualification { get; set; }
+>>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
     public NouvelleAnnonce()
     {
         using (var context = ApplicationDbContextFactory.Create())
@@ -26,8 +32,13 @@ public class NouvelleAnnonce
             Services = context.Service.ToList();
         }
     }
+<<<<<<< HEAD
  
     public void Sauvegarde(Models.bdd.orm.Qualification Qualification, List<Question> questions)
+=======
+    // ici on effectue la sauvegarde de toute les données a propos de l'annonce
+    public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
+>>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
@@ -42,11 +53,6 @@ public class NouvelleAnnonce
             context.SaveChanges();
             Qualification.IdAnnonce = annonce.IdAnnoce;
             context.Qualification.Add(Qualification);
-            foreach (var question1 in questions)
-            {
-                question1.IdAnnonce = annonce.IdAnnoce;
-                question1.TraitementInsertionQuestion();    
-            }
             context.SaveChanges();
         }
     }
