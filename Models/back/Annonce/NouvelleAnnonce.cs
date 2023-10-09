@@ -18,13 +18,8 @@ public class NouvelleAnnonce
     [Required(ErrorMessage = "Jour/Homme requis")]
     public int JourHomme { get; set; }
     
-<<<<<<< HEAD
      public List<Service> Services { get; set; }
      
-=======
-    public List<Service> Services { get; set; }
-    //public Models.bdd.orm.Qualification Qualification { get; set; }
->>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
     public NouvelleAnnonce()
     {
         using (var context = ApplicationDbContextFactory.Create())
@@ -32,13 +27,8 @@ public class NouvelleAnnonce
             Services = context.Service.ToList();
         }
     }
-<<<<<<< HEAD
- 
-    public void Sauvegarde(Models.bdd.orm.Qualification Qualification, List<Question> questions)
-=======
     // ici on effectue la sauvegarde de toute les données a propos de l'annonce
     public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
->>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
     {
         using (var context = ApplicationDbContextFactory.Create())
         {

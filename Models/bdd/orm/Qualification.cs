@@ -10,22 +10,15 @@ public class Qualification {
     public int IdQualification { get; set; }
     [Column("id_annonce")]
     public int IdAnnonce { get; set; }
-<<<<<<< HEAD
-    [Column("dimplome")]
-    public string? Diplome { get; set; }
-=======
+
     [Column("diplome")]
     public string? Diplome { get; set;}
->>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
     [Column("experience")]
     public string? Experience { get; set; }
     [Column("sexe")]
     public string? Sexe { get; set; }
     [Column("situation_matrimoniale")]
-<<<<<<< HEAD
     public string? SituationMatrimoniale { get; set; }
-=======
-    public string? SituationMatrimoniale { get; set;}
 
     public String[] Split(String value){
         String[] separator = { ";", "," };
@@ -69,5 +62,4 @@ public class Qualification {
         return lst;
     }
 
->>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
 }

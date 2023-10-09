@@ -38,11 +38,6 @@ public class AnnonceController : Controller
             annonce.Sauvegarde(qualif);
             TempData.Clear();
         }
-<<<<<<< HEAD
-=======
-
-        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
->>>>>>> a07a9fa1223e3683f1d2aa7be8c624512c1bd23c
         return RedirectToAction("NouvelleAnnonce");
     }
     

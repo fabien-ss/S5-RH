@@ -10,7 +10,7 @@ public class Reponse {
     [Column("id_reponse")]
     public int IdReponse { get; set;}
     [Column("reponse")]
-    public int? Valimpanontaniana { get; set;}
+    public string Valimpanontaniana { get; set;}
     [Column("verite")]
     public int Verite { get; set;}
 
