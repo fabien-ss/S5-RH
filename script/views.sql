@@ -18,12 +18,15 @@ select dc.id_details_contrat, dc.date_debut, dc.date_fin, tc.nom from details_co
 on dc.id_type_contrat = tc.id_type_contrat;
 
 create or replace view v_horaire
-       as select h.id_contrat, h.entree, h.sortie, h.id_jour, j.jour from horaire h 
-          join jour j on h.id_jour = j.id_jour;
+       as select h.id_contrat, h.entree, h.sortie, h.id_jour, j.jour, dc.date_debut, dc.is_valide valide from horaire h 
+          join jour j on h.id_jour = j.id_jour
+            join details_contrat dc on h.id_contrat = dc.id_details_contrat where
+            dc.is_valide = 0
+;
 
 create or replace view v_details_employe as 
        select c.nom, c.prenom, c.date_de_naissane date_de_naissance, c.contact, p.details, p.id_poste, dc.date_debut, dc.date_fin, dc.matricule, tc.nom libelle_contrat, e.id_employe,
-     s.salaire renumeration, ts.nom typesalaire, ser.nom service, dc
+     s.salaire renumeration, ts.nom typesalaire, ser.nom service, dc, dc.is_valide valide
        from employe e 
            join candidature c on e.id_candidature = c.id_candidature 
            join candidat_cv cc on cc.id_candidature = c.id_candidature
@@ -33,7 +36,7 @@ create or replace view v_details_employe as
            join salaire s on s.id_contrat = dc.id_details_contrat
            join type_salaire ts on ts.id_type_salaire = s.id_type_salaire
            join service ser on p.id_service = ser.id_service
-
+            where dc.is_valide = 0
        ;
 
 create or replace view v_employe as 
@@ -45,5 +48,5 @@ create or replace view v_employe as
 
 create or replace view v_horraire as
     select h.id_contrat, h.entree, h.sortie, j.jour, e.id_employe from jour j join horaire h  on j.id_jour = h.id_jour
-    join details_contrat dc on dc.id_details_contrat = h.id_contrat join employe e on e.id_employe = dc.id_employe;
+    join details_contrat dc on dc.id_details_contrat = h.id_contrat join employe e on e.id_employe = dc.id_employe where dc.is_valide = 0;
 ;

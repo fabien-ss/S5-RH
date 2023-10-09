@@ -33,30 +33,48 @@ public class ContratEssai
     [Required(ErrorMessage = "l")]
     public string[] Avantage { get; set; }
 
-    
-    public void InsertionEssai(int IdCandidature)
+    // Insertion des donnees 
+    public void InsertionEssai(int IdCandidature, int IdContrat, int etat)
     {
-        //Console.WriteLine("The candidature id = " + this.IdCandidature);
-        this.IdCandidature = IdCandidature;
         
+        this.IdCandidature = IdCandidature;
         Employe employe = new Employe { IdCandidature = this.IdCandidature };
-        DetailsContrat detailsContrat = new DetailsContrat { DateDebut = this.DateDebut, DateFin = this.DateDebut.AddMonths(this.DureeContrat), IdTypeContrat = 1, Matricule = "None" };
+        DetailsContrat detailsContrat = new DetailsContrat { DateDebut = this.DateDebut, DateFin = this.DateDebut.AddMonths(this.DureeContrat), IdTypeContrat = IdContrat, Matricule = "None" };
         Salaire salaire = new Salaire
         { DateSalaire = DateTime.Now, Renumeration = this.Renumeration, IdTypeSalaire =  int.Parse(this.TypeSalaire) };
         List<Horaire> horaires = new List<Horaire>();
         foreach (var VARIABLE in JourDeTravail) { Horaire horaire = new Horaire { Sortie = this.HoraireSortie, Entree = this.HoraireSortie, IdJour = int.Parse(VARIABLE) }; horaires.Add(horaire); }
         List<Avantage> avantages = new List<Avantage>();
         foreach (var VARIABLE in Avantage)
-        { Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE) }; avantages.Add(avantage); }
+        {
+            Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE) }; avantages.Add(avantage);
+        }
         using (var context = ApplicationDbContextFactory.Create())
-        { context.Employe.Add(employe); context.SaveChanges(); detailsContrat.IdEmploye = employe.IdEmploye; context.DetailsContrat.Add(detailsContrat); context.SaveChanges(); salaire.IdContrat = detailsContrat.IdDetailsContrat; context.Salaire.Add(salaire); context.SaveChanges();
-            foreach (var VARIABLE in Avantage)
+        {
+            // verifier si la personne est deja un employe
+            List<Employe> objects = context.Employe.Where(e => e.IdCandidature == IdCandidature).ToList();
+            if (objects.Count < 0) // ici non
+            {
+                context.Employe.Add(employe); 
+                context.SaveChanges(); 
+            }
+            else // ici oui donc on prend ce candidat
+            {
+                employe = objects[0];
+            }
+            detailsContrat.IdEmploye = employe.IdEmploye; 
+            context.DetailsContrat.Add(detailsContrat);  // insertion des details du contrat
+            context.SaveChanges(); 
+            salaire.IdContrat = detailsContrat.IdDetailsContrat; 
+            context.Salaire.Add(salaire); // insertion salaire
+            context.SaveChanges();
+            foreach (var VARIABLE in Avantage) // insertion des differernts avanatages
             {
                 Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE), IdEmploye = employe.IdEmploye };
                 context.Avantage.Add(avantage);
                 context.SaveChanges();
             }
-            foreach (var VARIABLE in JourDeTravail)
+            foreach (var VARIABLE in JourDeTravail) // insertion des jours de travail
             {
                 Horaire horaire = new Horaire
                 {
@@ -65,12 +83,12 @@ public class ContratEssai
                     Entree = HoraireEntree,
                     Sortie = HoraireSortie
                 };
-                context.Horaire.Add(horaire);
+                context.Horaire.Add(horaire); 
                 context.SaveChanges();
             }
-
+            // Transformer le statut du candidat
             Candidature candidature = context.Candidature.Where(c => c.IdCandidature == (this.IdCandidature)).First();
-            candidature.Etat = 2;
+            candidature.Etat = etat;
             context.Candidature.Update(candidature);
             context.SaveChanges();
         }

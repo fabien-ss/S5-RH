@@ -18,12 +18,14 @@ public class DetailsContrat
     public int IdTypeContrat { get; set; }
     [Column("matricule")]
     public string Matricule { get; set; }
+    [Column("is_valide")]
+    public int IdValide { get; set; }
     [NotMapped]
     public List<Salaire> Salaires { get; set; }
     [NotMapped] 
     public List<Horaire> Horaires { get; set; }
     
-
+    
     public void Initializer()
     {
         this.setSalaires();

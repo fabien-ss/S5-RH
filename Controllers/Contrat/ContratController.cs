@@ -6,12 +6,25 @@ namespace S5_RH.Controllers.Contrat;
 
 public class ContratController : Controller{
     
-    public IActionResult ContratTravail(){
+    public IActionResult ContratTravail(string? IdCandidature)
+    {
         ViewData["TypeContrat"] = TypeContrat.ObtenirTypeContrat();
-       //
         ViewData["Jours"] = Jour.ObtenirListeJour();
         ViewData["Avantages"] = TypeAvantage.ObtenirTypeAvantage();
+        TempData["IdCandidature"] = IdCandidature;
+        ViewData["TypeSalaire"] = TypeSalaire.ObtenirSalaire();
         return View();
+    }
+
+    public IActionResult TraitementRenouvellement(ContratTravail contratTravail)
+    {
+        if (ModelState.IsValid)
+        {
+            int IdCandidature = int.Parse((string)TempData["IdCandidature"]);
+            contratTravail.UpdateContrat(IdCandidature);
+            Console.WriteLine(contratTravail.DureeContrat);   
+        }
+        return RedirectToAction("ContratTravail");
     }
     public IActionResult ContratEssai(int id)
     {
@@ -32,7 +45,7 @@ public class ContratController : Controller{
         if (ModelState.IsValid)
         {
             object? currentId = TempData["IdCandidat"];
-            contratEssai.InsertionEssai((int)currentId);
+            contratEssai.InsertionEssai((int)currentId, 1, 2);
             return RedirectToAction("ContratTravail");
         }
         return RedirectToAction("ContratEssai");

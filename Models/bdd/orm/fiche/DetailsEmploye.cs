@@ -36,6 +36,8 @@ public class DetailsEmploye
     public string TypeSalaire { get; set; }
     [Column("service")] 
     public string Service { get; set; }
+    [Column("valide")]
+    public int IsValide { get; set; }
     [NotMapped]
     public List<VAvantages> VAvantages{ get; set;}
     [NotMapped]
@@ -48,28 +50,29 @@ public class DetailsEmploye
     {
         this.VAvantages = new VAvantages().ListAvantageByEmp(this.IdEmploye);
     }
-
     public void setHorraire()
     {
-        using (var context = ApplicationDbContextFactory.Create())
+        this.VHorraires = new VHorraire().ObtenirHorraireParIdEmploye(this.IdEmploye);
+        /*using (var context = ApplicationDbContextFactory.Create())
         {
             this.VHorraires = context.VHorraires.Where(
                 h => h.IdEmploye == this.IdEmploye
             ).ToList();
-        }
+        }*/
     }
     public void setMission()
     {
-        using (var context = ApplicationDbContextFactory.Create())
+        /*using (var context = ApplicationDbContextFactory.Create())
         {
             this.Missions = context.Mission.Where(m => m.IdPoste == this.IdPoste).ToList();
             foreach (var m in this.Missions)
             {
                 m.setTaches();
             }
-        }
-    }
+        }*/
 
+        this.Missions = new Mission().ObtenirMissionParIdPoste(this.IdPoste);
+    }
     public DetailsEmploye ObtenirDetailsEmployeParId()
     {
         using (var context = ApplicationDbContextFactory.Create())

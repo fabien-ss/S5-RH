@@ -25,4 +25,18 @@ public class Mission
     {
         Taches = new Tache().ObtenirTacheByIdMission(this.IdMission);
     }
+
+    public List<Mission> ObtenirMissionParIdPoste(int IdPoste)
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            List<Mission> Missions = context.Mission.Where(m => m.IdPoste == this.IdPoste).ToList();
+            foreach (var m in Missions)
+            {
+                m.setTaches();
+            }
+
+            return Missions;
+        }   
+    }
 }

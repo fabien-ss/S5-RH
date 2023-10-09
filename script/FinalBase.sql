@@ -261,3 +261,5 @@ CREATE VIEW "public".v_horaire AS  SELECT h.id_contrat,
                                           j.jour
                                    FROM (horaire h
                                        JOIN jour j ON ((h.id_jour = j.id_jour)));
+
+alter table details_contrat add column is_valide int default 1;

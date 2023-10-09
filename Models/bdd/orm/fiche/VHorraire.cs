@@ -18,5 +18,15 @@ public class VHorraire
 
     [Column("id_employe")]
     public int IdEmploye { get; set; }
+
+    public List<VHorraire> ObtenirHorraireParIdEmploye(int idEmploye)
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.VHorraires.Where(
+                h => h.IdEmploye == IdEmploye
+            ).ToList();
+        }
+    }
 }
 

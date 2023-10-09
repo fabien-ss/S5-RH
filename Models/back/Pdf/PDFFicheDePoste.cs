@@ -55,6 +55,7 @@ public class PDFFicheDePoste : PDF
         LineSeparator separator = new LineSeparator();
         Contenu.Add(separator);
         Ligne(Contenu, 2);
+        image.Alignment = Element.ALIGN_CENTER;
         this.Document.Add(Contenu);
         
     }
