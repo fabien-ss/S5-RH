@@ -1,0 +1,14 @@
+@using S5_RH.Models.bdd.orm
+@model S5_RH.Models.bdd.orm.Annonce
+
+@{
+    List<Annonce> listeannonces = (List<Annonce>)ViewData["listeannonces"];
+}
+<div  class="container" style="padding-top: 5%; padding-bottom: 5%;">
+<ul>
+    @foreach (var annonce in listeannonces)
+    {
+      <li> <a asp-area="" asp-controller="Classement" asp-action="Classement" asp-route-IdAnnonce="@annonce.IdAnnoce">>@annonce.Details</a></li>  
+    }
+</ul>
+</div>

@@ -1,0 +1,23 @@
+@using S5_RH.Models.bdd.orm
+@{
+    List<Classement> listeClassements = (List<Classement>)ViewData["classements"];
+}
+
+<div  class="container" style="padding-top: 5%; padding-bottom: 5%;">
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Note</th>
+            <th>Contact</th>
+        </tr>
+        @foreach (var classement in listeClassements)
+        {
+            <tr>
+                <td> @classement.Nom </td>  
+                <td> @classement.Note </td>
+                <td> @classement.Contact </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="OK" >
+</div>

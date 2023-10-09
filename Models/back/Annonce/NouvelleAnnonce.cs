@@ -20,7 +20,7 @@ public class NouvelleAnnonce
     public int JourHomme { get; set; }
     
     public List<Service> Services { get; set; }
-    //public Models.bdd.orm.Qualification Qualification { get; set; }
+    //public Models.bdd.orm.Qualification Qualification { get; set; }a
     public NouvelleAnnonce()
     {
         using (var context = ApplicationDbContextFactory.Create())

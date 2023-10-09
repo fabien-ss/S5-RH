@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using S5_RH.Models.bdd.orm;
+using Classement = S5_RH.Models.bdd.orm.Classement;
 
 public class ApplicationDbContext : DbContext
 {
@@ -24,5 +25,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<CandidatCv> CandidatCv { get; set; }
     public DbSet<Candidature> Candidature { get; set; }
     public DbSet<Coefficient> Coefficient { get; set; }
+    
+    public DbSet<Classement> Classement { get; set; }
     // ...
 }

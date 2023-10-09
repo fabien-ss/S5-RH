@@ -15,4 +15,13 @@ public class Annonce {
     public DateTime? Fin { get; set;}
     [Column("details")]
     public string? Details { get; set; }
+
+    public static List<Annonce> ObtenirTous()
+    {
+        using (var Context = ApplicationDbContextFactory.Create())
+        {
+            return Context.Annonce.ToList();
+        };
+        
+    }
 }
