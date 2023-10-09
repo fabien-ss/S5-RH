@@ -7,6 +7,56 @@ public class Note {
     [Key]
     [Column("id_candidature")]
     public int IdCandidature { get; set;}
-    [Column("note")]
-    public double Valeur { get; set;}
+    [Column("id_annonce")]
+    public int IdAnnonce { get; set;}
+    [Column("note_cv")]
+    public double NoteCv { get; set;}
+    [Column("note_question")]
+    public double NoteQuestion { get; set;}
+
+    public Note( int candidature, int annonce){
+        IdAnnonce = annonce;
+        IdCandidature = candidature;
+        NoteCv = GetNoteCv();
+    }
+    public Note(){}
+
+
+    public double GetNoteCv(){
+        double res = 0;
+
+        List<Score> lst = new Qualification().GetScore(this.IdAnnonce);
+        
+        CandidatCv tmp = new CandidatCv();
+        using (var context = ApplicationDbContextFactory.Create()){
+            tmp = context.CandidatCv.Where( tmp => tmp.IdCandidature == this.IdCandidature).ToList()[0] ;
+        }
+
+        foreach( Score score in lst){
+            if( score.Typa == "Diplome" && score.Id == tmp.IdDiplome){
+                res += score.Valeur;
+            }
+            else if( score.Typa == "Experience" && score.Id == tmp.IdExperience){
+                res += score.Valeur;
+            }
+            else if( score.Typa == "Sexe" && score.Id == tmp.IdSexe){
+                res += score.Valeur;
+            }
+            else if( score.Typa == "SituationMatrimoniale" && score.Id == tmp.IdSituationMatrimoniale){
+                res += score.Valeur;
+            }
+        }
+
+        return res;
+    }
+
+    public double GetNoteQuestion( Dictionary<Question , List<Reponse>> dico){
+        double res = 0;
+        foreach( KeyValuePair<Question , List<Reponse>> elt in dico){
+            if(elt.Value[0].CheckResponse( elt.Value ) == true){
+                res += elt.Key.Point;
+            }            
+        }
+        return res;
+    } 
 }

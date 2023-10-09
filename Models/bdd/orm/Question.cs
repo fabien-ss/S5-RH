@@ -11,6 +11,8 @@ public class Question {
     public string? Fanontaniana { get; set;}
     [Column("id_annonce")]
     public int IdAnnonce { get; set; }
+    [Column("point")]
+    public int Point { get; set;}
     [NotMapped]
     public List<Reponse> Reponses { get; set; }
     public List<Question> ObtenirQuestions()
@@ -28,4 +30,6 @@ public class Question {
         }
         return questions;
     }
+
+
 }

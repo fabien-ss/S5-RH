@@ -6,7 +6,11 @@
         <div class="row" style="padding-top: 2%; padding-bottom: 5%; display: inline;">
             @{ int i = 0; }
             @foreach (var item in Model)
-            {
+            { 
+                
+                {
+                    i += 1;
+                }
                 <div class="col-12 mt-3">
                     <h3>@item.Fanontaniana</h3>
                     <ul>
