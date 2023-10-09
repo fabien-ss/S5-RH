@@ -1,0 +1,72 @@
+@{
+    List<S5_RH.Models.bdd.orm.Qualification> lst = (List<S5_RH.Models.bdd.orm.Qualification>)ViewData["qualif"];
+    List<S5_RH.Models.bdd.Score> list = (List<S5_RH.Models.bdd.Score>)ViewData["Score"];
+}
+@* @model S5_RH.Models.bdd.orm.Qualification; *@
+@model S5_RH.Models.bdd.Score;
+
+<div class="container">
+        @* <table class="table">
+            <tr>
+                <th>ID Annonce</th>
+                <th>Diplome</th>
+                <th>Experience</th>
+                <th>Sexe</th>
+                <th>Situation Matrimoniale</th>
+            </tr>
+            @foreach(var ligne in lst){
+                <tr>
+                    <td>@ligne.IdAnnonce</td>
+                    <td>
+                        <ul>
+                            @foreach( var elt in ligne.Split(ligne.Diplome)){
+                                <li>@elt</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                                            <ul>
+                            @foreach( var elt in ligne.Split(ligne.Experience)){
+                                <li>@elt</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>      
+                        <ul>
+                            @foreach( var elt in ligne.Split(ligne.Sexe)){
+                                <li>@elt</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach( var elt in ligne.Split(ligne.SituationMatrimoniale)){
+                                <li>@elt</li>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </table>
+
+     *@
+
+    <ul>
+    @foreach( var elt in list ){
+        <li>
+            <ul>
+                <li>Type : @elt.Typa</li>
+                <li>Coefficient : @elt.Id</li>
+                <li>Valeur : @elt.Valeur</li>
+            </ul>
+        </li>
+    }
+    </ul>
+
+</div>
+<style>
+    .champs
+    {
+        margin-top: 2%;
+    }
+</style>
