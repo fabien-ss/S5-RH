@@ -1,5 +1,15 @@
+@using S5_RH.Models.bdd.orm
+@{
+    List<Diplome> dip = (List<Diplome>)ViewData["Diplome"];
+    List<Experience> e= (List<Experience>)ViewData["Experience"];
+    List<Sexe> s=(List<Sexe>) ViewData["Sexe"];
+    List<SituationMatrimoniale> situationMatrimoniales =(List<SituationMatrimoniale>) ViewData["Situation"];
+}
+<br/>
+<br/>
 <div class="container">
-    <form>
+    <form action="/Candidature/Questionnaire/" method="post">
+        @Html.ValidationSummary()
         <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <h1>Details candidature</h1>
             <div class="col-6 border-1">
@@ -16,7 +26,7 @@
                     <label for="dateDeNaissance">Date de naissance</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="Telephone" class="form-control rounded-0" id="telephone" >
+                    <input type="text" name="Telephone" class="form-control rounded-0" id="telephone">
                     <label for="telephone">Téléphone</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -32,41 +42,53 @@
             <div class="col-6 border-1">
                 <div class="form-floating mb-3">
                     <select class="form-control rounded-0" name="IdDiplome" id="diplome" required>
-                        <option></option>
+                        @foreach (var d in dip)
+                        {
+                            <option value="@d.IdDiplome">@d.Details</option>
+                        }
                     </select>
                     <label for="diplome">Diplôme</label>
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-control rounded-0" name="IdExperience" id="experience" required>
-                        <option></option>
+                        @foreach (var d in e)
+                        {
+                            <option value="@d.IdExperience">@d.Details</option>
+                        }
                     </select>
                     <label for="experience">Expérience</label>
                 </div>
-                
+
                 <div class="form-floating mb-3">
                     <select class="form-control rounded-0" name="IdSexe" id="sexe" required>
-                        <option></option>
+                        @foreach (var d in s)
+                        {
+                            <option value="@d.IdSexe">@d.Details</option>
+                        }
                     </select>
                     <label for="sexe">Sexe</label>
                 </div>
-                
+
                 <div class="form-floating mb-3">
                     <select name="IdSituationMatrimoniale" class="form-control rounded-0" id="situationMatrimoniale" required>
-                        <option></option>
+                        @foreach (var d in situationMatrimoniales)
+                        {
+                            <option value="@d.IdSituationMatrimoniale">@d.Details</option>
+                        }
                     </select>
                     <label for="situationMatrimoniale">Situation matrimoniale</label>
                 </div>
-                
+
                 <div class="form-floating mb-3">
                     <textarea name="Hobies" class="form-control rounded-0" id="hobies" style="height: 190px;" required>
                         
                     </textarea>
                     <label for="hobies">Hobies</label>
                 </div>
-                
+
                 <div class="form-floating mb-3">
                     <input type="file" name="Documents[]" class="form-control rounded-0" id="documentDiplome" required>
-                   
+
                 </div>
                 <button type="submit" class="btn btn-primary mt-5" style="float: right;">Submit</button>
             </div>

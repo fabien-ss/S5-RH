@@ -30,7 +30,7 @@ public class Reponse {
         using (var context = ApplicationDbContextFactory.Create())
         {
             reponses = context.Reponse
-                .Where(r => r.IdQuestion == this.IdQuestion && r.Valimpanontaniana == 1).ToList();
+                .Where(r => r.IdQuestion == this.IdQuestion && r.Verite == 1).ToList();
         }
         return reponses;
     }

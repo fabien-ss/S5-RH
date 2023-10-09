@@ -1,0 +1,29 @@
+@using S5_RH.Models.bdd.orm
+@{
+    List<Annonce> annonces = (List<Annonce>)ViewData["Listes"];
+}
+<br/><br/>
+<table class="table">
+    <tr>
+        <th>Details</th>
+        <th>Debut</th>
+        <th>Fin</th>
+    </tr>
+    @foreach (var a in annonces)
+    {
+        <tr>
+            <td>
+                @a.Details
+            </td>
+            <td>
+                @a.Debut
+            </td>
+            <td>
+                @a.Fin
+            </td>
+            <td>
+                <a href="http://localhost:5072/Candidature/Postuler?idAnnonce=@a.IdAnnoce">Postuler</a>
+            </td>
+        </tr>
+    }
+</table>

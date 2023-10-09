@@ -16,6 +16,17 @@ public class AnnonceController : Controller
         _logger = logger;
     }
 
+    public IActionResult ListeAnnonce()
+    {
+        List<Models.bdd.orm.Annonce> annonce = new List<Models.bdd.orm.Annonce>(); 
+        using (var conte = ApplicationDbContextFactory.Create())
+        {
+            annonce = conte.Annonce.ToList();
+        }
+
+        ViewData["Listes"] = annonce;
+        return View();
+    }
     [HttpPost]
     public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {

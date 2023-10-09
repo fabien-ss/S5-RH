@@ -8,22 +8,45 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CandidatureController : Controller
 {
-    public IActionResult Postuler()
+    public IActionResult Postuler(string idAnnonce)
     {
+        using (var conte = ApplicationDbContextFactory.Create())
+        {
+            ViewData["Diplome"] = conte.Diplome.ToList();
+            ViewData["Experience"] = conte.Experience.ToList();
+            ViewData["Sexe"] = conte.Sexe.ToList();
+            ViewData["Situation"] = conte.SituationMatrimoniale.ToList();
+        }
+        Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce().GetAnnonceById(int.Parse(idAnnonce));
+        ViewData["Annonce"] = annonce;
+        TempData["Annonce"] = idAnnonce;
         return View();
     }
 
-    public IActionResult Questionnaire()
+    public IActionResult TratementCandidature(CandidatureForm candidatureForm)
     {
-        Models.bdd.orm.Question question = new Models.bdd.orm.Question
+        if (ModelState.IsValid)
         {
-            IdAnnonce = 1
-        };
-        List<Models.bdd.orm.Question> questionReponses = question.ObtenirQuestions(); 
-        return View(questionReponses);
+            TempData["candidatureTemp"] = candidatureForm;
+            return RedirectToAction("Questionnaire");
+        }
+        return Postuler(((string)TempData["Annonce"]));
+    }
+    public IActionResult Questionnaire(CandidatureForm candidatureForm)
+    {
+        if (ModelState.IsValid)
+        {
+            Models.bdd.orm.Question question = new Models.bdd.orm.Question
+            {
+                IdAnnonce = int.Parse((string)TempData["Annonce"]) 
+            };
+            List<Models.bdd.orm.Question> questionReponses = question.ObtenirQuestions();
+            return View(questionReponses);
+        }
+        return Postuler(((string)TempData["Annonce"]));
     }
 
-    public IActionResult TraitementCandidature(CandidatureForm candidature)
+    /*public IActionResult TraitementCandidature(CandidatureForm candidature)
     {
         if (ModelState.IsValid)
         {
@@ -31,12 +54,12 @@ public class CandidatureController : Controller
             Models.bdd.orm.CandidatCv cv = new Models.bdd.orm.CandidatCv();
 
             // attention mbola tsy misy id_annonce ilay qualif
-            candidat.Sauvegarde(candidat);
+         //   candidat.Sauvegarde(candidat);
             TempData.Clear();
         }
 
         ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
-    }
+    }*/
     
 }

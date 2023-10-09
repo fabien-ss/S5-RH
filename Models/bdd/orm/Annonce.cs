@@ -15,4 +15,12 @@ public class Annonce {
     public DateTime? Fin { get; set;}
     [Column("details")]
     public string? Details { get; set; }
+
+    public Annonce GetAnnonceById(int idAnnonce)
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Annonce.Where(a => a.IdAnnoce == idAnnonce).First();
+        }
+    }
 }
