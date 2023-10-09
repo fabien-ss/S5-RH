@@ -18,14 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\back\" />
-    <Folder Include="Views\front\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Models\back\Model.cs" />
-    <Compile Remove="Models\bdd\Connection.cs" />
   </ItemGroup>
 
 </Project>

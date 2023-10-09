@@ -13,8 +13,62 @@ public class Candidature {
     public string? Nom { get; set; }
     [Column("prenom")]
     public string? Prenom { get; set; }
-    [Column("date_de_naissance")]
+    [Column("date_de_naissane")]
     public DateTime DateDeNaissance { get; set; }
     [Column("contact")]
     public string? Contact { get; set; }
+
+    [Column("etat")]
+    public int Etat { get; set; }
+
+    public List<Candidature> ObtenirListeCandidatureNonValide()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.
+                Where(c => c.Etat == 0)
+                .ToList();
+        }
+    }
+    // 1 izy rehefa accepte
+    public List<Candidature> ObtenirListeCandidature()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.
+                Where(c => c.Etat == 1)
+                .ToList();
+        }
+    }
+    
+    // 2 izy en alternance
+    public List<Candidature> ObtenirListeAlternance()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.
+                Where(c => c.Etat == 2)
+                .ToList();
+        }
+    }
+     // 3 izy voaray
+    public List<Candidature> ObtenirListeEmploye()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.
+                Where(c => c.Etat == 3)
+                .ToList();
+        }
+    }
+    
+    public Candidature ObtenirListeCandidatureById()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.
+                Where(c => c.IdCandidature == this.IdCandidature)
+                .First();
+        }
+    }
 }

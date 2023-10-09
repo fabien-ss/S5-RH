@@ -21,8 +21,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\FichePoste.pdf",
+      "PackagePath": "staticwebassets\\image\\FichePoste.pdf"
+    },
+    {
+      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\New.pdf",
+      "PackagePath": "staticwebassets\\image\\New.pdf"
+    },
+    {
+      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\media.jpg",
+      "PackagePath": "staticwebassets\\image\\media.jpg"
+    },
+    {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\metier-ressource-humaine--840x473.png",
       "PackagePath": "staticwebassets\\image\\metier-ressource-humaine--840x473.png"
+    },
+    {
+      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\person.jpg",
+      "PackagePath": "staticwebassets\\image\\person.jpg"
     },
     {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestion.js",

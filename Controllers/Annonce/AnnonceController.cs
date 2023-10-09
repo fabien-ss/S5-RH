@@ -46,7 +46,6 @@ public class AnnonceController : Controller
             TempData["Qualification"] = JsonSerializer.Serialize(qualif);
             return RedirectToAction("Questionnaire");
         }
-        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
     }
     
