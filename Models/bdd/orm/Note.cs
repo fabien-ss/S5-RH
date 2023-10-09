@@ -17,7 +17,9 @@ public class Note {
     public Note( int candidature, int annonce){
         IdAnnonce = annonce;
         IdCandidature = candidature;
+        NoteCv = GetNoteCv();
     }
+    public Note(){}
 
 
     public double GetNoteCv(){
@@ -47,4 +49,14 @@ public class Note {
 
         return res;
     }
+
+    public double GetNoteQuestion( Dictionary<Question , List<Reponse>> dico){
+        double res = 0;
+        foreach( KeyValuePair<Question , List<Reponse>> elt in dico){
+            if(elt.Value[0].CheckResponse( elt.Value ) == true){
+                res += elt.Key.Point;
+            }            
+        }
+        return res;
+    } 
 }
