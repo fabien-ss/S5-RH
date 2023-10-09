@@ -6,15 +6,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 public class Qualification {
     [Key]
     [Column("id_qualification")]
-    public int IdQualification { get; set;}
+    public int IdQualification { get; set; }
     [Column("id_annonce")]
     public int IdAnnonce { get; set; }
     [Column("dimplome")]
-    public string? Diplome { get; set;}
+    public string? Diplome { get; set; }
     [Column("experience")]
-    public string? Experience { get; set;}
+    public string? Experience { get; set; }
     [Column("sexe")]
-    public string? Sexe { get; set;}
+    public string? Sexe { get; set; }
     [Column("situation_matrimoniale")]
-    public string? SituationMatrimoniale { get; set;}
+    public string? SituationMatrimoniale { get; set; }
 }

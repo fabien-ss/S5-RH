@@ -50,11 +50,10 @@
             </div>
         </nav>
     </header>
-    <div class="container root">
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
 <footer class="border-top footer text-muted fixed-bottom" style="height: 80px; background-color: white; position: fixed; width: 100%;">
     <div class="container" >
@@ -69,6 +68,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 <style>
+   
 .root{
     background-image: url("image/media.jpg");
     background-repeat: no-repeat;

@@ -21,7 +21,7 @@ public class ContratTravail : ContratEssai
             foreach (var d in dts)
             {
                 d.IdValide = 1;
-                d.Matricule = DateDebut.Date + "FA"; 
+                d.Matricule = DateDebut.Date + CompleterString(7,d.IdEmploye+""); 
                 context.SaveChanges();
             }
            // dc = context.DetailsContrat.Where(d => d.IdEmploye == employe.IdEmploye).First();
@@ -35,12 +35,11 @@ public class ContratTravail : ContratEssai
     public static string CompleterString(int TailleFinale, string texte)
     {
         int reste = TailleFinale - texte.Length;
-        string zero = "";
+        string zero = "FA";
         for (int i = 0; i < reste; i++)
         {
             zero += "0";
         }
-
         return zero + texte;
     }
 }

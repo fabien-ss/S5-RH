@@ -52,26 +52,26 @@ public class DetailsEmploye
     }
     public void setHorraire()
     {
-        this.VHorraires = new VHorraire().ObtenirHorraireParIdEmploye(this.IdEmploye);
-        /*using (var context = ApplicationDbContextFactory.Create())
+        //this.VHorraires = new VHorraire().ObtenirHorraireParIdEmploye(this.IdEmploye);
+        using (var context = ApplicationDbContextFactory.Create())
         {
             this.VHorraires = context.VHorraires.Where(
                 h => h.IdEmploye == this.IdEmploye
             ).ToList();
-        }*/
+        }
     }
     public void setMission()
     {
-        /*using (var context = ApplicationDbContextFactory.Create())
+        using (var context = ApplicationDbContextFactory.Create())
         {
             this.Missions = context.Mission.Where(m => m.IdPoste == this.IdPoste).ToList();
             foreach (var m in this.Missions)
             {
                 m.setTaches();
             }
-        }*/
+        }
 
-        this.Missions = new Mission().ObtenirMissionParIdPoste(this.IdPoste);
+        //this.Missions = new Mission().ObtenirMissionParIdPoste(this.IdPoste);
     }
     public DetailsEmploye ObtenirDetailsEmployeParId()
     {
