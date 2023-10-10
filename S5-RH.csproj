@@ -8,20 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="entityframework" Version="6.4.4" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="npgsql" Version="7.0.6" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\back\" />
-    <Folder Include="Views\back\" />
-    <Folder Include="Views\front\" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Models\back\Model.cs" />
-    <Compile Remove="Models\bdd\Connection.cs" />
   </ItemGroup>
 
 </Project>

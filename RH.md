@@ -1,0 +1,16 @@
+Suite RH apres recrutement:
+-Contrat : droit & engagement 
+    -Contrat d'essai : 
+        -Nom
+        -Adresse
+        -CIN
+        -Pere et Mere
+         -Nbr d'enfant
+        -Duree d'essai
+        -Montant karama
+            -salaire brut ( mbola tsy niala hetra, OSTIE(tsy obligatoire), CNAPS, IRSA[Impot sur les revenu], ...)
+            -salaire net
+        -Lieu de travail
+        -Avantage en nature ( phone, car, house, ...)
+        -Signee
+    -

@@ -1,11 +1,3 @@
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.csproj.AssemblyReference.cache
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.GeneratedMSBuildEditorConfig.editorconfig
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.AssemblyInfoInputs.cache
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.AssemblyInfo.cs
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.csproj.CoreCompileInputs.cache
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.MvcApplicationPartsAssemblyInfo.cache
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.RazorAssemblyInfo.cache
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.RazorAssemblyInfo.cs
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\appsettings.Development.json
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\appsettings.json
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\S5-RH.staticwebassets.runtime.json
@@ -31,7 +23,3 @@ E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\refint\S5-RH.dll
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.pdb
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.genruntimeconfig.cache
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\ref\S5-RH.dll
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
-E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

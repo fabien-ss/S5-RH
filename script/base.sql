@@ -58,7 +58,7 @@ drop table if exists qualification;
 create table qualification(
 id_qualification serial primary key,
 id_annonce int references annonce(id_annonce),
-dimplome varchar(500) not null, --- id = coefficient
+diplome varchar(500) not null, --- id = coefficient
 experience varchar(500) not null, --- id = coefficient
 sexe varchar(500) not null, -- id = coefficient
 situation_matrimoniale varchar(500) not null-- id = coefficient

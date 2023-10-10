@@ -31,5 +31,20 @@ public class Question {
         return questions;
     }
 
-
+    public Dictionary<Question, List<Reponse>> ObtenirQuestionAvecReponse()
+    {
+        Dictionary<Question, List<Reponse>> QuestionReponse = new Dictionary<Question, List<Reponse>>();
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            List<Question> questions = context.Question
+                .Where(q => q.IdAnnonce == this.IdAnnonce).ToList();
+            foreach (var q in questions)
+            {
+                Reponse rep = new Reponse { IdQuestion = q.IdQuestion };
+                QuestionReponse.Add(q, context.Reponse.Where(r => r.IdQuestion == rep.IdQuestion).ToList());
+               // q.Reponses = rep.GetReponseByIdQuestion();
+            }
+        }
+        return QuestionReponse;
+    }
 }

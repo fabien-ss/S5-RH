@@ -11,4 +11,14 @@ public class Poste {
     public int IdService { get; set;}
     [Column("details")]
     public string? Details { get; set;}
+    [NotMapped]
+    public List<S5_RH.Models.bdd.orm.fiche.Mission> Missions { get; set; }
+
+    public void setMission()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            this.Missions = context.Mission.Where(m => m.IdPoste == this.IdPoste).ToList();
+        }
+    }
 }

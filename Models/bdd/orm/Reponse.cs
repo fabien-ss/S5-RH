@@ -10,7 +10,7 @@ public class Reponse {
     [Column("id_reponse")]
     public int IdReponse { get; set;}
     [Column("reponse")]
-    public int? Valimpanontaniana { get; set;}
+    public string Valimpanontaniana { get; set;}
     [Column("verite")]
     public int Verite { get; set;}
 
@@ -30,7 +30,7 @@ public class Reponse {
         using (var context = ApplicationDbContextFactory.Create())
         {
             reponses = context.Reponse
-                .Where(r => r.IdQuestion == this.IdQuestion && r.Valimpanontaniana == 1).ToList();
+                .Where(r => r.IdQuestion == this.IdQuestion && r.Verite == 1).ToList();
         }
         return reponses;
     }

@@ -13,8 +13,6 @@ public class CandidatureForm
     private string Telephone { get; set; }
     [Required(ErrorMessage = "Motivation letter not set.")]
     private string Motivation { get; set; }
-    [Required(ErrorMessage = "Photo not set.")]
-    public IFormFile Photo { get; set; }
     [Required(ErrorMessage = "Diplome not set.")]
     public string IdDiplome { get; set; }
     [Required(ErrorMessage = "Experience not set.")]
@@ -25,8 +23,6 @@ public class CandidatureForm
     private string IdSituationMatrimoniale { get; set; }
     [Required(ErrorMessage = "Hobbies not set.")]
     private string Hobies { get; set; }
-    [Required(ErrorMessage = "Documnet not set.")]
-    private IFormFile[] Documents { get; set; }
 
     // public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
     // {
