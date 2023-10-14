@@ -63,53 +63,50 @@
 
     -- Remplacez les valeurs des colonnes id_candidature et note
     INSERT INTO note (id_candidature, note) VALUES
-                                                (1, 4.5),
-                                                (2, 3.8),
-                                                (3, 4.2);
+        (1, 4.5),
+        (2, 3.8),
+        (3, 4.2);
 
     INSERT INTO poste (id_service, details) VALUES
-                                                (1, 'Responsable des Ressources Humaines'),
-                                                (1, 'Gestionnaire de Paie'),
-                                                (2, 'Comptable'),
-                                                (3, 'Développeur Web');
+        (1, 'Responsable des Ressources Humaines'),
+        (1, 'Gestionnaire de Paie'),
+        (2, 'Comptable'),
+        (3, 'Développeur Web');
 
  --   INSERT INTO annonce (id_service, debut, fin, details) VALUES
  --                                                             (1, '2023-10-01', '2023-10-15', 'Poste de Responsable RH ouvert'),
 --                                                              (2, '2023-09-15', '2023-10-30', 'Recherche Comptable expérimenté'),
 --                                                              (3, '2023-10-10', '2023-10-25', 'Développeur Web Full Stack recherché');
 --
-    INSERT INTO situation_matrimoniale (details) VALUES
-                                                     ('Célibataire'),
-                                                     ('Marié(e)'),
-                                                     ('Divorcé(e)');
+INSERT INTO situation_matrimoniale (details) VALUES
+    ('Célibataire'),
+    ('Marié(e)'),
+    ('Divorcé(e)');
 
-    insert  into coefficient (valeur, text )
-    values (5,'Recommendé'), (3,'Acceptable'), (1, 'Passable');
+insert  into coefficient (valeur, text ) values (5,'Recommendé'), (3,'Acceptable'), (1, 'Passable');
 
-    insert into jour(jour) values ('Lundi'),('Mardi'),('Mercredi'),('Jeudi'),('Vendredi'),('Samedi');
+insert into jour(jour) values ('Lundi'),('Mardi'),('Mercredi'),('Jeudi'),('Vendredi'),('Samedi');
 
-    insert into type_avantage(nom) values ('Véhicule'), ('Téléphone'), ('Assistant(e)');
+insert into type_avantage(nom) values ('Véhicule'), ('Téléphone'), ('Assistant(e)');
 
-    insert into type_contrat(nom) values ('Contrat à Durée Indéterminée'), ('Contrat à Durée Déterminée'),( 'Contrat d Essai');
+insert into type_contrat(nom) values ('Contrat à Durée Indéterminée'), ('Contrat à Durée Déterminée'),( 'Contrat d Essai');
 
-    insert into type_salaire(id_type_salaire,nom) values (1,'Brute'), (2,'Net');
+insert into type_salaire(id_type_salaire,nom) values (1,'Brute'), (2,'Net');
 
-    
-    INSERT INTO candidat_cv (id_candidature, id_diplome, id_sexe, id_situation_matrimoniale, id_poste, id_experience) VALUES
-    (1, 1, 1, 1, 1, 3),
-    (2, 2, 2, 2, 3, 1),
-    (3, 3, 1, 1,4, 1);
 
-    insert into employe (id_candidature)
-    values (1),
-           (2),
-           (3);
+INSERT INTO candidat_cv (id_candidature, id_diplome, id_sexe, id_situation_matrimoniale, id_poste, id_experience) VALUES
+(1, 1, 1, 1, 1, 3),
+(2, 2, 2, 2, 3, 1),
+(3, 3, 1, 1,4, 1);
 
-insert into details_contrat (date_debut, date_fin, id_type_contrat, id_employe) 
-values  
-    (Now(), now(), 1, 1),
-    (Now(), now(), 1,2), 
-    (Now(), now(), 2,3);
+insert into employe (id_candidature) values (1),
+        (2),
+        (3);
+
+insert into details_contrat (date_debut, date_fin, id_type_contrat, id_employe,matricule)  values  
+    (Now(), now(), 1, 1, "huhu"),
+    (Now(), now(), 1,2, "haha"), 
+    (Now(), now(), 2,3, "hoho");
 
 insert into salaire (salaire, date_salaire, id_contrat, id_type_salaire)
 values (1231, Now(), 1, 1),
