@@ -38,7 +38,7 @@ public class PDFFicheDePoste : PDF
         Paragraph title = new Paragraph("Fiche de poste", titleFont);
         title.Alignment = Element.ALIGN_CENTER;
         this.Document.Add(title);
-        Image image = Image.GetInstance("./wwwroot/image/person.jpg");
+        Image image = Image.GetInstance("https://th.bing.com/th/id/OIP.lzaBqrQhB1TVZTt-NIL5kQHaFt?w=233&h=180&c=7&r=0&o=5&pid=1.7");
         Paragraph Contenu = new Paragraph();
         Contenu.SpacingBefore = 20f;
         Ligne(Contenu, 1);

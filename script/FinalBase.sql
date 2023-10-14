@@ -262,4 +262,37 @@ CREATE VIEW "public".v_horaire AS  SELECT h.id_contrat,
                                    FROM (horaire h
                                        JOIN jour j ON ((h.id_jour = j.id_jour)));
 
-alter table details_contrat add column is_valide int default 1;
+alter table details_contrat add column is_valide int default 10;
+
+
+create table entreprise(
+    nom varchar(500) not null ,
+    date_de_creation timestamp,
+    siege varchar(500),
+    numero_fiscal varchar(500),
+    logo varchar(500),
+    description varchar(500),
+    dirigeant int references employe(id_employe)
+);
+
+create table conge(
+    matricule varchar(500),
+    date_debut timestamp,
+    date_declaration timestamp,
+    date_fin timestamp,
+    date_retour timestamp,
+    details varchar(500) 
+);
+
+create table type_conge(
+       id_type_conge serial primary key,
+       libelle varchar(500)
+);
+
+create table conge_duree(
+       id_conge_duree serial primary key ,
+       nombre_de_jour int,
+        id_type_conge int references type_conge(id_type_conge) 
+);
+
+

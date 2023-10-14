@@ -42,4 +42,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<DetailsEmploye> DetailsEmploye { get; set; }
     public DbSet<VHorraire> VHorraires { get; set; }
     public DbSet<Tache> Taches { get; set; }
+    public DbSet<Entreprise> Entreprise { get; set; }
 }

@@ -1,6 +1,7 @@
 using System.Drawing;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using S5_RH.Models.bdd.orm;
 using S5_RH.Models.bdd.orm.fiche;
 using Font = iTextSharp.text.Font;
 
@@ -10,9 +11,11 @@ public class PDFContrat : PDF
     public DetailsEmploye DetailsEmploye { get; set; }
     public Document Document { get; set; }
     public string Path { get; set; }
+    private Entreprise Entreprise { get; set; }
 
     public PDFContrat(String Path, int IdEmploye)
     {
+        this.Entreprise = new Entreprise().ObtenirEntreprise();
         this.Path = Path;
         this.DetailsEmploye = new DetailsEmploye { IdEmploye = IdEmploye };
         this.DetailsEmploye = this.DetailsEmploye.ObtenirDetailsEmployeParId();
@@ -30,7 +33,7 @@ public class PDFContrat : PDF
         Paragraph contenuContrat = new Paragraph();
         Ligne(contenuContrat, 3);
         contenuContrat.SpacingBefore = 20f;
-        contenuContrat.Add(new Chunk($"La société BomBai, dont le siège situé à Antananarivo représentée par Mr/Mme. Ravo."));
+        contenuContrat.Add(new Chunk($"La société {this.Entreprise.nom}, dont le siège situé à {this.Entreprise.Siege} représentée par Mr/Mme. <<None>>."));
         contenuContrat.Add(new Chunk($"Responsable de {this.DetailsEmploye.Service}."));
         Ligne(contenuContrat, 3);
         this.Document.Add(contenuContrat);

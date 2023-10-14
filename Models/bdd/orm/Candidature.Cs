@@ -38,7 +38,7 @@ public class Candidature {
         using (var context = ApplicationDbContextFactory.Create())
         {
             return context.Candidature.
-                Where(c => c.Etat == 1)
+                Where(c => c.Etat == 10)
                 .ToList();
         }
     }
@@ -49,7 +49,7 @@ public class Candidature {
         using (var context = ApplicationDbContextFactory.Create())
         {
             return context.Candidature.
-                Where(c => c.Etat == 2)
+                Where(c => c.Etat == 10)
                 .ToList();
         }
     }
@@ -59,7 +59,7 @@ public class Candidature {
         using (var context = ApplicationDbContextFactory.Create())
         {
             return context.Candidature.
-                Where(c => c.Etat == 3)
+                Where(c => c.Etat == 30)
                 .ToList();
         }
     }

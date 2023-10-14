@@ -55,10 +55,10 @@
     (3, '1 an', 0);
     
     -- Remplacez les valeurs des colonnes id_annonce, nom, prenom, date_de_naissance et contact
-    INSERT INTO candidature (id_annonce, nom, prenom, date_de_naissane, contact) VALUES
-    (1, 'Doe', 'John', '1990-05-15', 'john.doe@example.com'),
-    (2, 'Smith', 'Alice', '1985-12-10', 'alice.smith@example.com'),
-    (3, 'Brown', 'David', '1995-08-25', 'david.brown@example.com');
+    INSERT INTO candidature (id_annonce, nom, prenom, date_de_naissane, contact,etat) VALUES
+    (1, 'Doe', 'John', '1990-05-15', 'john.doe@example.com', 30),
+    (2, 'Smith', 'Alice', '1985-12-10', 'alice.smith@example.com', 30),
+    (3, 'Brown', 'David', '1995-08-25', 'david.brown@example.com', 30);
 
 
     -- Remplacez les valeurs des colonnes id_candidature et note
@@ -142,3 +142,14 @@ insert into tache(nom, id_mission) values
        ('Maintenir les systemes propres', 2),
        ('Etre en bonne santé', 3),
        ('Ordinateur maintenance', 4);
+
+
+insert into entreprise(nom, date_de_creation, siege, numero_fiscal, logo, description) 
+
+values ('MAHAKO', NOW(), 'ANTANANARIVO Ambatondrazaka', 'EAZFGFD9423495043483243204884923423402238444', 'entrepriselogo.png', 'Entreprise livraison');
+
+insert into type_conge(id_type_conge, libelle) values (1, 'Congé mensuel'),
+                                                               (2, 'Maternité'),
+                                                               (3, 'Partenité'),
+                                                               (4, 'Autre');
+                                                               
