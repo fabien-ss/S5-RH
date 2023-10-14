@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using S5_RH.Models.bdd.orm;
 
 namespace S5_RH.Models.Front.Candidature;
 public class CandidatureForm
@@ -24,23 +25,42 @@ public class CandidatureForm
     [Required(ErrorMessage = "Hobbies not set.")]
     private string Hobies { get; set; }
 
-    // public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
-    // {
-    //     using (var context = ApplicationDbContextFactory.Create())
-    //     {
-    //         bdd.orm.Annonce annonce = new bdd.orm.Annonce
-    //         {
-    //             IdService = this.IdServices,
-    //             Debut = this.Debut,
-    //             Fin = this.Fin,
-    //             Details = this.Description
-    //         };
-    //         context.Annonce.Add(annonce);
-    //         context.SaveChanges();
-    //         Qualification.IdAnnonce = annonce.IdAnnoce;
-    //         context.Qualification.Add(Qualification);
-    //         context.SaveChanges();
-    //     }
-    // }
+    public CandidatureForm(string nom, string prenom, DateTime dateDeNaissance, string telephone, string motivation, string idDiplome, string idExperience, string idSexe, string idSituationMatrimoniale, string hobies) 
+    {
+        this.Nom = nom;
+        this.Prenom = prenom;
+        this.DateDeNaissance = dateDeNaissance;
+        this.Telephone = telephone;
+        this.Motivation = motivation;
+        this.IdDiplome = idDiplome;
+        this.IdExperience = idExperience;
+        this.IdSexe = idSexe;
+        this.IdSituationMatrimoniale = idSituationMatrimoniale;
+        this.Hobies = hobies;
+
+    }
+    public void Sauvegarde()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            S5_RH.Models.bdd.orm.Candidature candidature = new S5_RH.Models.bdd.orm.Candidature
+            {
+                Nom = this.Nom,
+                Prenom = this.Prenom,
+                DateDeNaissance = this.DateDeNaissance,
+                
+            };
+            S5_RH.Models.bdd.orm.CandidatCv cv = new S5_RH.Models.bdd.orm.CandidatCv
+            {
+
+            };
+
+            context.Annonce.Add(annonce);
+            context.SaveChanges();
+            Qualification.IdAnnonce = annonce.IdAnnoce;
+            context.Qualification.Add(Qualification);
+            context.SaveChanges();
+        }
+    }
     
 }
