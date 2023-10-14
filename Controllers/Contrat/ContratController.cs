@@ -45,7 +45,9 @@ public class ContratController : Controller{
         if (ModelState.IsValid)
         {
             object? currentId = TempData["IdCandidat"];
-            contratEssai.InsertionEssai((int)currentId, 1, 2);
+            // 10 izy en contrat essai
+            //contratEssai.InsertionEssai((int)currentId, 1, 2);
+            contratEssai.InsertionEssai((int)currentId, 1, 10);
             return RedirectToAction("ContratTravail");
         }
         return RedirectToAction("ContratEssai");

@@ -29,28 +29,12 @@
       "PackagePath": "staticwebassets\\image\\New.pdf"
     },
     {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\media.jpg",
-      "PackagePath": "staticwebassets\\image\\media.jpg"
-    },
-    {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\metier-ressource-humaine--840x473.png",
       "PackagePath": "staticwebassets\\image\\metier-ressource-humaine--840x473.png"
     },
     {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\person.jpg",
-      "PackagePath": "staticwebassets\\image\\person.jpg"
-    },
-    {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestion.js",
       "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestion.js"
-    },
-    {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart1.js",
-      "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestionPart1.js"
-    },
-    {
-      "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart2.js",
-      "PackagePath": "staticwebassets\\js\\questionnaire\\generateQuestionPart2.js"
     },
     {
       "Id": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\obfuscated.js",

@@ -18,12 +18,8 @@ public class AnnonceController : Controller
 
     public IActionResult ListeAnnonce()
     {
-        List<Models.bdd.orm.Annonce> annonce = new List<Models.bdd.orm.Annonce>(); 
-        using (var conte = ApplicationDbContextFactory.Create())
-        {
-            annonce = conte.Annonce.ToList();
-        }
-
+        List<Models.bdd.orm.Annonce> annonce = new List<Models.bdd.orm.Annonce>();
+        annonce = new Models.bdd.orm.Annonce().ObetnirAnnonce();
         ViewData["Listes"] = annonce;
         return View();
     }

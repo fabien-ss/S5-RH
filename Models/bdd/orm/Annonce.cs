@@ -23,4 +23,12 @@ public class Annonce {
             return context.Annonce.Where(a => a.IdAnnoce == idAnnonce).First();
         }
     }
+
+    public List<Annonce> ObetnirAnnonce()
+    {
+        using (var conte = ApplicationDbContextFactory.Create())
+        {
+            return conte.Annonce.ToList();
+        }
+    }
 }

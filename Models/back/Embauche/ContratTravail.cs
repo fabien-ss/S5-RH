@@ -20,7 +20,7 @@ public class ContratTravail : ContratEssai
             List<DetailsContrat> dts = context.DetailsContrat.Where(d => d.IdEmploye == employe.IdEmploye).ToList();
             foreach (var d in dts)
             {
-                d.IdValide = 1;
+                d.IdValide = 10;
                 d.Matricule = DateDebut.Date + CompleterString(7,d.IdEmploye+""); 
                 context.SaveChanges();
             }
@@ -29,7 +29,8 @@ public class ContratTravail : ContratEssai
             //context.SaveChanges();
         }
         // Insertion des details du nouveau contrat
-        this.InsertionEssai(IdCandidature, this.IdTypeContrat, 3);
+        // 30 izy efa certifié employé
+        this.InsertionEssai(IdCandidature, this.IdTypeContrat, 30);
     }
 
     public static string CompleterString(int TailleFinale, string texte)

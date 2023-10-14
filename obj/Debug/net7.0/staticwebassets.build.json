@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ijCEjKQ8nGSyLjiAee9ZwoXjLLkg2YXqeKAeINlpuVs=",
+  "Hash": "R+Z3v76+1uKXTN/8VNcQ/yzxr921XEtbQiTq16jESWM=",
   "Source": "S5-RH",
   "BasePath": "_content/S5-RH",
   "Mode": "Default",
@@ -136,23 +136,6 @@
       "OriginalItemSpec": "wwwroot\\image\\FichePoste.pdf"
     },
     {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\media.jpg",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "image/media.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\image\\media.jpg"
-    },
-    {
       "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\metier-ressource-humaine--840x473.png",
       "SourceId": "S5-RH",
       "SourceType": "Discovered",
@@ -187,23 +170,6 @@
       "OriginalItemSpec": "wwwroot\\image\\New.pdf"
     },
     {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\image\\person.jpg",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "image/person.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\image\\person.jpg"
-    },
-    {
       "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestion.js",
       "SourceId": "S5-RH",
       "SourceType": "Discovered",
@@ -219,40 +185,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestion.js"
-    },
-    {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart1.js",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "js/questionnaire/generateQuestionPart1.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestionPart1.js"
-    },
-    {
-      "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\generateQuestionPart2.js",
-      "SourceId": "S5-RH",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\",
-      "BasePath": "_content/S5-RH",
-      "RelativePath": "js/questionnaire/generateQuestionPart2.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\questionnaire\\generateQuestionPart2.js"
     },
     {
       "Identity": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\wwwroot\\js\\questionnaire\\obfuscated.js",
