@@ -8,22 +8,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.example.RH.entity.Employee;
-import com.example.RH.repository.EmployeeRepository;
+import com.example.RH.entity.Contrat;
+import com.example.RH.repository.ContratRepository;
 
 @Controller
-@RequestMapping(path="/employee") 
-public class EmployeeController {
+@RequestMapping(path="/contrat") 
+public class ContratController {
     @Autowired
-    private EmployeeRepository emp;
-    
+    private ContratRepository con;
+
     @GetMapping(path="/getall")
-    public @ResponseBody Iterable<Employee> getAllEmployee() {
-      return emp.findAll();
+    public @ResponseBody Iterable<Contrat> getAllEmployee() {
+      return con.findAll();
     }
 
-    @GetMapping(path="/getByMatricule/{matricule}")
-    public @ResponseBody Employee getByMatricule(@PathVariable String matricule) {
-        return emp.findById(matricule).get();
+    @GetMapping(path="/getById/{id}")
+    public @ResponseBody Contrat getByMatricule(@PathVariable String id) {
+        return con.findById(id).get();
     }
+    
 }

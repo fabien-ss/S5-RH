@@ -99,9 +99,10 @@ INSERT INTO candidat_cv (id_candidature, id_diplome, id_sexe, id_situation_matri
 (2, 2, 2, 2, 3, 1),
 (3, 3, 1, 1,4, 1);
 
-insert into employe (id_candidature) values (1),
-        (2),
-        (3);
+insert into employe (id_candidature) values 
+    (1),
+    (2),
+    (3);
 
 insert into details_contrat (date_debut, date_fin, id_type_contrat, id_employe,matricule)  values  
     (Now(), now(), 1, 1, "huhu"),
