@@ -97,3 +97,7 @@ E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\refint\S5-RH.dll
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.pdb
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\S5-RH.genruntimeconfig.cache
 E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\obj\Debug\net7.0\ref\S5-RH.dll
+E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\Newtonsoft.Json.dll
+E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\RestClient.dll
+E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\RestRequest.dll
+E:\ITUNIVERSITY\S5\MrTovo\Numer\S5-RH\bin\Debug\net7.0\RestSharp.dll

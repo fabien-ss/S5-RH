@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[7.0.11, )"
             },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[110.2.0, )"
+            },
             "entityframework": {
               "target": "Package",
               "version": "[6.4.4, )"
@@ -57,6 +61,14 @@
             "npgsql": {
               "target": "Package",
               "version": "[7.0.6, )"
+            },
+            "restclient": {
+              "target": "Package",
+              "version": "[3.1024.23771, )"
+            },
+            "restrequest": {
+              "target": "Package",
+              "version": "[1.2.0, )"
             }
           },
           "imports": [

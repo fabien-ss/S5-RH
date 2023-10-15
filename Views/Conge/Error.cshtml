@@ -1,7 +1,13 @@
-<div class="container">
-    <div class="row">
-        <div class="alert alert-danger" role="alert">
-            L'employé n'existe pas.
-        </div>        
-    </div>
+@model string
+@{
+    ViewData["Title"] = "Error";
+}
+<div style="text-align: center;">
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+    <p>
+        <strong>ERROR:</strong> <code>@Model</code>
+    </p>
+
 </div>

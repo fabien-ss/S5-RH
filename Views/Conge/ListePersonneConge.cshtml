@@ -1,62 +1,63 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<div class="row" style="margin: auto;">
+      
+  </div>
 <div class="row">
-  <div class="col-3"></div>
-  <div class="col-6">
+  <div class="col-3" style="margin-left: 10px;">
+    <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+      <form class="form-inline my-2 my-lg-0" asp-action="ListePersonneConge" asp-controller="Conge"s method="get">
+        <input class="form-control mr-sm-2" width="100%" type="search" placeholder="Search" aria-label="Search">
+        <br>
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+  </div>
+  <div class="col-8">
     <div id="table" style="margin: auto;">
       <table class="table table-striped">
         <thead>
-          <tr>
-            <th scope="col" class="sort" data-sort="id">#</th>
-            <th scope="col" class="sort" data-sort="firstname">First Name</th>
-            <th scope="col" class="sort" data-sort="lastname">Last Name</th>
-            <th scope="col" class="sort" data-sort="username">Username</th>
-          </tr>
+        <tr>
+          <th scope="col" class="sort" data-sort="id">#</th>
+          <th scope="col" class="sort" data-sort="firstname">First Name</th>
+          <th scope="col" class="sort" data-sort="lastname">Last Name</th>
+          <th scope="col" class="sort" data-sort="username">Username</th>
+          <th>Date de fin</th>
+        </tr>
         </thead>
         <tbody class="list">
-          <tr>
-            <th scope="row" class="id">1</th>
-            <td class="firstname">Mark</td>
-            <td class="lastname">Otto</td>
-            <td class="username">mdo</td>
-          </tr>
         <tr>
-          <th scope="row" class="id">2</th>
-          <td class="firstname">Jacob</td>
-          <td class="lastname">Thornton</td>
-          <td class="username">fat</td>
-        </tr>
-        <tr>
-          <th scope="row" class="id">3</th>
-          <td class="firstname">Larry</td>
-          <td class="lastname">the Bird</td>
-          <td class="username">twitter</td>
+          <th scope="row" class="id">1</th>
+          <td class="firstname">Mark</td>
+          <td class="lastname">Otto</td>
+          <td class="username">mdo</td>
+          <td class="username"><input type="datetime-local" class="btn btn-outline-primary"></td>
+          <td class="username"><input type="submit" class="btn btn-primary"></td>
         </tr>
         </tbody>
       </table>
     </div>
-
+<div class="col-1"> </div>
   </div>
-  <div class="col-3"></div>
 </div>
 
-<style>
-  .table [data-sort] {
-        cursor: pointer;
-    }
-    .table [data-sort]::after {
-        margin-left: .25rem;
-        content: url('data:image/svg+xml;utf8,<svg width=\'6\' height=\'10\' viewBox=\'0 0 6 10\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path fill-rule=\'evenodd\' clip-rule=\'evenodd\' d=\'M3 0L6 4H0L3 0ZM3 10L0 6H6L3 10Z\' fill=\'%238898aa\'/></svg>');
-    }
-</style>
+  <style>
+    .table [data-sort] {
+          cursor: pointer;
+      }
+      .table [data-sort]::after {
+          margin-left: .25rem;
+          content: url('data:image/svg+xml;utf8,<svg width=\'6\' height=\'10\' viewBox=\'0 0 6 10\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path fill-rule=\'evenodd\' clip-rule=\'evenodd\' d=\'M3 0L6 4H0L3 0ZM3 10L0 6H6L3 10Z\' fill=\'%238898aa\'/></svg>');
+      }
+  </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
-<script>
-var options = {
-  valueNames: [ 'id', 'firstname', 'lastname','username' ]
-};
+  <script>
+  var options = {
+    valueNames: [ 'id', 'firstname', 'lastname','username' ]
+  };
 
-var userList = new List('table', options);
-</script>
+  var userList = new List('table', options);
+  </script>
