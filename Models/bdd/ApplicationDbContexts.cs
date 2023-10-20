@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using S5_RH.Models.bdd.orm;
+using S5_RH.Models.bdd.orm.Conge;
 using S5_RH.Models.bdd.orm.fiche;
 
 public class ApplicationDbContext : DbContext
@@ -43,4 +44,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<VHorraire> VHorraires { get; set; }
     public DbSet<Tache> Taches { get; set; }
     public DbSet<Entreprise> Entreprise { get; set; }
+    public DbSet<TypeConge> TypeConges { get; set; }
+    public DbSet<Conge> Conge { get; set; }
+    public DbSet<ListePersonneConge> ListePersonneConges { get; set; }
 }

@@ -8,6 +8,13 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CandidatureController : Controller
 {
+    public IActionResult DetailsAnnonce(int idAnnonce)
+    {
+        Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce { IdAnnoce = idAnnonce };
+        annonce = annonce.GetAnnonceById();
+        ViewData["Annonce"] = annonce;
+        return View();
+    }
     public IActionResult Postuler(string idAnnonce)
     {
         using (var conte = ApplicationDbContextFactory.Create())
@@ -17,9 +24,9 @@ public class CandidatureController : Controller
             ViewData["Sexe"] = conte.Sexe.ToList();
             ViewData["Situation"] = conte.SituationMatrimoniale.ToList();
         }
-        Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce().GetAnnonceById(int.Parse(idAnnonce));
+        Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce{ IdAnnoce = int.Parse(idAnnonce)}.GetAnnonceById();
         ViewData["Annonce"] = annonce;
-        TempData["Annonce"] = idAnnonce;
+        TempData["idAnnonce"] = idAnnonce;
         return View();
     }
 
@@ -27,18 +34,38 @@ public class CandidatureController : Controller
     {
         if (ModelState.IsValid)
         {
-            TempData["candidatureTemp"] = candidatureForm;
+            TempData["candidatureTemp"] = (candidatureForm);
             return RedirectToAction("Questionnaire");
         }
-        return Postuler(((string)TempData["Annonce"]));
+        return Postuler(((string)TempData["idAnnonce"]));
     }
-    public IActionResult Questionnaire(CandidatureForm candidatureForm)
+
+    public IActionResult TraitementQuestionnaire()
     {
+        Models.bdd.orm.Question question = new Models.bdd.orm.Question
+        {
+            IdAnnonce = int.Parse((string)TempData["idAnnonce"]) 
+        };
+        List<Models.bdd.orm.Question> questionReponses = question.ObtenirQuestions();
+        foreach (var q in questionReponses)
+        {
+            
+        }
+        return RedirectToAction("Questionnaire");
+    }
+    public IActionResult Questionnaire(PostulerForm postulerForm)
+    {
+        if (postulerForm.Equals(null))
+        {
+            postulerForm = JsonSerializer.Deserialize<PostulerForm>((string)TempData["PostulerDetails"]);
+        }
         if (ModelState.IsValid)
         {
+            TempData["PostulerDetails"] = JsonSerializer.Serialize(postulerForm);
+            Console.WriteLine("Id annonce = "+(string)TempData["idAnnonce"]);
             Models.bdd.orm.Question question = new Models.bdd.orm.Question
             {
-                IdAnnonce = int.Parse((string)TempData["Annonce"]) 
+                IdAnnonce = int.Parse((string)TempData["idAnnonce"]) 
             };
             List<Models.bdd.orm.Question> questionReponses = question.ObtenirQuestions();
             return View(questionReponses);

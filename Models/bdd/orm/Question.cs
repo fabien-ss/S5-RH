@@ -15,6 +15,7 @@ public class Question {
     public int Point { get; set;}
     [NotMapped]
     public List<Reponse> Reponses { get; set; }
+    
     public List<Question> ObtenirQuestions()
     {
         List<Question> questions;

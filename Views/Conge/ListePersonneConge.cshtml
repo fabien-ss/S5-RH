@@ -1,3 +1,7 @@
+@using S5_RH.Models.bdd.orm.Conge
+@{
+  List<ListePersonneConge> listes = (List<ListePersonneConge>)ViewData["personne"];
+}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <div class="row" style="margin: auto;">
       
@@ -5,8 +9,8 @@
 <div class="row">
   <div class="col-3" style="margin-left: 10px;">
     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-      <form class="form-inline my-2 my-lg-0" asp-action="ListePersonneConge" asp-controller="Conge"s method="get">
-        <input class="form-control mr-sm-2" width="100%" type="search" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" asp-action="ListePersonneConge" asp-controller="Conge" method="get">
+        <input class="form-control mr-sm-2" width="100%" type="search" name="matricule" placeholder="Search" aria-label="Search">
         <br>
         <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -20,19 +24,27 @@
           <th scope="col" class="sort" data-sort="id">#</th>
           <th scope="col" class="sort" data-sort="firstname">First Name</th>
           <th scope="col" class="sort" data-sort="lastname">Last Name</th>
-          <th scope="col" class="sort" data-sort="username">Username</th>
+          <th scope="col" class="sort" data-sort="username">Date debut</th>
+          <th scope="col" class="sort" data-sort="username">Date planifiée</th>
           <th>Date de fin</th>
         </tr>
         </thead>
         <tbody class="list">
-        <tr>
-          <th scope="row" class="id">1</th>
-          <td class="firstname">Mark</td>
-          <td class="lastname">Otto</td>
-          <td class="username">mdo</td>
-          <td class="username"><input type="datetime-local" class="btn btn-outline-primary"></td>
-          <td class="username"><input type="submit" class="btn btn-primary"></td>
-        </tr>
+        @foreach (var p in listes)
+        {
+            <tr>
+          <form asp-action="InsertionConge" asp-controller="Conge" method="get">
+              <input type="hidden" name="Matricule" value="@p.Matricule"/>
+              <th scope="row" class="id">@p.Matricule</th>
+              <td class="firstname">@p.Nom</td>
+              <td class="lastname">@p.Prenom</td>
+              <td class="username">@p.DateDebut</td>
+              <td class="username">@p.DateDeclaration</td>
+              <td class="username"><input type="datetime-local" name="DateFin" class="btn btn-outline-primary"></td>
+              <td class="username"><input type="submit" class="btn btn-primary"></td>
+          </form>
+            </tr>
+        }
         </tbody>
       </table>
     </div>

@@ -8,34 +8,34 @@ namespace S5_RH.Models.bdd.orm.fiche;
 public class DetailsEmploye
 {
     [Column("nom")]
-    public string Nom{ get; set;}
+    public string? Nom{ get; set;}
     [Column("prenom")]
-    public string Prenom{ get; set;}
+    public string? Prenom{ get; set;}
     [Column("date_de_naissance")]
-    public DateTime DateDeNaissance{ get; set;}
+    public DateTime? DateDeNaissance{ get; set;}
     [Column("contact")]
-    public string Contact{ get; set;}
+    public string? Contact{ get; set;}
     [Column("details")]
-    public string Poste{ get; set;}
+    public string? Poste{ get; set;}
     [Column("id_poste")]
     public int IdPoste{ get; set;}
     [Column("date_debut")]
-    public DateTime DateDebut{ get; set;}
+    public DateTime? DateDebut{ get; set;}
     [Column("date_fin")]
-    public DateTime DateFin{ get; set;}
+    public DateTime? DateFin{ get; set;}
     [Column("matricule")]
-    public string matricule{ get; set;}
+    public string? matricule{ get; set;}
     [Column("libelle_contrat")]
-    public string LibelleContrat{ get; set;}
+    public string? LibelleContrat{ get; set;}
     [Column("id_employe")]
     public int IdEmploye{ get; set;}
 
     [Column("renumeration")]
-    public double Salaire { get; set; }
+    public double? Salaire { get; set; }
     [Column("typesalaire")]
-    public string TypeSalaire { get; set; }
+    public string? TypeSalaire { get; set; }
     [Column("service")] 
-    public string Service { get; set; }
+    public string? Service { get; set; }
     [Column("valide")]
     public int IsValide { get; set; }
     [NotMapped]

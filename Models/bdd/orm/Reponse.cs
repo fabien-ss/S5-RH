@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Primitives;
+
 namespace S5_RH.Models.bdd.orm;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,6 +16,14 @@ public class Reponse {
     [Column("verite")]
     public int Verite { get; set;}
 
+    [NotMapped]
+    int UserReponse { get; set; }
+
+    public void setUserReponse(HttpContext context)
+    {
+        string IdReponseString = this.IdReponse.ToString();
+        this.UserReponse = int.Parse(context.Request.Form[IdReponseString]);
+    }
     public List<Reponse> GetReponseByIdQuestion()
     {
         List<Reponse> reponses = new List<Reponse>();

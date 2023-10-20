@@ -1,7 +1,7 @@
 @using S5_RH.Models.bdd.orm
 @{
-    List<Diplome> dip = (List<Diplome>)ViewData["Diplome"];
-    List<Experience> e= (List<Experience>)ViewData["Experience"];
+    List<Diplome> dip = (List<Diplome>) ViewData["Diplome"];
+    List<Experience> e= (List<Experience>) ViewData["Experience"];
     List<Sexe> s=(List<Sexe>) ViewData["Sexe"];
     List<SituationMatrimoniale> situationMatrimoniales =(List<SituationMatrimoniale>) ViewData["Situation"];
 }
@@ -10,8 +10,8 @@
 <div class="container">
     <form action="/Candidature/Questionnaire/" method="post">
         @Html.ValidationSummary()
-        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <h1>Details candidature</h1>
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <div class="col-6 border-1">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control rounded-0" id="Nom" name="Nom" required="">
@@ -50,7 +50,7 @@
                     <label for="diplome">Diplôme</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-control rounded-0" name="IdExperience" id="experience" required>
+                    <select class="form-control rounded-0" name="IdExperience" name="IdExperience" id="experience" required>
                         @foreach (var d in e)
                         {
                             <option value="@d.IdExperience">@d.Details</option>
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <select name="IdSituationMatrimoniale" class="form-control rounded-0" id="situationMatrimoniale" required>
+                    <select name="IdSituationMatrimoniale" class="form-control rounded-0" id="IdSituationMatrimoniale" required>
                         @foreach (var d in situationMatrimoniales)
                         {
                             <option value="@d.IdSituationMatrimoniale">@d.Details</option>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <textarea name="Hobies" class="form-control rounded-0" id="hobies" style="height: 190px;" required>
+                    <textarea name="Hobies" class="form-control rounded-0" id="hobies" name="Hobies" style="height: 190px;" required>
                         
                     </textarea>
                     <label for="hobies">Hobies</label>
@@ -90,7 +90,7 @@
                     <input type="file" name="Documents[]" class="form-control rounded-0" id="documentDiplome" required>
 
                 </div>
-                <button type="submit" class="btn btn-primary mt-5" style="float: right;">Submit</button>
+                <button type="submit" class="btn btn-primary mt-5" style="float: right;">Suivant</button>
             </div>
         </div>
     </form>

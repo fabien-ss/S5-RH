@@ -1,30 +1,80 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using S5_RH.Models.bdd.orm.Conge;
+using S5_RH.Models.bdd.orm.fiche;
+
 namespace S5_RH.Controllers.Candidature;
 
 public class CongeController : Controller
 {
+    public IActionResult UpdateConge(string Matricule, DateTime DateFin)
+    {
+        Conge c = new Conge { Matricule = Matricule, DateFin = DateFin };
+        c.update();
+        return RedirectToAction("ListePersonneConge");
+    }
     public IActionResult Error()
     {
         string error = "tsy mety";
         return View("error",error);
     }
-    public async Task<IActionResult> InsertionConge()
+    public async Task<IActionResult> InsertionConge(Conge conge)
     {
-        
-        ;
+        if (conge != null)
+        {
+            
+         conge.insertion();
+         return RedirectToAction("Success");
+        }
+         
+         
      //   string response = await CallApi("dqsd");
         return RedirectToAction("Error");
      //return View();
     }
 
-    public IActionResult ListePersonneConge()
+    public IActionResult Success()
     {
-        // string response = await CallApi("");
+        ViewData["Message"] = "succes";
         return View();
     }
-
-    public IActionResult RechercheEmploye()
+    public IActionResult ListePersonneConge(string matricule)
     {
+        List<ListePersonneConge> listePersonneConges = new List<ListePersonneConge>();
+        // string response = await CallApi("");
+        if (matricule != null)
+        {
+            ListePersonneConge lc = new ListePersonneConge { Matricule = matricule };
+            lc = lc.ObtenirPersonneCongesByMatricule();
+            listePersonneConges.Add(lc);
+            ViewData["personne"] = listePersonneConges;
+            return View();
+        }
+
+        listePersonneConges = new ListePersonneConge().ObtenirPersonneConges();
+        ViewData["personne"] = listePersonneConges;
+        return View();
+    }
+    
+    public async Task<IActionResult> RechercheEmploye(string matricule)
+    {
+        DetailsEmploye detailsEmploye = null;
+        ViewData["typeConge"] = new TypeConge().ObtenirTypeConges();
+        if (matricule != null)
+        {
+            Console.WriteLine(matricule);
+            matricule = matricule.Trim();
+            string url = "http://localhost:8080/employee/getByMatricule/"+matricule;
+            Console.WriteLine(url);
+            string jsonResponse = await CallApi(url);
+            detailsEmploye = JsonConvert.DeserializeObject<DetailsEmploye>(jsonResponse);
+            Console.WriteLine(jsonResponse);
+            Console.WriteLine(detailsEmploye.Nom);
+            
+            ViewData["detailsEmploye"] = detailsEmploye;
+            return View();
+        }
+        ViewData["detailsEmploye"] = detailsEmploye;
         return View();
     }
     

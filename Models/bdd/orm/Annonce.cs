@@ -16,11 +16,12 @@ public class Annonce {
     [Column("details")]
     public string? Details { get; set; }
 
-    public Annonce GetAnnonceById(int idAnnonce)
+    public Annonce GetAnnonceById()
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            return context.Annonce.Where(a => a.IdAnnoce == idAnnonce).First();
+            Annonce retour = context.Annonce.Where(a => a.IdAnnoce == this.IdAnnoce).First();
+            return retour; //context.Annonce.Where(a => a.IdAnnoce == this.IdAnnoce).First();
         }
     }
 

@@ -281,7 +281,8 @@ create table conge(
     date_declaration timestamp,
     date_fin timestamp,
     date_retour timestamp,
-    details varchar(500) 
+    details varchar(500) ,
+    id_type_conge int references type_conge(id_type_conge) 
 );
 
 create table type_conge(
@@ -294,5 +295,6 @@ create table conge_duree(
        nombre_de_jour int,
         id_type_conge int references type_conge(id_type_conge) 
 );
+
 
 

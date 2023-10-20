@@ -21,6 +21,8 @@ public class Candidature {
     [Column("etat")]
     public int Etat { get; set; }
 
+    public Candidature(){}
+
     public List<Candidature> ObtenirListeCandidatureNonValide()
     {
         using (var context = ApplicationDbContextFactory.Create())
