@@ -36,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub25jZVxRdWVzdGlvbm5haXJlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Candidature/DetailsAnnonce.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcRGV0YWlsc0Fubm9uY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Candidature/Postuler.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXR1cmVcUG9zdHVsZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Conge/RechercheEmploye.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZ2VcUmVjaGVyY2hlRW1wbG95ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Conge/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uZ2VcU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/ITUNIVERSITY/S5/MrTovo/Numer/S5-RH/Views/Contrat/ContratEssai.cshtml]
