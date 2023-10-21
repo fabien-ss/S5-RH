@@ -17,4 +17,16 @@ public class CandidatCv {
     public int IdSexe { get; set; }
     [Column("id_situation_matrimoniale")]
     public int IdSituationMatrimoniale { get; set; }
+    [Column("id_poste")]
+    public int IdPoste { get; set; }
+    
+
+    public void InsererCandidatCv()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            context.CandidatCv.Add(this);
+            context.SaveChanges();
+        }
+    }
 }

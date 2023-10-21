@@ -28,7 +28,7 @@ public class NouvelleAnnonce
         }
     }
     // ici on effectue la sauvegarde de toute les données a propos de l'annonce
-    public void Sauvegarde(Models.bdd.orm.Qualification Qualification)
+    public int Sauvegarde(Models.bdd.orm.Qualification Qualification, List<S5_RH.Models.back.Annonce.Question> questions)
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
@@ -44,6 +44,11 @@ public class NouvelleAnnonce
             Qualification.IdAnnonce = annonce.IdAnnoce;
             context.Qualification.Add(Qualification);
             context.SaveChanges();
+            foreach (var VARIABLE in questions)
+            {
+                VARIABLE.TraitementInsertionQuestion(annonce.IdAnnoce);
+            }
+            return annonce.IdAnnoce;
         }
     }
 }

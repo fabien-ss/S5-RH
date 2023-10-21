@@ -32,7 +32,6 @@ public class ContratController : Controller{
         ViewData["Jours"] = Jour.ObtenirListeJour();
         ViewData["Avantages"] = TypeAvantage.ObtenirTypeAvantage();
         ViewData["TypeContrat"] = TypeContrat.ObtenirTypeContrat();
-
         ViewData["Candidat"] = new Models.bdd.orm.Candidature
         {
             IdCandidature = id
@@ -40,13 +39,12 @@ public class ContratController : Controller{
         TempData["IdCandidat"] = id;
         return View();
     }
-    public IActionResult Traitement(ContratEssai contratEssai)
+    public IActionResult TraitementContratEssai(ContratEssai contratEssai)
     {
         if (ModelState.IsValid)
         {
             object? currentId = TempData["IdCandidat"];
-            // 10 izy en contrat essai
-            //contratEssai.InsertionEssai((int)currentId, 1, 2);
+            Console.WriteLine("Id candidat = "+currentId);
             contratEssai.InsertionEssai((int)currentId, 1, 10);
             return RedirectToAction("ContratTravail");
         }

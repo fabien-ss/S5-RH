@@ -1,9 +1,6 @@
 @model List<S5_RH.Models.bdd.orm.Question>
-@{
-    int nombredequestion = Model.Count;
-}
-
-<form action="TraitementQue stionnaire" method="post">
+<div class="container">
+<form asp-action="Validation" method="post">
         <h1>Veuillez répondre à toutes les questions.</h1>
         <div class="row" style="padding-top: 2%; padding-bottom: 5%; display: inline;">
             @foreach (var item in Model)
@@ -38,3 +35,4 @@
         grid-gap: 3%;
     }
 </style>
+</div>

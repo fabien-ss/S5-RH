@@ -24,6 +24,8 @@ public class CandidatureForm
     private string IdSituationMatrimoniale { get; set; }
     [Required(ErrorMessage = "Hobbies not set.")]
     private string Hobies { get; set; }
+    
+    public int IdAnnonce { get; set; }
 
     public CandidatureForm(string nom, string prenom, DateTime dateDeNaissance, string telephone, string motivation, string idDiplome, string idExperience, string idSexe, string idSituationMatrimoniale, string hobies) 
     {

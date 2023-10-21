@@ -39,11 +39,14 @@ public class AnnonceController : Controller
         if (ModelState.IsValid)
         {
             Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
+            TempData["Qualification"] = JsonSerializer.Serialize(qualif);
             NouvelleAnnonce annonce =
                 JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
             // attention mbola tsy misy id_annonce ilay qualif
-            annonce.Sauvegarde(qualif);
-            TempData.Clear();
+            //int IdAnnonce = annonce.Sauvegarde(qualif);
+            //TempData.Clear();
+            //TempData["IdAnnonce"] = IdAnnonce;
+            return RedirectToAction("Questionnaire");
         }
         return RedirectToAction("NouvelleAnnonce");
     }
@@ -66,6 +69,7 @@ public class AnnonceController : Controller
     
     public IActionResult Questionnaire()
     {
+        //ViewData["IdAnnonce"] = TempData["IdAnnonce"];
         return View();
     }
     

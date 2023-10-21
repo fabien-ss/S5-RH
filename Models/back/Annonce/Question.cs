@@ -7,14 +7,15 @@ public class Question
     public string[]? Reponses { get; set; }
     public string[]? Valeur { get; set; }
 
-    public void TraitementInsertionQuestion()
+    public void TraitementInsertionQuestion(int idAnnonce)
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
             bdd.orm.Question question = new bdd.orm.Question
             {
-                IdAnnonce = 1,
-                Fanontaniana = this.Quest
+                IdAnnonce = idAnnonce,
+                Fanontaniana = this.Quest,
+                Point = 5
             };
             context.Add(question);
             context.SaveChanges();

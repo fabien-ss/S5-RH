@@ -36,8 +36,18 @@ create or replace view v_details_employe as
            join salaire s on s.id_contrat = dc.id_details_contrat
            join type_salaire ts on ts.id_type_salaire = s.id_type_salaire
            join service ser on p.id_service = ser.id_service
-            where dc.is_valide = 10
+           -- aza adino hoe valide = 10
        ;
+
+select c.nom, c.prenom, c.date_de_naissane date_de_naissance, c.contact,  dc.date_debut, dc.date_fin, dc.matricule, tc.nom libelle_contrat, e.id_employe,
+       s.salaire renumeration, ts.nom typesalaire,  dc, dc.is_valide valide
+from employe e
+         join candidature c on e.id_candidature = c.id_candidature
+         join candidat_cv cc on cc.id_candidature = c.id_candidature
+         join details_contrat dc on e.id_employe = dc.id_employe
+         join type_contrat tc on dc.id_type_contrat = tc.id_type_contrat
+         join salaire s on s.id_contrat = dc.id_details_contrat
+         join type_salaire ts on ts.id_type_salaire = s.id_type_salaire;
 
 create or replace view v_employe as 
     select e.id_candidature,  e.id_superieur, c.nom, c.prenom, p.details, e.id_employe, c.etat 

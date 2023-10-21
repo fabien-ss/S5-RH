@@ -12,19 +12,21 @@ function ajouterQuestion() {
         var buttonName = `ajouter${countQuestion}_question[]`;
         nouvelleQuestion.className = "form-group mt-3";
         nouvelleQuestion.innerHTML = `
-                <div class = "col-12 form-floating mb-3" style="margin: auto">
+                <div class = "row form-floating mb-3" style="margin: auto">
                     <div class="input-group d-flex mt-3" id="" style="grid-gap: 0px">
                         <div class="input-group-prepend">
                             <input type="number" name="${questionPointName}" class="form-control me-2 rounded-0 has-validation" placeholder="Coefficient"  required>
                         </div>
+                        <div style="display:inline;">
                             <input type="text" class="form-control me-2 rounded-0 has-validation" name="${questionName}" id="${questionName}" placeholder="Entrez la question" required/>
+                            <button style="float: right" class="btn btn-default mt-3" onclick="valider(this)" type="button" id="validateButton"><i class="fas fa-check"></i></button>
+                            <button style="float: right" class="btn btn-default mt-3" id="${buttonName}" onclick="ajouterReponse(this)" type="button"><i class="fas fa-plus"></i></button>
+                        </div>
                     </div>
                     
                     <div class="col-10" style="margin: auto">
                         <div class="row mt-3 input-group" id="reponses" >
                         </div>
-                        <button style="float: right" class="btn btn-default mt-3" id="${buttonName}" onclick="ajouterReponse(this)" type="button"><i class="fas fa-plus"></i></button>
-                        <button style="float: right" class="btn btn-default mt-3" onclick="valider(this)" type="button" id="validateButton"><i class="fas fa-check"></i></button>
                     </div>
                 </div>
                 `;
@@ -37,12 +39,12 @@ function ajouterReponse(button) {
     validateButton.visible = true;
     var reponseDiv = button.parentElement.querySelector("#reponses");
     var nouvelleReponse = document.createElement("div");
-    nouvelleReponse.className = "col-3";
+    nouvelleReponse.className = "col-4";
     const name = `question${countQuestion}_reponse[]`;
     const validation = `question${countQuestion}_reponse_validation[]`;
     const divName = `div${countQuestion}_reponse[]`;
     nouvelleReponse.innerHTML = `
-            <div class="input-group ${divName} d-flex mt-3" id="" style="grid-gap: 0px">
+            <div class="input-group ${divName} d-flex mt-3" id="" style="grid-gap: 0px; display: inline">
                 <div class="input-group-prepend">
                     <select name="${validation}" class="form-select rounded-0" required>
                         <option class="form-select" value="0">Faux</option>

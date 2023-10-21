@@ -73,4 +73,13 @@ public class Candidature {
                 .First();
         }
     }
+
+    public void InsererCandidature()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            context.Candidature.Add(this);
+            context.SaveChanges();
+        }
+    }
 }

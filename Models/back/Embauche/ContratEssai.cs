@@ -32,7 +32,7 @@ public class ContratEssai
     public string[] JourDeTravail { get; set; }
     [Required(ErrorMessage = "l")]
     public string[] Avantage { get; set; }
-
+    public int IdPoste { get; set; }
     // Insertion des donnees 
     public void InsertionEssai(int IdCandidature, int IdContrat, int etat)
     {
@@ -40,8 +40,10 @@ public class ContratEssai
         this.IdCandidature = IdCandidature;
         Employe employe = new Employe { IdCandidature = this.IdCandidature };
         DetailsContrat detailsContrat = new DetailsContrat { DateDebut = this.DateDebut, DateFin = this.DateDebut.AddMonths(this.DureeContrat), IdTypeContrat = IdContrat, Matricule = "None" };
+        Console.WriteLine("ETO AMBONY INSERTION SALAIRE");
         Salaire salaire = new Salaire
         { DateSalaire = DateTime.Now, Renumeration = this.Renumeration, IdTypeSalaire =  int.Parse(this.TypeSalaire) };
+        Console.WriteLine("ETO ");
         List<Horaire> horaires = new List<Horaire>();
         foreach (var VARIABLE in JourDeTravail) { Horaire horaire = new Horaire { Sortie = this.HoraireSortie, Entree = this.HoraireSortie, IdJour = int.Parse(VARIABLE) }; horaires.Add(horaire); }
         List<Avantage> avantages = new List<Avantage>();
@@ -53,7 +55,7 @@ public class ContratEssai
         {
             // verifier si la personne est deja un employe
             List<Employe> objects = context.Employe.Where(e => e.IdCandidature == IdCandidature).ToList();
-            if (objects.Count < 0) // ici non
+            if (objects.Count <= 0) // ici non
             {
                 context.Employe.Add(employe); 
                 context.SaveChanges(); 
@@ -70,7 +72,9 @@ public class ContratEssai
             context.SaveChanges();
             foreach (var VARIABLE in Avantage) // insertion des differernts avanatages
             {
+                Console.WriteLine("Here? ");
                 Avantage avantage = new Avantage { IdAvantage = int.Parse(VARIABLE), IdEmploye = employe.IdEmploye };
+                Console.WriteLine("YES ");
                 context.Avantage.Add(avantage);
                 context.SaveChanges();
             }

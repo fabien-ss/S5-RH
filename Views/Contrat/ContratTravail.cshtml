@@ -7,10 +7,10 @@
 @using S5_RH.Models.bdd.orm.fiche
 @model S5_RH.Models.back.Embauche.ContratTravail;
 <div class="container">
-    <form asp-action="TraitementRenouvellement" asp-controller="Contrat" method="post">
-        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             @Html.ValidationSummary()
             <h1>Nouveau</h1>
+    <form asp-action="TraitementRenouvellement" asp-controller="Contrat" method="post">
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
            
             <div class="col-6 border-1">
                 <div class="form-floating mb-3">

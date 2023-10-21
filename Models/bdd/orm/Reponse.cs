@@ -1,3 +1,4 @@
+using iTextSharp.text;
 using Microsoft.Extensions.Primitives;
 
 namespace S5_RH.Models.bdd.orm;
@@ -17,7 +18,7 @@ public class Reponse {
     public int Verite { get; set;}
 
     [NotMapped]
-    int UserReponse { get; set; }
+    public int UserReponse { get; set; }
 
     public void setUserReponse(HttpContext context)
     {
@@ -44,8 +45,29 @@ public class Reponse {
         }
         return reponses;
     }
+    // debut
+    public Reponse getReponseById()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Reponse.Where(r => r.IdReponse == this.IdReponse).First();
+        }
+    }
 
-    public bool CheckResponse( List<Reponse> list){
+    public static List<Reponse> listeDesReponses(string[] idReponses)
+    {
+        List<Reponse> respReponses = new List<Reponse>();
+        foreach (var VARIABLE in idReponses)
+        {
+            Reponse r = new Reponse { IdReponse = int.Parse(VARIABLE) };
+            r = r.getReponseById();
+            respReponses.Add(r);
+        }
+    
+        return respReponses;
+    }
+    // fin
+    public bool CheckResponse(List<Reponse> list){
         bool res = false;
         List<Reponse> lst = this.GetReponseVraiByIdQuestion();
         if( list.Count == lst.Count ){
@@ -58,5 +80,4 @@ public class Reponse {
         }
         return res;    
     }
-
 }

@@ -18,7 +18,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientDiplome[]">
                             @foreach (var coef in Model.Coefficients)
                             {
-                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                                <option value="@coef.Value">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -37,7 +37,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientExperience[]">
                              @foreach (var coef in Model.Coefficients)
                             {
-                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                                <option value="@coef.Value">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -56,7 +56,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientSexe[]">
                             @foreach (var coef in Model.Coefficients)
                             {
-                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                                <option value="@coef.Value">@coef.Text</option>
                             }
                         </select>
                     </div>
@@ -75,7 +75,7 @@
                         <select class="form-control rounded-0" id="master" name="CoefficientSituation[]">
                              @foreach (var coef in Model.Coefficients)
                             {
-                                <option value="@coef.IdCoefficient">@coef.Text</option>
+                                <option value="@coef.Value">@coef.Text</option>
                             }
                         </select>
                     </div>

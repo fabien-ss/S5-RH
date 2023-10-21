@@ -8,10 +8,10 @@
 @using S5_RH.Models.bdd.orm
 @model S5_RH.Models.back.Embauche.ContratEssai;
 <div class="container">
-    <form asp-action="Traitement" asp-controller="Contrat" method="post">
-        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             @Html.ValidationSummary()
             <h1>Contrat d'essai</h1>
+    <form asp-action="TraitementContratEssai" asp-controller="Contrat" method="post">
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <input type="hidden" name="IdCandidature" value=@candidature.IdCandidature>
             <div class="col-3 border-1">
                 <span>Name :</span> @candidature.Nom

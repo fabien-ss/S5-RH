@@ -3,7 +3,9 @@
     List<Diplome> dip = (List<Diplome>) ViewData["Diplome"];
     List<Experience> e= (List<Experience>) ViewData["Experience"];
     List<Sexe> s=(List<Sexe>) ViewData["Sexe"];
-    List<SituationMatrimoniale> situationMatrimoniales =(List<SituationMatrimoniale>) ViewData["Situation"];
+    List<SituationMatrimoniale> situationMatrimoniales = (List<SituationMatrimoniale>) ViewData["Situation"];
+    Annonce annonce = (Annonce)ViewData["annonce"];
+    List<Poste> postes = (List<Poste>) ViewData["Poste"];
 }
 <br/>
 <br/>
@@ -13,6 +15,7 @@
             <h1>Details candidature</h1>
         <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
             <div class="col-6 border-1">
+                <input type="hidden" name="IdAnnonce" value="@annonce.IdAnnoce">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control rounded-0" id="Nom" name="Nom" required="">
                     <label for="Nom">Nom</label>
@@ -88,7 +91,14 @@
 
                 <div class="form-floating mb-3">
                     <input type="file" name="Documents[]" class="form-control rounded-0" id="documentDiplome" required>
-
+                </div>
+                <div class="form-floating mb-3">
+                    <select name="IdPoste" class="form-control rounded-0">
+                        @foreach (var p in postes)
+                        {
+                            <option value='@p.IdPoste'>@p.Details</option>
+                        }
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary mt-5" style="float: right;">Suivant</button>
             </div>

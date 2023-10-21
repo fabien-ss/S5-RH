@@ -7,21 +7,23 @@ public class Note {
     [Key]
     [Column("id_candidature")]
     public int IdCandidature { get; set;}
-    [Column("id_annonce")]
-    public int IdAnnonce { get; set;}
     [Column("note_cv")]
     public double NoteCv { get; set;}
     [Column("note_question")]
     public double NoteQuestion { get; set;}
 
-    public Note( int candidature, int annonce){
-        IdAnnonce = annonce;
-        IdCandidature = candidature;
-        NoteCv = GetNoteCv();
-    }
     public Note(){}
 
+    public void InsererNote()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            context.Note.Add(this);
+            context.SaveChanges();
+        }
+    }
 
+/*
     public double GetNoteCv(){
         double res = 0;
 
@@ -49,7 +51,7 @@ public class Note {
 
         return res;
     }
-
+*//*
     public double GetNoteQuestion( Dictionary<Question , List<Reponse>> dico){
         double res = 0;
         foreach( KeyValuePair<Question , List<Reponse>> elt in dico){
@@ -58,5 +60,5 @@ public class Note {
             }            
         }
         return res;
-    } 
+    } */
 }

@@ -1,7 +1,11 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using S5_RH.Models.back.Annonce;
 using S5_RH.Models.bdd.orm;
 using Question = S5_RH.Models.back.Annonce.Question;
 using Diplome = S5_RH.Models.bdd.orm.Diplome;
+using Qualification = S5_RH.Models.bdd.orm.Qualification;
+
 namespace S5_RH.Controllers.Annonce;
 
     public class QuestionnaireController : Controller
@@ -11,6 +15,7 @@ namespace S5_RH.Controllers.Annonce;
         {
             // id_annonce
             var nombreDeQuestion = int.Parse(HttpContext.Request.Form["nombreDeQuestion"]);
+            List<Question> questions = new List<Question>();
             for (int i = 1; i <= nombreDeQuestion; i++)
             {
                 var nomQuestion = $"question{i}_question";
@@ -26,8 +31,16 @@ namespace S5_RH.Controllers.Annonce;
                     Reponses = responses,
                     Valeur = validity
                 };
-                question1.TraitementInsertionQuestion();
+                
+                int IdAnnonce = (int)TempData["IdAnnonce"];
+                questions.Add(question1);
+                //question1.TraitementInsertionQuestion(IdAnnonce);
             }
+            NouvelleAnnonce annonce =
+                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
+            Qualification qualification =
+                JsonSerializer.Deserialize<Qualification>((string) TempData["Qualification"]);
+            annonce.Sauvegarde(qualification, questions);
             return RedirectToAction("Index", "Home");
         }
 

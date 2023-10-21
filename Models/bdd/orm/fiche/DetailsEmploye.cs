@@ -77,7 +77,14 @@ public class DetailsEmploye
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            return context.DetailsEmploye.Where(d => d.IdEmploye == this.IdEmploye).First();
+            return context.DetailsEmploye.Where(d => d.IdEmploye == this.IdEmploye ).First();
+        }
+    }
+    public DetailsEmploye ObtenirDetailsEmployeAlternanceParId()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.DetailsEmploye.Where(d => d.IdEmploye == this.IdEmploye & d.IsValide == 0).First();
         }
     }
 }
