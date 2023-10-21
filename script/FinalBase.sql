@@ -280,7 +280,6 @@ create table conge(
     date_debut timestamp,
     date_declaration timestamp,
     date_fin timestamp default null,
-    date_retour timestamp,
     details varchar(500) ,
     id_type_conge int references type_conge(id_type_conge) 
 );
