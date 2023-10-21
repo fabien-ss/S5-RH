@@ -13,7 +13,6 @@ namespace S5_RH.Controllers.Annonce;
         [HttpPost]
         public ActionResult InsertionQuestionnaire()
         {
-            // id_annonce
             var nombreDeQuestion = int.Parse(HttpContext.Request.Form["nombreDeQuestion"]);
             List<Question> questions = new List<Question>();
             for (int i = 1; i <= nombreDeQuestion; i++)
@@ -34,7 +33,6 @@ namespace S5_RH.Controllers.Annonce;
                 
                 int IdAnnonce = (int)TempData["IdAnnonce"];
                 questions.Add(question1);
-                //question1.TraitementInsertionQuestion(IdAnnonce);
             }
             NouvelleAnnonce annonce =
                 JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);

@@ -11,7 +11,6 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CandidatureController : Controller
 {
-    // obtenir les details de l'annonce
     public IActionResult DetailsAnnonce(int idAnnonce)
     {
         Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce { IdAnnoce = idAnnonce };
@@ -19,7 +18,6 @@ public class CandidatureController : Controller
         ViewData["Annonce"] = annonce;
         return View();
     }
-    // postuler pour l'annonce
     public IActionResult Postuler(string idAnnonce)
     {
         
@@ -91,20 +89,4 @@ public class CandidatureController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-    /*public IActionResult TraitementCandidature(CandidatureForm candidature)
-    {
-        if (ModelState.IsValid)
-        {
-            Models.bdd.orm.Candidature candidat = new Models.bdd.orm.Candidature();
-            Models.bdd.orm.CandidatCv cv = new Models.bdd.orm.CandidatCv();
-
-            // attention mbola tsy misy id_annonce ilay qualif
-         //   candidat.Sauvegarde(candidat);
-            TempData.Clear();
-        }
-
-        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
-        return RedirectToAction("NouvelleAnnonce");
-    }*/
-    
 }

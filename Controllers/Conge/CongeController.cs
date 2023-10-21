@@ -39,7 +39,6 @@ public class CongeController : Controller
     public IActionResult ListePersonneConge(string matricule)
     {
         List<ListePersonneConge> listePersonneConges = new List<ListePersonneConge>();
-        // string response = await CallApi("");
         if (matricule != null)
         {
             ListePersonneConge lc = new ListePersonneConge { Matricule = matricule };
@@ -60,15 +59,11 @@ public class CongeController : Controller
         ViewData["typeConge"] = new TypeConge().ObtenirTypeConges();
         if (matricule != null)
         {
-            Console.WriteLine(matricule);
             matricule = matricule.Trim();
             string url = "http://localhost:8080/employee/getByMatricule/"+matricule;
             Console.WriteLine(url);
             string jsonResponse = await CallApi(url);
             detailsEmploye = JsonConvert.DeserializeObject<DetailsEmploye>(jsonResponse);
-            Console.WriteLine(jsonResponse);
-            Console.WriteLine(detailsEmploye.Nom);
-            
             ViewData["detailsEmploye"] = detailsEmploye;
             return View();
         }

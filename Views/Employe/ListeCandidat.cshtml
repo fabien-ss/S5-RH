@@ -1,7 +1,10 @@
+@Html.Partial("EmployeOption");
+
 @using S5_RH.Models.bdd.orm
 @{
     List<Candidature> candidatures = (List<Candidature>)ViewData["ListeCandidature"];
 }
+<div class="container">
     <h1>Liste des candidats</h1>
     <table class="table table-striped">
         <tr>
@@ -18,6 +21,8 @@
                 <td>@emp.Contact</td>
                 <td>@emp.DateDeNaissance</td>
                 <td><a href="/Contrat/ContratEssai/@emp.IdCandidature">Contrat Essai</a>
+                
             </tr>
         }
     </table>
+</div>

@@ -42,10 +42,6 @@ public class AnnonceController : Controller
             TempData["Qualification"] = JsonSerializer.Serialize(qualif);
             NouvelleAnnonce annonce =
                 JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
-            // attention mbola tsy misy id_annonce ilay qualif
-            //int IdAnnonce = annonce.Sauvegarde(qualif);
-            //TempData.Clear();
-            //TempData["IdAnnonce"] = IdAnnonce;
             return RedirectToAction("Questionnaire");
         }
         return RedirectToAction("NouvelleAnnonce");
@@ -53,8 +49,6 @@ public class AnnonceController : Controller
     
     public IActionResult NouvelleAnnonce()
     {
-        
-        // listes des services
         ViewData["students"] = "Nouvelle Annonce";
         NouvelleAnnonce nouvelleAnnonce = new NouvelleAnnonce();
         ViewData["services"] = nouvelleAnnonce.Services;
@@ -69,7 +63,6 @@ public class AnnonceController : Controller
     
     public IActionResult Questionnaire()
     {
-        //ViewData["IdAnnonce"] = TempData["IdAnnonce"];
         return View();
     }
     
@@ -80,8 +73,6 @@ public class AnnonceController : Controller
     }
     public IActionResult ListeQualification()
     {
-        
-        // listes des services
         ViewData["qualif"] = new S5_RH.Models.bdd.orm.Qualification().ListAll();
         ViewData["Score"] = new S5_RH.Models.bdd.orm.Qualification().GetScore(1);
         return View();

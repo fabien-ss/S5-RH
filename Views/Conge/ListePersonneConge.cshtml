@@ -1,9 +1,12 @@
+@Html.Partial("CongeOption");
+
 @using S5_RH.Models.bdd.orm.Conge
 @{
   List<ListePersonneConge> listes = (List<ListePersonneConge>)ViewData["personne"];
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+<div class="container">
 <div class="row">
   <div class="col-3" style="margin-left: 10px;">
     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -48,7 +51,7 @@
 <div class="col-1"> </div>
   </div>
 </div>
-
+</div>
   <style>
     .table [data-sort] {
           cursor: pointer;
