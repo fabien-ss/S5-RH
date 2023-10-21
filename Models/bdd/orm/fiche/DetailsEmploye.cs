@@ -23,8 +23,7 @@ public class DetailsEmploye
     public DateTime? DateDebut{ get; set;}
     [Column("date_fin")]
     public DateTime? DateFin{ get; set;}
-    [Column("matricule")]
-    public string? matricule{ get; set;}
+    
     [Column("libelle_contrat")]
     public string? LibelleContrat{ get; set;}
     [Column("id_employe")]
@@ -38,6 +37,18 @@ public class DetailsEmploye
     public string? Service { get; set; }
     [Column("valide")]
     public int IsValide { get; set; }
+    [Column("sexe")]
+    public int IdSexe{ get;set;}
+    [Column("genre")]
+    public string Genre{ get;set;}
+    [Column("capacite_exercice")]
+    public double CapaciteExercice{ get;set;}
+    [Column("anciennete")]
+    public double Anciennete{ get;set;}
+    [Column("matricule")]
+    public string Matricule { get; set; }
+    [Column("id_candidature")]
+    public int IdCandidature { get; set; }
     [NotMapped]
     public List<VAvantages> VAvantages{ get; set;}
     [NotMapped]
@@ -85,6 +96,14 @@ public class DetailsEmploye
         using (var context = ApplicationDbContextFactory.Create())
         {
             return context.DetailsEmploye.Where(d => d.IdEmploye == this.IdEmploye & d.IsValide == 0).First();
+        }
+    }
+
+    public List<DetailsEmploye> ObtenirTousLesEmployes()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.DetailsEmploye.ToList();
         }
     }
 }

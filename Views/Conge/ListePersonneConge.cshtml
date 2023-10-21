@@ -3,9 +3,7 @@
   List<ListePersonneConge> listes = (List<ListePersonneConge>)ViewData["personne"];
 }
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<div class="row" style="margin: auto;">
-      
-  </div>
+
 <div class="row">
   <div class="col-3" style="margin-left: 10px;">
     <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -33,16 +31,15 @@
         @foreach (var p in listes)
         {
             <tr>
-          <form asp-action="InsertionConge" asp-controller="Conge" method="get">
-              <input type="hidden" name="Matricule" value="@p.Matricule"/>
-              <th scope="row" class="id">@p.Matricule</th>
-              <td class="firstname">@p.Nom</td>
-              <td class="lastname">@p.Prenom</td>
-              <td class="username">@p.DateDebut</td>
-              <td class="username">@p.DateDeclaration</td>
-              <td class="username"><input type="datetime-local" name="DateFin" class="btn btn-outline-primary"></td>
-              <td class="username"><input type="submit" class="btn btn-primary"></td>
-          </form>
+              <form asp-action="UpdateConge" asp-controller="Conge" method="post">
+                  <input type="hidden" name="Matricule" value="@p.Matricule"/>
+                  <th scope="row" class="id">@p.Matricule</th>
+                  <td class="firstname">@p.Nom</td>
+                  <td class="lastname">@p.Prenom</td>
+                  <td class="username">@p.DateDebut</td>
+                  <td class="username">@p.DateDeclaration</td>
+                  <td class="username"><input type="submit" value="Fini" class="btn btn-primary"></td>
+              </form>
             </tr>
         }
         </tbody>

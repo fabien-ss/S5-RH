@@ -1,5 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace S5_RH.Models.bdd.orm.Conge;
 [Table("conge")]
@@ -14,8 +17,7 @@ public class Conge{
     public DateTime DateDeclaration { get; set; }    
     [Column("date_fin")]
     public DateTime DateFin { get; set; } 
-    [Column("date_retour")]
-    public DateTime DateRetour { get; set; } 
+    
     [Column("details")]
     public string Details { get; set; }
     [Column("id_type_conge")]
@@ -34,9 +36,12 @@ public class Conge{
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            Conge c = context.Conge.Where(c => c.Matricule == this.Matricule & c.DateFin == null).First();
+            var sql = $"SELECT * FROM Conge WHERE matricule = '{this.Matricule}' AND date_fin = '-infinity'";
+            Console.WriteLine("Matricule = "+this.Matricule);
+            Conge c = context.Conge.FromSqlRaw(sql).ToList().First();
             c.DateFin = this.DateFin;
-            c.update();
+            Console.WriteLine("Date fin = "+this.DateFin);
+            context.Update(c);
             context.SaveChanges();
         }
     }

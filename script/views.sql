@@ -26,7 +26,7 @@ create or replace view v_horaire
 
 create or replace view v_details_employe as 
        select c.nom, c.prenom, c.date_de_naissane date_de_naissance, c.contact, p.details, p.id_poste, dc.date_debut, dc.date_fin, dc.matricule, tc.nom libelle_contrat, e.id_employe,
-     s.salaire renumeration, ts.nom typesalaire, ser.nom service, dc, dc.is_valide valide
+     s.salaire renumeration, ts.nom typesalaire, ser.nom service, dc, dc.is_valide valide, cc.id_sexe sexe, sx.details genre,   EXTRACT(YEAR FROM age(now(), c.date_de_naissane)) capacite_exercice, extract(year from age(now(), dc.date_debut )) anciennete, c.id_candidature 
        from employe e 
            join candidature c on e.id_candidature = c.id_candidature 
            join candidat_cv cc on cc.id_candidature = c.id_candidature
@@ -36,7 +36,8 @@ create or replace view v_details_employe as
            join salaire s on s.id_contrat = dc.id_details_contrat
            join type_salaire ts on ts.id_type_salaire = s.id_type_salaire
            join service ser on p.id_service = ser.id_service
-           -- aza adino hoe valide = 10
+            join sexe sx on sx.id_sexe = cc.id_sexe
+           where dc.is_valide = 10
        ;
 
 select c.nom, c.prenom, c.date_de_naissane date_de_naissance, c.contact,  dc.date_debut, dc.date_fin, dc.matricule, tc.nom libelle_contrat, e.id_employe,

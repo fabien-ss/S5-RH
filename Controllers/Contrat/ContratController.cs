@@ -45,7 +45,7 @@ public class ContratController : Controller{
         {
             object? currentId = TempData["IdCandidat"];
             Console.WriteLine("Id candidat = "+currentId);
-            contratEssai.InsertionEssai((int)currentId, 1, 10);
+            contratEssai.InsertionEssai((int)currentId, 3, 10);
             return RedirectToAction("ContratTravail");
         }
         return RedirectToAction("ContratEssai");

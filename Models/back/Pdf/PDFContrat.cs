@@ -92,7 +92,6 @@ public class PDFContrat : PDF
         foreach (var jour in this.DetailsEmploye.VHorraires)
         {
             table.AddCell(new PdfPCell(new Phrase(jour.Jour, font)));
-            
         }
 
         table.AddCell("Entrée");

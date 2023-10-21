@@ -21,7 +21,7 @@ public class ContratTravail : ContratEssai
             foreach (var d in dts)
             {
                 d.IdValide = 10;
-                d.Matricule = DateDebut.Date + CompleterString(7,d.IdEmploye+""); 
+                d.Matricule = CompleterString(7,d.IdEmploye+""); 
                 context.SaveChanges();
             }
            // dc = context.DetailsContrat.Where(d => d.IdEmploye == employe.IdEmploye).First();

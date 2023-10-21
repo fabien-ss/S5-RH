@@ -92,10 +92,9 @@
               <div class="card-body form-control" style="padding:5%">
                 <div class="form-floating mb-3"  >
                   @Html.ValidationSummary();
-                      <input name="Matricule" type = "hidden" value="@detailsEmploye.matricule"/> 
+                      <input name="Matricule" type = "hidden" value="@detailsEmploye.Matricule"/> 
                   <label for="conge">Congé</label>
                     <select class="form-control rounded-2" name="IdTypeConge" id="conge" required>
-                      
                         @foreach (var conge in typeConges)
                         {
                           <option value="@conge.IdTypeConge">@conge.Libelle</option>
@@ -124,11 +123,6 @@
                 <label for="exampleInputEmail1">Date declaration congé</label>
                 <input type="datetime-local" name="DateDeclaration" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
               </div>
-              <div class="form-select">
-                <label for="exampleInputEmail1">Date retour congé</label>
-                <input type="datetime-local" name="DateRetour" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              </div>
-                 
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>

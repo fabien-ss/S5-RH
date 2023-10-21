@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
 using S5_RH.Models.bdd.orm.Conge;
 using S5_RH.Models.bdd.orm.fiche;
@@ -7,9 +8,11 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CongeController : Controller
 {
-    public IActionResult UpdateConge(string Matricule, DateTime DateFin)
+    public IActionResult UpdateConge()
     {
-        Conge c = new Conge { Matricule = Matricule, DateFin = DateFin };
+        string Matricule = HttpContext.Request.Form["Matricule"];
+        DateTime dateFin = DateTime.Now;
+        Conge c = new Conge { Matricule = Matricule, DateFin = dateFin };
         c.update();
         return RedirectToAction("ListePersonneConge");
     }
@@ -22,15 +25,10 @@ public class CongeController : Controller
     {
         if (conge != null)
         {
-            
-         conge.insertion();
-         return RedirectToAction("Success");
+             conge.insertion();
+             return RedirectToAction("Success");
         }
-         
-         
-     //   string response = await CallApi("dqsd");
         return RedirectToAction("Error");
-     //return View();
     }
 
     public IActionResult Success()

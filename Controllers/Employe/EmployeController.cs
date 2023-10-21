@@ -38,4 +38,10 @@ public class EmployeController : Controller{
         ViewData["ListeEmploye"] = Candidats;
         return View();
     }
+
+    public IActionResult ListeDetailsParEmploye()
+    {
+        ViewData["employe"] = new DetailsEmploye().ObtenirTousLesEmployes();
+        return View();
+    }
 }
