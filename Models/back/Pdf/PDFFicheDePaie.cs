@@ -30,7 +30,7 @@ public class PDFFicheDePaie : PDF
         this.DetailsEmploye = de.ObtenirDetailsEmployeParId();
         this.fontHeader = new Font(Font.FontFamily.HELVETICA, 9);
         //this.Content();
-        //this.Footer();
+        this.Footer();
     }
     public void Header()
     {
@@ -78,6 +78,13 @@ public class PDFFicheDePaie : PDF
         Contenu2.Add(new Chunk("Salaire de base : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Contenu2.Add(new Chunk($"{this.DetailsEmploye.Salaire}", this.fontHeader));
         Ligne(Contenu2, 1);
+        double? TauxJournalier = this.DetailsEmploye.Salaire/30;
+        Contenu2.Add(new Chunk("Taux Journaliers : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu2.Add(new Chunk($"{TauxJournalier}", this.fontHeader));
+        Ligne(Contenu2, 1);
+        double? TauxHoraire = TauxJournalier/173.33;
+        Contenu2.Add(new Chunk("Taux horaires : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu2.Add(new Chunk($"{TauxHoraire }", this.fontHeader));
         
         table.AddCell(Contenu2);
         this.Document.Add(table);
@@ -85,12 +92,64 @@ public class PDFFicheDePaie : PDF
 
     public void Content()
     {
-        throw new NotImplementedException();
+        PdfPTable table = new PdfPTable(4);
+        table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
+       
+        PdfPTable table2 = new PdfPTable(3);
+        table2.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
+
+        Paragraph contenu1 = new Paragraph();
+        Paragraph contenu2 = new Paragraph();
+        Paragraph contenu3 = new Paragraph();
+        Paragraph contenu4 = new Paragraph();
+        Paragraph contenu5 = new Paragraph();
+        Paragraph contenu6 = new Paragraph();
+        Paragraph contenu7 = new Paragraph();
+        
+        Ligne(contenu1, 1);
+        contenu1.Add(new Chunk($"Designation", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        
+        Ligne(contenu2, 1);
+        contenu2.Add(new Chunk($"Nombre", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        
+        Ligne(contenu3, 1);
+        contenu3.Add(new Chunk($"Taux", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        
+        Ligne(contenu4, 1);
+        contenu4.Add(new Chunk($"Montant", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+
+        table.AddCell(contenu1);
+        table.AddCell(contenu2);
+        table.AddCell(contenu3);
+        table.AddCell(contenu4);
+
+        table2.AddCell(contenu5);
+        table2.AddCell(contenu6);
+        table2.AddCell(contenu7);
+
+        this.Document.Add(table);
+        this.Document.Add(table2);
+        
     }
 
     public void Footer()
     {
-        throw new NotImplementedException();
+        PdfPTable table = new PdfPTable(2);
+        table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
+       
+        table.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+        Paragraph contenu = new Paragraph();
+        Paragraph contenu2 = new Paragraph();
+        Ligne(contenu, 1);
+        contenu.Add(new Chunk($"Employeur", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Ligne(contenu2, 1);
+        contenu2.Add(new Chunk($"Employe", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        
+        table.AddCell(contenu);
+        table.AddCell(contenu2);
+        
+        this.Document.Add(table);
     }
     public void Ligne(Paragraph contenu,int nombre)
     {

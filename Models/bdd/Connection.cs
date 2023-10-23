@@ -6,9 +6,9 @@ public class Connection {
     public static NpgsqlConnection GetConnection() {
         int Port = 5432;
         string Host = "localhost";
-        string User = "postgres";
+        string User = "mamisoa";
         string Database = "rh2test";
-        string Password = "fabien";
+        string Password = "prom15";
         // Connection String to the sql server database
         string connString =
                 String.Format(
