@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "513H2IDDUkdgQFQyvxsS6YEqsfKFF7RPC4GnYI4zcyo=",
+  "Hash": "SZLUrL+OHqujUDHGtPkA5JMLaR/Uc7jaNJI/GGAzEZc=",
   "Source": "S5-RH",
   "BasePath": "_content/S5-RH",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\wwwroot\\image\\Fiche.pdf",
+      "SourceId": "S5-RH",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\wwwroot\\",
+      "BasePath": "_content/S5-RH",
+      "RelativePath": "image/Fiche.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Fiche.pdf"
     },
     {
       "Identity": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\wwwroot\\image\\FichePoste.pdf",

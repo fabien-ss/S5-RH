@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\wwwroot\\image\\Fiche.pdf",
+      "PackagePath": "staticwebassets\\image\\Fiche.pdf"
+    },
+    {
       "Id": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\wwwroot\\image\\FichePoste.pdf",
       "PackagePath": "staticwebassets\\image\\FichePoste.pdf"
     },

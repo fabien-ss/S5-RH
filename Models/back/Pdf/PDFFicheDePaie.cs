@@ -12,15 +12,16 @@ public class PDFFicheDePaie : PDF
     private DetailsEmploye DetailsEmploye;
     private String Path;
     private double? TauxJournalier;
-    private double TauxHoraire;
+    private double? TauxHoraire;
     private Font fontHeader;
     public void Build()
     {
-        
         this.Document = new Document();
         PdfWriter.GetInstance(Document, new FileStream(Path, FileMode.Create));
         this.Document.Open();
         this.Header();
+        this.Content();
+        this.Footer();
         this.Document.CloseDocument();
     }
     public PDFFicheDePaie(String Path, int IdEmploye)
@@ -29,8 +30,6 @@ public class PDFFicheDePaie : PDF
         bdd.orm.fiche.DetailsEmploye de = new DetailsEmploye { IdEmploye = IdEmploye };
         this.DetailsEmploye = de.ObtenirDetailsEmployeParId();
         this.fontHeader = new Font(Font.FontFamily.HELVETICA, 9);
-        //this.Content();
-        this.Footer();
     }
     public void Header()
     {
@@ -60,10 +59,10 @@ public class PDFFicheDePaie : PDF
         Contenu.Add(new Chunk($"{this.DetailsEmploye.Matricule}", this.fontHeader));
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Date d'embauche : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
-        Contenu.Add(new Chunk($"{this.DetailsEmploye.Matricule}", this.fontHeader));
+        Contenu.Add(new Chunk($"{this.DetailsEmploye.DateDebut}", this.fontHeader));
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Ancienneté : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
-        Contenu.Add(new Chunk($"{this.DetailsEmploye.CapaciteExercice}", this.fontHeader));
+        Contenu.Add(new Chunk($"{this.DetailsEmploye.CalculateAnciennete()} jours", this.fontHeader));
         
         table.AddCell(Contenu);
         
@@ -78,11 +77,11 @@ public class PDFFicheDePaie : PDF
         Contenu2.Add(new Chunk("Salaire de base : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Contenu2.Add(new Chunk($"{this.DetailsEmploye.Salaire}", this.fontHeader));
         Ligne(Contenu2, 1);
-        double? TauxJournalier = this.DetailsEmploye.Salaire/30;
+        this.TauxJournalier = Decimal.ToDouble(Math.Round((decimal)(this.DetailsEmploye.Salaire/30)));
         Contenu2.Add(new Chunk("Taux Journaliers : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Contenu2.Add(new Chunk($"{TauxJournalier}", this.fontHeader));
         Ligne(Contenu2, 1);
-        double? TauxHoraire = TauxJournalier/173.33;
+        this.TauxHoraire = Decimal.ToDouble(Math.Round((decimal)(this.DetailsEmploye.Salaire/173.33)));
         Contenu2.Add(new Chunk("Taux horaires : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Contenu2.Add(new Chunk($"{TauxHoraire }", this.fontHeader));
         
@@ -93,48 +92,202 @@ public class PDFFicheDePaie : PDF
     public void Content()
     {
         PdfPTable table = new PdfPTable(4);
-        table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
-       
-        PdfPTable table2 = new PdfPTable(3);
-        table2.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
+        // table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
 
-        Paragraph contenu1 = new Paragraph();
-        Paragraph contenu2 = new Paragraph();
-        Paragraph contenu3 = new Paragraph();
-        Paragraph contenu4 = new Paragraph();
-        Paragraph contenu5 = new Paragraph();
-        Paragraph contenu6 = new Paragraph();
-        Paragraph contenu7 = new Paragraph();
-        
-        Ligne(contenu1, 1);
-        contenu1.Add(new Chunk($"Designation", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
-        
-        Ligne(contenu2, 1);
-        contenu2.Add(new Chunk($"Nombre", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
-        
-        Ligne(contenu3, 1);
-        contenu3.Add(new Chunk($"Taux", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
-        
-        Ligne(contenu4, 1);
-        contenu4.Add(new Chunk($"Montant", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        PdfPCell designation = new PdfPCell(new Phrase("Designation", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        designation.HorizontalAlignment = Element.ALIGN_CENTER;
+        PdfPCell nombre = new PdfPCell(new Phrase("Nombre", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        nombre.HorizontalAlignment = Element.ALIGN_CENTER;
+        PdfPCell taux = new PdfPCell(new Phrase("Taux", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        taux.HorizontalAlignment = Element.ALIGN_CENTER;
+        PdfPCell Montant = new PdfPCell(new Phrase("Montant", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Montant.HorizontalAlignment = Element.ALIGN_CENTER;
 
-        table.AddCell(contenu1);
-        table.AddCell(contenu2);
-        table.AddCell(contenu3);
-        table.AddCell(contenu4);
+        table.AddCell(designation);  
+        table.AddCell(nombre);  
+        table.AddCell(taux);  
+        table.AddCell(Montant);  
+        
 
-        table2.AddCell(contenu5);
-        table2.AddCell(contenu6);
-        table2.AddCell(contenu7);
+        table.AddCell("Salaire");  
+        table.AddCell("1 mois");  
+        table.AddCell("");  
+        table.AddCell($"{this.DetailsEmploye.Salaire}");  
+        
+        table.AddCell("Absence deductible");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+
+        table.AddCell("Prime de rendement");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+        
+        table.AddCell("Prime d'anciennete");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+        
+        table.AddCell("Heures supplémentaires majorées de 30%");  
+        table.AddCell("");  
+        table.AddCell("");
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(TauxHoraire * 1.3)))}");
+
+        table.AddCell("Heures supplémentaires majorées de 40%");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(TauxHoraire * 1.4)))}"); 
+        
+        table.AddCell("Heures supplémentaires majorées de 50% ");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(TauxHoraire * 1.5)))}"); 
+        
+        table.AddCell("Heures supplémentaires majorées de 100%");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(TauxHoraire * 2)))}"); 
+        
+        table.AddCell("Majoration pour heures de nuit");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(TauxHoraire * 0.3)))}"); 
+        
+        table.AddCell("Primes diverses");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+        
+        table.AddCell("Rappels sur période antérieure");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+        
+        table.AddCell("Droits de congés");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell(""); 
+        
+        table.AddCell("Droits de préavis");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell("");        
+        
+        table.AddCell("Indemnités de licenciement");  
+        table.AddCell("");  
+        table.AddCell(""); 
+        table.AddCell("");         
+
+        PdfPCell salaireBrut = new PdfPCell(new Phrase("Salaire Brut", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        salaireBrut.Colspan = 3;
+        salaireBrut.HorizontalAlignment = Element.ALIGN_RIGHT;
+        salaireBrut.Border = PdfPCell.NO_BORDER;
+        
+        table.AddCell(salaireBrut); 
+        table.AddCell($"{this.DetailsEmploye.Salaire}");         
+        
+        PdfPCell cnaps = new PdfPCell(new Phrase("Retenue CNaPS"));
+        cnaps.Colspan = 2;
+        cnaps.HorizontalAlignment = Element.ALIGN_CENTER;
+
+        table.AddCell(cnaps);  
+        table.AddCell(""); 
+        table.AddCell("");   
+
+        PdfPCell sanitaire = new PdfPCell(new Phrase("Retenue sanitaire"));
+        sanitaire.Colspan = 2;
+        sanitaire.HorizontalAlignment = Element.ALIGN_CENTER;
+
+        table.AddCell(sanitaire);  
+        table.AddCell(""); 
+        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(this.DetailsEmploye.Salaire * 0.01)))}");         
+         
+        PdfPCell IRSA = new PdfPCell(new Phrase("Tranche IRSA INF 350 0000"));
+        IRSA.Colspan = 2;
+        IRSA.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(IRSA);  
+        table.AddCell(""); 
+        table.AddCell("");         
+
+        PdfPCell IRSA2 = new PdfPCell(new Phrase("Tranche IRSA I DE 350 0001 à 400 000"));
+        IRSA2.Colspan = 2;
+        IRSA2.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(IRSA2);  
+        table.AddCell("5%"); 
+        table.AddCell("");         
+    
+        PdfPCell IRSA3 = new PdfPCell(new Phrase("Tranche IRSA I DE 400 0001 à 500 000"));
+        IRSA3.Colspan = 2;
+        IRSA3.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(IRSA3);  
+        table.AddCell("10%"); 
+        table.AddCell("");         
+        
+        PdfPCell IRSA4 = new PdfPCell(new Phrase("Tranche IRSA I DE 500 001 à 600 000"));
+        IRSA4.Colspan = 2;
+        IRSA4.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(IRSA4);  
+        table.AddCell("15%"); 
+        table.AddCell("");         
+        
+        PdfPCell IRSA5 = new PdfPCell(new Phrase("Tranche IRSA SUP 600 0000"));
+        IRSA5.Colspan = 2;
+        IRSA5.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(IRSA5);  
+        table.AddCell("20%"); 
+        table.AddCell("");         
+         
+        PdfPCell total = new PdfPCell(new Phrase("Total IRSA",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        total.Colspan = 2;
+        total.HorizontalAlignment = Element.ALIGN_CENTER;
+        table.AddCell(total);   
+        table.AddCell(""); 
+        table.AddCell("");         
+
+        PdfPCell retenues = new PdfPCell(new Phrase("Total des retenues",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        retenues.Colspan = 3;
+        retenues.HorizontalAlignment = Element.ALIGN_RIGHT;
+        retenues.Border = PdfPCell.NO_BORDER;
+        table.AddCell(retenues); 
+        table.AddCell("");         
+          
+        PdfPCell autres = new PdfPCell(new Phrase("Autre indemnitées",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        autres.Colspan = 3;
+        autres.HorizontalAlignment = Element.ALIGN_RIGHT;
+        autres.Border = PdfPCell.NO_BORDER;
+        table.AddCell(autres);  
+        table.AddCell("");         
+        
+        PdfPCell net = new PdfPCell(new Phrase("Net a payer ",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        net.Colspan = 3;
+        net.HorizontalAlignment = Element.ALIGN_RIGHT;
+        net.Border = PdfPCell.NO_BORDER;
+        table.AddCell(net); 
+        table.AddCell("");         
+          
+        PdfPCell montantImposable = new PdfPCell(new Phrase("Montant imposable",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        net.HorizontalAlignment = Element.ALIGN_RIGHT;
+        table.AddCell("Montant imposable");  
+        table.AddCell("");    
+          
+        PdfPCell mode = new PdfPCell(new Phrase("mode de paiment ",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        mode.HorizontalAlignment = Element.ALIGN_RIGHT;
+        mode.Border = PdfPCell.NO_BORDER;
+        PdfPCell mode2 = new PdfPCell(new Phrase("Virement/Chèque",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        mode2.HorizontalAlignment = Element.ALIGN_RIGHT;
+        mode2.Border = PdfPCell.NO_BORDER;
+        table.AddCell(mode);  
+        table.AddCell(mode2); 
+
 
         this.Document.Add(table);
-        this.Document.Add(table2);
         
     }
 
     public void Footer()
     {
-        PdfPTable table = new PdfPTable(2);
+        PdfPTable table = new(2);
         table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
        
         table.DefaultCell.Border = PdfPCell.NO_BORDER;
@@ -142,9 +295,9 @@ public class PDFFicheDePaie : PDF
         Paragraph contenu = new Paragraph();
         Paragraph contenu2 = new Paragraph();
         Ligne(contenu, 1);
-        contenu.Add(new Chunk($"Employeur", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        contenu.Add(new Chunk("Employeur", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Ligne(contenu2, 1);
-        contenu2.Add(new Chunk($"Employe", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        contenu2.Add(new Chunk("Employé(e)", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         
         table.AddCell(contenu);
         table.AddCell(contenu2);

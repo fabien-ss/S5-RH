@@ -106,4 +106,10 @@ public class DetailsEmploye
             return context.DetailsEmploye.ToList();
         }
     }
+
+    public double CalculateAnciennete(){
+        DateTime now = DateTime.Now;
+        TimeSpan res = now.Subtract((DateTime)this.DateDebut);
+        return Math.Round(res.TotalDays);
+    }
 }
