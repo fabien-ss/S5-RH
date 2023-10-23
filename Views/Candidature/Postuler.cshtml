@@ -19,76 +19,76 @@
             <div class="col-6 border-1">
                 <input type="hidden" name="IdAnnonce" value="@annonce.IdAnnoce">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control rounded-0" id="Nom" name="Nom" required="">
                     <label for="Nom">Nom</label>
+                    <input type="text" class="form-control rounded-0" id="Nom" name="Nom" required="">
                 </div>
                 <div class="forgm-floating mb-3">
-                    <input type="text" class="form-control rounded-0" id="prenom" name="Prenom" required>
                     <label for="prenom">Prenom</label>
+                    <input type="text" class="form-control rounded-0" id="prenom" name="Prenom" required>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="datetime-local" name="DateDeNaissance" class="form-control rounded-0" id="DateDeNaissance" required>
                     <label for="dateDeNaissance">Date de naissance</label>
+                    <input type="date" name="DateDeNaissance" class="form-control rounded-0" id="DateDeNaissance" required>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="Telephone" class="form-control rounded-0" id="telephone">
                     <label for="telephone">Téléphone</label>
+                    <input type="text" name="Telephone" class="form-control rounded-0" id="telephone">
                 </div>
                 <div class="form-floating mb-3">
+                    <label for="motivation">Motivation (facultatif)</label>
                     <textarea name="Motivation" class="form-control rounded-0" id="motivation" style="height: 190px;" required>
                         
                     </textarea>
-                    <label for="motivation">Motivation (facultatif)</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="file" class="form-control rounded-0" name="Photo" id="photoRecente" required>
+                    <input type="file" class="form-control rounded-0" name="Photo" id="photoRecente" >
                 </div>
             </div>
             <div class="col-6 border-1">
                 <div class="form-floating mb-3">
+                    <label for="diplome">Diplôme</label>
                     <select class="form-control rounded-0" name="IdDiplome" id="diplome" required>
                         @foreach (var d in dip)
                         {
                             <option value="@d.IdDiplome">@d.Details</option>
                         }
                     </select>
-                    <label for="diplome">Diplôme</label>
                 </div>
                 <div class="form-floating mb-3">
+                    <label for="experience">Expérience</label>
                     <select class="form-control rounded-0" name="IdExperience" name="IdExperience" id="experience" required>
                         @foreach (var d in e)
                         {
                             <option value="@d.IdExperience">@d.Details</option>
                         }
                     </select>
-                    <label for="experience">Expérience</label>
                 </div>
 
                 <div class="form-floating mb-3">
+                    <label for="sexe">Sexe</label>
                     <select class="form-control rounded-0" name="IdSexe" id="sexe" required>
                         @foreach (var d in s)
                         {
                             <option value="@d.IdSexe">@d.Details</option>
                         }
                     </select>
-                    <label for="sexe">Sexe</label>
                 </div>
 
                 <div class="form-floating mb-3">
+                    <label for="situationMatrimoniale">Situation matrimoniale</label>
                     <select name="IdSituationMatrimoniale" class="form-control rounded-0" id="IdSituationMatrimoniale" required>
                         @foreach (var d in situationMatrimoniales)
                         {
                             <option value="@d.IdSituationMatrimoniale">@d.Details</option>
                         }
                     </select>
-                    <label for="situationMatrimoniale">Situation matrimoniale</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <textarea name="Hobies" class="form-control rounded-0" id="hobies" name="Hobies" style="height: 190px;" required>
+                    <label for="hobies">Hobies</label>
+                    <textarea name="Hobies" class="form-control rounded-0" id="hobies" name="Hobies" style="height: 190px;">
                         
                     </textarea>
-                    <label for="hobies">Hobies</label>
                 </div>
 
                 <div class="form-floating mb-3">

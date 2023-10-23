@@ -12,6 +12,8 @@
             <th>Prenom</th>
             <th>Contact</th>
             <th>Poste</th>
+            <th></th>
+            <th></th>
         </tr>
         @foreach (var emp in candidatures)
         {
@@ -21,6 +23,7 @@
                 <td>@emp.Contact</td>
                 <td>@emp.DateDeNaissance</td>
                 <td><a href="/Pdf/GenererContrat?IdCandidature=@emp.IdCandidature">Contrat</a></td>
+                <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
                 <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
             </tr>
         }

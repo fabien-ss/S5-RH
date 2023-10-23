@@ -25,9 +25,9 @@ public class PdfController : Controller
         return View();
     }
 
-    public IActionResult GenererFicheDePaie()
+    public IActionResult GenererFicheDePaie(string IdEmploye)
     {
-        PDFFicheDePaie ficheDePaie = new PDFFicheDePaie("./wwwroot/image/Fiche.pdf", 1);
+        PDFFicheDePaie ficheDePaie = new PDFFicheDePaie("./wwwroot/image/Fiche.pdf", Convert.ToInt32(IdEmploye));
         ficheDePaie.Build();
         return View();
     }

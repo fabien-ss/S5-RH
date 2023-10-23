@@ -146,7 +146,7 @@ insert into entreprise(nom, date_de_creation, siege, numero_fiscal, logo, descri
 values ('MAHAKO', NOW(), 'ANTANANARIVO Ambatondrazaka', 'EAZFGFD9423495043483243204884923423402238444', 'entrepriselogo.png', 'Entreprise livraison');
 
 insert into type_conge(id_type_conge, libelle) values (1, 'Congé mensuel'),
-                                                               (2, 'Maternité'),
-                                                               (3, 'Partenité'),
-                                                               (4, 'Autre');
+                                                    (2, 'Maternité'),
+                                                    (3, 'Partenité'),
+                                                    (4, 'Autre');
                         

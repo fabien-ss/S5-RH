@@ -1,7 +1,5 @@
-using iTextSharp.text;
-using Microsoft.Extensions.Primitives;
-
 namespace S5_RH.Models.bdd.orm;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,7 +11,7 @@ public class Reponse {
     [Column("id_reponse")]
     public int IdReponse { get; set;}
     [Column("reponse")]
-    public string Valimpanontaniana { get; set;}
+    public string? Valimpanontaniana { get; set;}
     [Column("verite")]
     public int Verite { get; set;}
 

@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using iTextSharp.text;
 
 namespace S5_RH.Models.bdd.orm.fiche;
 

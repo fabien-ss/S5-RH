@@ -24,6 +24,7 @@ public class EmployeeController {
 
     @GetMapping(path="/getByMatricule/{matricule}")
     public @ResponseBody Employee getByMatricule(@PathVariable String matricule) {
-        return emp.findById(matricule).get();
+      System.out.println(matricule);
+      return emp.findById(matricule).get();
     }
 }
