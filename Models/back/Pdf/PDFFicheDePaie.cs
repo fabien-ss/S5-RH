@@ -14,6 +14,10 @@ public class PDFFicheDePaie : PDF
     private double? TauxJournalier;
     private double? TauxHoraire;
     private Font fontHeader;
+    private double Cnaps = 0;
+    private double Sanitaire = 0;
+    private double TotalIRSA = 0;
+    private double Droits;
     public void Build()
     {
         this.Document = new Document();
@@ -41,7 +45,7 @@ public class PDFFicheDePaie : PDF
         
         PdfPTable table = new PdfPTable(2);
         
-        table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
+        table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin;
        
         table.DefaultCell.Border = PdfPCell.NO_BORDER;
         
@@ -91,6 +95,7 @@ public class PDFFicheDePaie : PDF
 
     public void Content()
     {
+
         PdfPTable table = new PdfPTable(4);
         // table.TotalWidth = this.Document.PageSize.Width - this.Document.LeftMargin - this.Document.RightMargin;
 
@@ -117,7 +122,7 @@ public class PDFFicheDePaie : PDF
         table.AddCell("Absence deductible");  
         table.AddCell("");  
         table.AddCell(""); 
-        table.AddCell(""); 
+        table.AddCell($"{this.TauxJournalier}"); 
 
         table.AddCell("Prime de rendement");  
         table.AddCell("");  
@@ -167,7 +172,7 @@ public class PDFFicheDePaie : PDF
         table.AddCell("Droits de congés");  
         table.AddCell("");  
         table.AddCell(""); 
-        table.AddCell(""); 
+        table.AddCell($"{this.TauxJournalier}"); 
         
         table.AddCell("Droits de préavis");  
         table.AddCell("");  
@@ -177,7 +182,7 @@ public class PDFFicheDePaie : PDF
         table.AddCell("Indemnités de licenciement");  
         table.AddCell("");  
         table.AddCell(""); 
-        table.AddCell("");         
+        table.AddCell($"{this.TauxJournalier}");         
 
         PdfPCell salaireBrut = new PdfPCell(new Phrase("Salaire Brut", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         salaireBrut.Colspan = 3;
@@ -187,70 +192,88 @@ public class PDFFicheDePaie : PDF
         table.AddCell(salaireBrut); 
         table.AddCell($"{this.DetailsEmploye.Salaire}");         
         
+        getCNaPS();
+
         PdfPCell cnaps = new PdfPCell(new Phrase("Retenue CNaPS"));
         cnaps.Colspan = 2;
         cnaps.HorizontalAlignment = Element.ALIGN_CENTER;
 
         table.AddCell(cnaps);  
         table.AddCell(""); 
-        table.AddCell("");   
+        table.AddCell($"{this.Cnaps}");   
 
         PdfPCell sanitaire = new PdfPCell(new Phrase("Retenue sanitaire"));
         sanitaire.Colspan = 2;
         sanitaire.HorizontalAlignment = Element.ALIGN_CENTER;
-
+        this.Sanitaire = Decimal.ToDouble(Math.Round((decimal)(this.DetailsEmploye.Salaire * 0.01)));
         table.AddCell(sanitaire);  
         table.AddCell(""); 
-        table.AddCell($"{Decimal.ToDouble(Math.Round((decimal)(this.DetailsEmploye.Salaire * 0.01)))}");         
-         
+        table.AddCell($"{this.Sanitaire}");         
+        
         PdfPCell IRSA = new PdfPCell(new Phrase("Tranche IRSA INF 350 0000"));
         IRSA.Colspan = 2;
         IRSA.HorizontalAlignment = Element.ALIGN_CENTER;
+        double irsa1 = 0;
         table.AddCell(IRSA);  
         table.AddCell(""); 
         table.AddCell("");         
 
-        PdfPCell IRSA2 = new PdfPCell(new Phrase("Tranche IRSA I DE 350 0001 à 400 000"));
-        IRSA2.Colspan = 2;
-        IRSA2.HorizontalAlignment = Element.ALIGN_CENTER;
-        table.AddCell(IRSA2);  
-        table.AddCell("5%"); 
-        table.AddCell("");         
+        if(this.DetailsEmploye.Salaire > 350001 && this.DetailsEmploye.Salaire < 400000){
+            PdfPCell IRSA2 = new PdfPCell(new Phrase("Tranche IRSA I DE 350 001 à 400 000"));
+            IRSA2.Colspan = 2;
+            IRSA2.HorizontalAlignment = Element.ALIGN_CENTER;
+            double irsa2 = 50000*0.05;
+            table.AddCell(IRSA2);  
+            table.AddCell("5%"); 
+            table.AddCell($"{irsa2}"); 
+            this.TotalIRSA += irsa2;
+        }        
     
-        PdfPCell IRSA3 = new PdfPCell(new Phrase("Tranche IRSA I DE 400 0001 à 500 000"));
-        IRSA3.Colspan = 2;
-        IRSA3.HorizontalAlignment = Element.ALIGN_CENTER;
-        table.AddCell(IRSA3);  
-        table.AddCell("10%"); 
-        table.AddCell("");         
-        
-        PdfPCell IRSA4 = new PdfPCell(new Phrase("Tranche IRSA I DE 500 001 à 600 000"));
-        IRSA4.Colspan = 2;
-        IRSA4.HorizontalAlignment = Element.ALIGN_CENTER;
-        table.AddCell(IRSA4);  
-        table.AddCell("15%"); 
-        table.AddCell("");         
-        
-        PdfPCell IRSA5 = new PdfPCell(new Phrase("Tranche IRSA SUP 600 0000"));
-        IRSA5.Colspan = 2;
-        IRSA5.HorizontalAlignment = Element.ALIGN_CENTER;
-        table.AddCell(IRSA5);  
-        table.AddCell("20%"); 
-        table.AddCell("");         
+        if(this.DetailsEmploye.Salaire > 400001 && this.DetailsEmploye.Salaire < 500000){
+            PdfPCell IRSA3 = new PdfPCell(new Phrase("Tranche IRSA I DE 400 001 à 500 000"));
+            IRSA3.Colspan = 2;
+            IRSA3.HorizontalAlignment = Element.ALIGN_CENTER;
+            double irsa3 = 100000*0.1;
+            table.AddCell(IRSA3);  
+            table.AddCell("10%"); 
+            table.AddCell($"{irsa3}");   
+            this.TotalIRSA += irsa3;      
+        }
+
+        if(this.DetailsEmploye.Salaire > 500001 && this.DetailsEmploye.Salaire < 600000){
+            PdfPCell IRSA4 = new PdfPCell(new Phrase("Tranche IRSA I DE 500 001 à 600 000"));
+            IRSA4.Colspan = 2;
+            IRSA4.HorizontalAlignment = Element.ALIGN_CENTER;
+            double irsa4 = 100000*0.15;
+            table.AddCell(IRSA4);  
+            table.AddCell("15%"); 
+            table.AddCell($"{irsa4}"); 
+            this.TotalIRSA += irsa4;        
+        }
+        if(this.DetailsEmploye.Salaire > 600000){
+            PdfPCell IRSA5 = new PdfPCell(new Phrase("Tranche IRSA SUP 600 0000"));
+            IRSA5.Colspan = 2;
+            IRSA5.HorizontalAlignment = Element.ALIGN_CENTER;
+            double irsa5 = 0;
+            table.AddCell(IRSA5);  
+            table.AddCell("20%"); 
+            table.AddCell($"{irsa5}");      
+            this.TotalIRSA += irsa5;     
+        }
          
         PdfPCell total = new PdfPCell(new Phrase("Total IRSA",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         total.Colspan = 2;
         total.HorizontalAlignment = Element.ALIGN_CENTER;
         table.AddCell(total);   
         table.AddCell(""); 
-        table.AddCell("");         
+        table.AddCell($"{this.TotalIRSA}");         
 
         PdfPCell retenues = new PdfPCell(new Phrase("Total des retenues",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         retenues.Colspan = 3;
         retenues.HorizontalAlignment = Element.ALIGN_RIGHT;
         retenues.Border = PdfPCell.NO_BORDER;
         table.AddCell(retenues); 
-        table.AddCell("");         
+        table.AddCell($"{this.getTotalRetenues()}");         
           
         PdfPCell autres = new PdfPCell(new Phrase("Autre indemnitées",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         autres.Colspan = 3;
@@ -264,14 +287,14 @@ public class PDFFicheDePaie : PDF
         net.HorizontalAlignment = Element.ALIGN_RIGHT;
         net.Border = PdfPCell.NO_BORDER;
         table.AddCell(net); 
-        table.AddCell("");         
+        table.AddCell($"{this.getNetAPayer()}");         
           
         PdfPCell montantImposable = new PdfPCell(new Phrase("Montant imposable",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         net.HorizontalAlignment = Element.ALIGN_RIGHT;
         table.AddCell("Montant imposable");  
-        table.AddCell("");    
+        table.AddCell($"{this.getMontantImposable()}");    
           
-        PdfPCell mode = new PdfPCell(new Phrase("mode de paiment ",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        PdfPCell mode = new PdfPCell(new Phrase("Mode de paiment ",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         mode.HorizontalAlignment = Element.ALIGN_RIGHT;
         mode.Border = PdfPCell.NO_BORDER;
         PdfPCell mode2 = new PdfPCell(new Phrase("Virement/Chèque",  new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
@@ -280,7 +303,7 @@ public class PDFFicheDePaie : PDF
         table.AddCell(mode);  
         table.AddCell(mode2); 
 
-
+        this.Document.Add(Chunk.NEWLINE);
         this.Document.Add(table);
         
     }
@@ -295,9 +318,9 @@ public class PDFFicheDePaie : PDF
         Paragraph contenu = new Paragraph();
         Paragraph contenu2 = new Paragraph();
         Ligne(contenu, 1);
-        contenu.Add(new Chunk("Employeur", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        contenu.Add(new Chunk("L'employeur", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         Ligne(contenu2, 1);
-        contenu2.Add(new Chunk("Employé(e)", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        contenu2.Add(new Chunk("L'employé(e)", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
         
         table.AddCell(contenu);
         table.AddCell(contenu2);
@@ -310,5 +333,27 @@ public class PDFFicheDePaie : PDF
         {
             contenu.Add(Chunk.NEWLINE);
         }
+    }
+
+    public double getTotalRetenues(){
+        double res = this.TotalIRSA + this.Cnaps + this.Sanitaire;
+        return res;
+    }
+
+    public void getCNaPS(){
+        if((this.DetailsEmploye.Salaire*0.01) < 20000){
+            this.Cnaps = (double)(this.DetailsEmploye.Salaire*0.01);
+        }else{
+            this.Cnaps = 20000;
+        }
+
+    }
+    public double getMontantImposable(){
+        double res = (double)(DetailsEmploye.Salaire - this.Cnaps - this.Sanitaire);
+        return  res;
+    }
+    public double getNetAPayer(){
+        double res = (double)(this.DetailsEmploye.Salaire - this.getTotalRetenues());
+        return  res;
     }
 }
