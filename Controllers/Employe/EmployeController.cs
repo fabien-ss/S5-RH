@@ -6,7 +6,9 @@ namespace S5_RH.Controllers.Contrat;
 
 public class EmployeController : Controller{
 
+    public IActionResult
     // Obtenir la liste des candidats admis
+
     public IActionResult ListeAdmis()
     {
         List<Models.bdd.orm.Candidature> Candidats = new List<Models.bdd.orm.Candidature>();

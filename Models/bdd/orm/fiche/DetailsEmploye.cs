@@ -112,4 +112,9 @@ public class DetailsEmploye
         TimeSpan res = now.Subtract((DateTime)this.DateDebut);
         return Math.Round(res.TotalDays);
     }
+
+    public DetailsEmploye GetEmployeByMatricule()
+    {
+        return null;
+    }
 }

@@ -8,21 +8,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 // import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.RH.entity.Employee;
 import com.example.RH.repository.EmployeeRepository;
 
-@Controller
-@RequestMapping(path="/employee") 
+@RestController
+@RequestMapping("/employee") 
 public class EmployeeController {
     @Autowired
     private EmployeeRepository emp;
     
-    @GetMapping(path="/getall")
+    @GetMapping("/")
     public @ResponseBody Iterable<Employee> getAllEmployee() {
       return emp.findAll();
     }
 
-    @GetMapping(path="/getByMatricule/{matricule}")
+    @GetMapping("/{matricule}")
     public @ResponseBody Employee getByMatricule(@PathVariable String matricule) {
       System.out.println(matricule);
       return emp.findById(matricule).get();

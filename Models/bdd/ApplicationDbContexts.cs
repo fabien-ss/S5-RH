@@ -46,5 +46,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Entreprise> Entreprise { get; set; }
     public DbSet<TypeConge> TypeConges { get; set; }
     public DbSet<Conge> Conge { get; set; }
+    public DbSet<Classement> Classement { get; set; }
     public DbSet<ListePersonneConge> ListePersonneConges { get; set; }
 }

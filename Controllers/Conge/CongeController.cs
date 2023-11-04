@@ -25,6 +25,7 @@ public class CongeController : Controller
     {
         if (conge != null)
         {
+            
              conge.insertion();
              return RedirectToAction("Success");
         }

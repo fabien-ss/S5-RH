@@ -11,6 +11,13 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CandidatureController : Controller
 {
+    public IActionResult ListeAnnonce()
+    {
+        List<Models.bdd.orm.Annonce> annonce = new List<Models.bdd.orm.Annonce>();
+        annonce = new Models.bdd.orm.Annonce().ObetnirAnnonce();
+        ViewData["Listes"] = annonce;
+        return View();
+    }
     public IActionResult DetailsAnnonce(int idAnnonce)
     {
         Models.bdd.orm.Annonce annonce = new Models.bdd.orm.Annonce { IdAnnoce = idAnnonce };
@@ -88,5 +95,14 @@ public class CandidatureController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public IActionResult Classement(int IdAnnonce)
+    {
+        Models.bdd.orm.Classement c = new Classement();
+        c.IdAnnonce = IdAnnonce;
+        List<Classement> cs = c.obtenirClassementParAnnonce();
+        ViewData["Classement"] = cs;
+        return View();
     }
 }

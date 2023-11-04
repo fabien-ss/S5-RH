@@ -23,6 +23,11 @@ public class Conge{
     [Column("id_type_conge")]
     public int IdTypeConge { get; set; }
 
+    public Boolean CheckIfCongeOk()
+    {
+        
+        return false;
+    }
     public void insertion()
     {
         using (var context = ApplicationDbContextFactory.Create())

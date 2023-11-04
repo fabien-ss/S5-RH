@@ -1,9 +1,9 @@
-@Html.Partial("AnnonceOption")
 @using S5_RH.Models.bdd.orm
 @{
     List<Annonce> annonces = (List<Annonce>)ViewData["Listes"];
 }
 <div class="container">
+    <a asp-controller="Login" asp-action="Login">Se connecter</a>
     <div class="row">
         @foreach (var a in annonces)
         {
@@ -12,7 +12,8 @@
                 <div class="card-body">
                     <h5 class="card-title">@a.Details</h5>
                     <p class="card-text">@a.Debut</p>
-                    <a href="http://localhost:5072/Candidature/Classement?IdAnnonce=@a.IdAnnoce" class="btn btn-primary">Classement</a>
+                    <a href="http://localhost:5072/Candidature/DetailsAnnonce?idAnnonce=@a.IdAnnoce" class="btn btn-primary">Details</a>
+
                 </div>
             </div>
         }

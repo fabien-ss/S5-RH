@@ -1,0 +1,21 @@
+@Html.Partial("CandidatureOption")
+@using S5_RH.Models.bdd.orm
+@{
+    List<Classement> cl = (List<Classement>)ViewData["Classement"];   
+} 
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <th>Note</th>
+        </tr>
+        @foreach (var c in cl)
+        {
+            <tr>
+                <td>@c.Nom</td>
+                <td>@c.Note</td>
+                <td><a href="/Contrat/ContratEssai/@c.IdCandidature">Contrat Essai</a>
+            </tr>
+        }
+    </table>
+</div>
