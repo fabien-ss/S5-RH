@@ -1,0 +1,10 @@
+com\example\RH\controller\CongeController.class
+com\example\RH\repository\CongeRepository.class
+com\example\RH\RhApplication.class
+com\example\RH\repository\ContratRepository.class
+com\example\RH\controller\ContratController.class
+com\example\RH\entity\Employee.class
+com\example\RH\entity\Contrat.class
+com\example\RH\entity\Conge.class
+com\example\RH\repository\EmployeeRepository.class
+com\example\RH\controller\EmployeeController.class
