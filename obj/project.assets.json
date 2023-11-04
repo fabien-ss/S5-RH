@@ -2260,31 +2260,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mamisoa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\PROACTIF\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\S5-RH.csproj",
+      "projectUniqueName": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\S5-RH.csproj",
       "projectName": "S5-RH",
-      "projectPath": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\S5-RH.csproj",
-      "packagesPath": "C:\\Users\\Mamisoa\\.nuget\\packages\\",
-      "outputPath": "E:\\ITU\\L3\\Mr_Tovo\\S5-RH\\obj\\",
+      "projectPath": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\S5-RH.csproj",
+      "packagesPath": "C:\\Users\\PROACTIF\\.nuget\\packages\\",
+      "outputPath": "E:\\ITUNIVERSITY\\S5\\MrTovo\\Numer\\S5-RH\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Mamisoa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\PROACTIF\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2355,7 +2348,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   },

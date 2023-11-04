@@ -92,7 +92,8 @@ public class DetailsEmploye
     {
         Employe employe = new Employe { IdEmploye = this.IdEmploye };
         employe = employe.ObtenirEmployeByIdEmploye();
-        DetailsEmploye e = new DetailsEmploye { IdEmploye = (int)employe.IdSuperieur };
+        if (employe.IdSuperieur.Equals(null)) employe.IdSuperieur = IdEmploye;
+        DetailsEmploye e = new DetailsEmploye { IdEmploye = (int) employe.IdSuperieur };
         Console.WriteLine($"id superieur = {e.IdEmploye}");
         this.Superieur = e.ObtenirDetailsEmployeParId();
         //this.Superieur = e;
