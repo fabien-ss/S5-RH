@@ -37,7 +37,7 @@ create or replace view v_details_employe as
            join type_salaire ts on ts.id_type_salaire = s.id_type_salaire
            join service ser on p.id_service = ser.id_service
             join sexe sx on sx.id_sexe = cc.id_sexe
-           where dc.is_valide = 10
+           where dc.is_valide = 0
        ;
 
 
@@ -58,8 +58,15 @@ create or replace view v_liste_personne_conge as
 select cd.nom, cd.prenom, c.matricule, c.date_debut, c.date_declaration, c.id_type_conge, tc.libelle
 from conge c
          join details_contrat dc on c.matricule = dc.matricule
-            join employe e on e.id_employe = dc.id_employe
-            join candidature cd on cd.id_candidature = e.id_candidature
+        join employe e on e.id_employe = dc.id_employe
+        join candidature cd on cd.id_candidature = e.id_candidature
         join type_conge tc on tc.id_type_conge = c.id_type_conge
-where c.date_fin = '-infinity'
+where c.date_fin is null and c.validation != 0
 ;
+
+create or replace view v_employe_par_service as
+    select s.id_service id_service, vde.id_employe, vde.nom, vde.prenom from 
+    service s 
+    join poste p 
+        on s.id_service = p.id_service
+    join v_details_employe vde on vde.id_poste = p.id_poste;

@@ -4,6 +4,7 @@
     List<Jour> Jours = (List<Jour>)ViewData["Jours"];
     List<TypeAvantage> typeAvantages = (List<TypeAvantage>)ViewData["Avantages"];
     Candidature candidature = (Candidature)ViewData["Candidat"];
+    List<EmployeService> Superieurs = (List<EmployeService>)ViewData["Superieur"];
 }
 @using S5_RH.Models.bdd.orm.fiche
 @using S5_RH.Models.bdd.orm
@@ -79,6 +80,16 @@
                         </div>
                     }
                 </div>
+                <div class="form-floating mb-3" style="display: flex; grid-gap: 5%;">
+                    <label>Superieur</label>
+                    <select name="IdSuperieur">
+                        @foreach (var superieur in Superieurs)
+                        {
+                            <option class="border-0" value="@superieur.IdEmploye">@superieur.Nom @superieur.Prenom</option>
+                        }
+                    </select>
+                </div>
+                
                 <button type="submit"  class="btn btn-primary rounded-0 mt-5">Valider</button>
                 <button type="reset"  class="btn btn-default rounded-0 mt-5 border-1">Annuler</button>
             </div>

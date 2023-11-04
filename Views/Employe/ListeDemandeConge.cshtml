@@ -1,0 +1,25 @@
+@using S5_RH.Models.bdd.orm.Conge
+@{
+    List<Conge> conges = (List<Conge>)ViewData["conges"];
+}
+<div class="container">
+    <h1>Liste des candidats</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Matricule</th>
+            <th>Raison</th>
+            <th>Date debut du congé</th>
+            <th>Date declaration</th>
+        </tr>
+        @foreach (var c in conges)
+        {
+            <tr>
+                <td>@c.Matricule</td>
+                <td>@c.Details</td>
+                <td>@c.DateDebut</td>
+                <td>@c.DateDeclaration</td>
+                <td><a href="/Conge/Valider?IdConge=@c.IdConge">Valider</a>
+            </tr>
+        }
+    </table>
+</div>

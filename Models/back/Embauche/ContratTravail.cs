@@ -9,6 +9,7 @@ public class ContratTravail : ContratEssai
     
     [Required]
     public int IdTypeContrat{ get; set;}
+    
     public void UpdateContrat(int IdCandidature)
     {
         Employe employe = new Employe { IdCandidature = IdCandidature };
@@ -21,7 +22,8 @@ public class ContratTravail : ContratEssai
             foreach (var d in dts)
             {
                 d.IdValide = 10;
-                d.Matricule = CompleterString(7,d.IdEmploye+""); 
+                // eto am matricule kay no tsy nampety anazy eh
+                //d.Matricule = CompleterString(7,d.IdEmploye+""); 
                 context.SaveChanges();
             }
            // dc = context.DetailsContrat.Where(d => d.IdEmploye == employe.IdEmploye).First();
@@ -30,7 +32,7 @@ public class ContratTravail : ContratEssai
         }
         // Insertion des details du nouveau contrat
         // 30 izy efa certifié employé
-        this.InsertionEssai(IdCandidature, this.IdTypeContrat, 30);
+        this.InsertionEssai(IdCandidature, this.IdTypeContrat, 30, true);
     }
 
     public static string CompleterString(int TailleFinale, string texte)

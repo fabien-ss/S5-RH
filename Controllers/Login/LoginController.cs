@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using S5_RH.Models.Authentification;
-using S5_RH.Models.back.Annonce;
-using S5_RH.Models.back.Pdf;
+using S5_RH.Models.bdd.orm.fiche;
+using S5_RH.Models.Login;
 
-namespace S5_RH.Controllers.Pdf;
+namespace S5_RH.Controllers.Login;
 
 public class LoginController : Controller
 {
@@ -16,13 +16,25 @@ public class LoginController : Controller
 
     public IActionResult TraitementLogin()
     {
-        string email = HttpContext.Request.Form["email"];
-        string password = HttpContext.Request.Form["password"];
+        string? email = HttpContext.Request.Form["email"];
+        string? password = HttpContext.Request.Form["password"];
         Boolean isAuth = Authentification.checkUser(email, password);
         if (isAuth.Equals(true))
         {
             return RedirectToAction("Index","Home");
         }
         return RedirectToAction("Login");
+    }
+
+    public IActionResult LoginForPersonnal(LoginForPersonal loginForPersonal)
+    {
+        if (ModelState.IsValid)
+        {
+            DetailsEmploye de = new DetailsEmploye { Matricule = loginForPersonal.matricule };
+            Console.WriteLine("Matricule = "+de.Matricule);
+            de = de.GetEmployeByMatricule();
+            if(!de.Equals(null)) return RedirectToAction("ListeDemandeConge","Employe");   
+        }
+        return View();
     }
 }

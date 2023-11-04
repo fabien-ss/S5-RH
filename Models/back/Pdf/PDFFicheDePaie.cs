@@ -33,7 +33,8 @@ public class PDFFicheDePaie : PDF
         this.Path = Path;
         bdd.orm.fiche.DetailsEmploye de = new DetailsEmploye { IdEmploye = IdEmploye };
         this.DetailsEmploye = de.ObtenirDetailsEmployeParId();
-        this.fontHeader = new Font(Font.FontFamily.HELVETICA, 9);
+        de.AjoutSuperieur();
+        this.fontHeader = new Font(Font.FontFamily.HELVETICA, 11);
     }
     public void Header()
     {
@@ -53,19 +54,19 @@ public class PDFFicheDePaie : PDF
         
         Contenu.SpacingBefore = 20f;
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk($"Nom : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu.Add(new Chunk($"Nom : ", new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD)));
         Contenu.Add(new Chunk($"{this.DetailsEmploye.Nom}", this.fontHeader));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk("Prénom : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu.Add(new Chunk("Prénom : ", new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD)));
         Contenu.Add(new Chunk($"{this.DetailsEmploye.Prenom}", this.fontHeader));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk("Matricule : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu.Add(new Chunk("Matricule : ", new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD)));
         Contenu.Add(new Chunk($"{this.DetailsEmploye.Matricule}", this.fontHeader));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk("Date d'embauche : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu.Add(new Chunk("Date d'embauche : ", new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD)));
         Contenu.Add(new Chunk($"{this.DetailsEmploye.DateDebut}", this.fontHeader));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk("Ancienneté : ", new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD)));
+        Contenu.Add(new Chunk("Ancienneté : ", new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD)));
         Contenu.Add(new Chunk($"{this.DetailsEmploye.CalculateAnciennete()} jours", this.fontHeader));
         
         table.AddCell(Contenu);

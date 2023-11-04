@@ -8,6 +8,12 @@ namespace S5_RH.Controllers.Candidature;
 
 public class CongeController : Controller
 {
+    public IActionResult Valider(int IdConge)
+    {
+        Conge c = new Conge { IdConge = IdConge };
+        c.ValiderConge();
+        return RedirectToAction("ListeDemandeConge","Employe");
+    }
     public IActionResult UpdateConge()
     {
         string Matricule = HttpContext.Request.Form["Matricule"];
@@ -16,20 +22,28 @@ public class CongeController : Controller
         c.update();
         return RedirectToAction("ListePersonneConge");
     }
-    public IActionResult Error()
+    public IActionResult Error(string message)
     {
-        string error = "tsy mety";
+        string error = message;
         return View("error",error);
     }
     public async Task<IActionResult> InsertionConge(Conge conge)
     {
-        if (conge != null)
+        Console.WriteLine("Conge raison = "+conge.Details);
+        if (ModelState.IsValid)
         {
-            
-             conge.insertion();
-             return RedirectToAction("Success");
+            try
+            {
+                conge.insertion();
+                return RedirectToAction("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error : "+e);
+                return Error(e.Message);
+            }
         }
-        return RedirectToAction("Error");
+        return Error("");
     }
 
     public IActionResult Success()
@@ -40,6 +54,7 @@ public class CongeController : Controller
     public IActionResult ListePersonneConge(string matricule)
     {
         List<ListePersonneConge> listePersonneConges = new List<ListePersonneConge>();
+        
         if (matricule != null)
         {
             ListePersonneConge lc = new ListePersonneConge { Matricule = matricule };
@@ -61,10 +76,11 @@ public class CongeController : Controller
         if (matricule != null)
         {
             matricule = matricule.Trim();
-            string url = "http://localhost:8080/employee/getByMatricule/"+matricule;
-            Console.WriteLine(url);
+            string url = "http://localhost:8080/employees/"+matricule;
+            Console.WriteLine("Url = "+url);
             string jsonResponse = await CallApi(url);
             detailsEmploye = JsonConvert.DeserializeObject<DetailsEmploye>(jsonResponse);
+            detailsEmploye.Matricule = matricule;
             ViewData["detailsEmploye"] = detailsEmploye;
             return View();
         }

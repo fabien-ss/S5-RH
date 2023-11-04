@@ -295,5 +295,11 @@ create table conge_duree(
         id_type_conge int references type_conge(id_type_conge) 
 );
 
+ALTER TABLE CONGE
+    ADD COLUMN VALIDATION int DEFAULT 0;
+
+alter table conge
+    add column id_conge serial primary key ;
+
 
 

@@ -33,12 +33,13 @@ public class ContratEssai
     [Required(ErrorMessage = "l")]
     public string[] Avantage { get; set; }
     public int IdPoste { get; set; }
+    [Required]
+    public int IdSuperieur { get; set; }
     // Insertion des donnees 
-    public void InsertionEssai(int IdCandidature, int IdContrat, int etat)
+    public void InsertionEssai(int IdCandidature, int IdContrat, int etat, Boolean isEmp)
     {
-        
         this.IdCandidature = IdCandidature;
-        Employe employe = new Employe { IdCandidature = this.IdCandidature };
+        Employe employe = new Employe { IdCandidature = this.IdCandidature, IdSuperieur = this.IdSuperieur};
         DetailsContrat detailsContrat = new DetailsContrat { DateDebut = this.DateDebut, DateFin = this.DateDebut.AddMonths(this.DureeContrat), IdTypeContrat = IdContrat, Matricule = "None" };
         Console.WriteLine("ETO AMBONY INSERTION SALAIRE");
         Salaire salaire = new Salaire
@@ -64,7 +65,11 @@ public class ContratEssai
             {
                 employe = objects[0];
             }
-            detailsContrat.IdEmploye = employe.IdEmploye; 
+            detailsContrat.IdEmploye = employe.IdEmploye;
+            if (isEmp)
+            {
+                detailsContrat.Matricule = ContratTravail.CompleterString(7, detailsContrat.IdEmploye.ToString());
+            }
             context.DetailsContrat.Add(detailsContrat);  // insertion des details du contrat
             context.SaveChanges(); 
             salaire.IdContrat = detailsContrat.IdDetailsContrat; 

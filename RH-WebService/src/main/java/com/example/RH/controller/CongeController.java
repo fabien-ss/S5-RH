@@ -27,6 +27,7 @@ public class CongeController {
     
     @GetMapping(path="/getByMatricule/{matricule}")
     public @ResponseBody List<Conge> getByMatricule(@PathVariable String matricule) {
+        System.out.println("Matricule "+ matricule);
         return con.findAllByMatricule(matricule);
     }
 

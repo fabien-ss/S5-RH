@@ -17,6 +17,8 @@ public class PDFFicheDePoste : PDF
         this.Path = Path;
         this.DetailsEmploye = new DetailsEmploye { IdEmploye = IdEmploye };
         this.DetailsEmploye = this.DetailsEmploye.ObtenirDetailsEmployeParId();
+        this.DetailsEmploye.AjoutSuperieur();
+        Console.WriteLine("Sup = " + this.DetailsEmploye.Superieur.Nom);
         this.DetailsEmploye.setAvantages();
         this.DetailsEmploye.setHorraire();
         this.DetailsEmploye.setMission();
@@ -72,9 +74,9 @@ public class PDFFicheDePoste : PDF
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk($"{this.DetailsEmploye.Poste}"));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk($"Rénumération du poste (anuelle) : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
+        Contenu.Add(new Chunk($"Rénumération du poste (mensuelle) : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk($"{this.DetailsEmploye.Salaire * 10} Ar, {this.DetailsEmploye.TypeSalaire}"));
+        Contenu.Add(new Chunk($"{this.DetailsEmploye.Salaire} Ar, {this.DetailsEmploye.TypeSalaire}"));
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Tâches : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
         Ligne(Contenu, 1);
@@ -94,7 +96,7 @@ public class PDFFicheDePoste : PDF
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Superieur : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
         Ligne(Contenu, 1);
-        Contenu.Add(new Chunk(" 18FA17"));
+        Contenu.Add(new Chunk($"{this.DetailsEmploye.Superieur.Prenom}"));
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Subordonnés : ", new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD)));
         Ligne(Contenu, 1);

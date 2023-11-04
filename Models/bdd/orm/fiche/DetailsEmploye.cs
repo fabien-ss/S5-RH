@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 
 namespace S5_RH.Models.bdd.orm.fiche;
@@ -20,9 +21,9 @@ public class DetailsEmploye
     [Column("id_poste")]
     public int IdPoste{ get; set;}
     [Column("date_debut")]
-    public DateTime? DateDebut{ get; set;}
+    public DateTime DateDebut{ get; set;}
     [Column("date_fin")]
-    public DateTime? DateFin{ get; set;}
+    public DateTime DateFin{ get; set;}
     
     [Column("libelle_contrat")]
     public string? LibelleContrat{ get; set;}
@@ -57,6 +58,9 @@ public class DetailsEmploye
     [NotMapped]
     public List<VHorraire> VHorraires{ get; set;}
     
+    [NotMapped]
+    public DetailsEmploye Superieur { get; set; }
+
     public void setAvantages()
     {
         this.VAvantages = new VAvantages().ListAvantageByEmp(this.IdEmploye);
@@ -81,8 +85,18 @@ public class DetailsEmploye
                 m.setTaches();
             }
         }
-
         //this.Missions = new Mission().ObtenirMissionParIdPoste(this.IdPoste);
+    }
+
+    public void AjoutSuperieur()
+    {
+        Employe employe = new Employe { IdEmploye = this.IdEmploye };
+        employe = employe.ObtenirEmployeByIdEmploye();
+        DetailsEmploye e = new DetailsEmploye { IdEmploye = (int)employe.IdSuperieur };
+        Console.WriteLine($"id superieur = {e.IdEmploye}");
+        this.Superieur = e.ObtenirDetailsEmployeParId();
+        //this.Superieur = e;
+        Console.WriteLine("Nom superieur ="+this.Superieur.Nom);
     }
     public DetailsEmploye ObtenirDetailsEmployeParId()
     {
@@ -91,6 +105,7 @@ public class DetailsEmploye
             return context.DetailsEmploye.Where(d => d.IdEmploye == this.IdEmploye ).First();
         }
     }
+
     public DetailsEmploye ObtenirDetailsEmployeAlternanceParId()
     {
         using (var context = ApplicationDbContextFactory.Create())
@@ -115,6 +130,12 @@ public class DetailsEmploye
 
     public DetailsEmploye GetEmployeByMatricule()
     {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            Console.WriteLine("Matricule = "+this.Matricule);
+            DetailsEmploye de = context.DetailsEmploye.Where(d => d.Matricule == this.Matricule).First();
+            return de;
+        }
         return null;
     }
 }

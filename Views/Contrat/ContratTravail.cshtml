@@ -4,8 +4,10 @@
     List<TypeContrat> TypeContrat =(List<TypeContrat>)ViewData["TypeContrat"];
     List<Jour> Jours = (List<Jour>)ViewData["Jours"];
     List<TypeAvantage> typeAvantages = (List<TypeAvantage>)ViewData["Avantages"];
+   
 }
 @using S5_RH.Models.bdd.orm.fiche
+@using S5_RH.Models.bdd.orm
 @model S5_RH.Models.back.Embauche.ContratTravail;
 <div class="container">
             @Html.ValidationSummary()
@@ -83,6 +85,9 @@
                         </div>
                     }
                 </div>
+                
+                
+                
                 <button type="submit"  class="btn btn-primary rounded-0 mt-5">Valider</button>
                 <button type="reset"  class="btn btn-default rounded-0 mt-5 border-1">Annuler</button>
             </div>

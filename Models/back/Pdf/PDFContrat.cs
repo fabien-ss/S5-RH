@@ -19,6 +19,7 @@ public class PDFContrat : PDF
         this.Path = Path;
         this.DetailsEmploye = new DetailsEmploye { IdEmploye = IdEmploye };
         this.DetailsEmploye = this.DetailsEmploye.ObtenirDetailsEmployeParId();
+        this.DetailsEmploye.AjoutSuperieur();
         this.DetailsEmploye.setAvantages();
         this.DetailsEmploye.setHorraire();
         this.DetailsEmploye.setMission();
@@ -61,6 +62,9 @@ public class PDFContrat : PDF
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk($"Type de contrat : ", font));
         Contenu.Add(new Chunk($" {this.DetailsEmploye.LibelleContrat}"));
+        Ligne(Contenu, 1);
+        Contenu.Add(new Chunk($"Sous l'autorité de : ", font));
+        Contenu.Add(new Chunk($" {this.DetailsEmploye.Superieur.Nom} {this.DetailsEmploye.Superieur.Prenom}"));
         Ligne(Contenu, 1);
         Contenu.Add(new Chunk("Rénumération : ", font));
         Contenu.Add(new Chunk(this.DetailsEmploye.Salaire + ", " + this.DetailsEmploye.TypeSalaire));

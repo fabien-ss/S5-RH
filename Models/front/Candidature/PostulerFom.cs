@@ -11,7 +11,7 @@ public class PostulerForm
     [Required(ErrorMessage = "Prenom not set.")]
     public string Prenom{ get; set;}
     [Required(ErrorMessage = "Date de naissance.")]
-    public DateTime DateDeNaissace{ get; set;}
+    public DateTime DateDeNaissance{ get; set;}
     [Required(ErrorMessage = "Telephone.")]
     public string Telephone{ get; set;}
     [Required(ErrorMessage = "Motivation.")]
@@ -34,7 +34,7 @@ public class PostulerForm
                 IdAnnonce = Convert.ToInt32(this.IdAnnonce),
                 Nom = this.Nom,
                 Prenom = this.Prenom,
-                DateDeNaissance = this.DateDeNaissace,
+                DateDeNaissance = this.DateDeNaissance,
                 Contact = this.Telephone,
                 Etat = 0
         };

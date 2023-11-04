@@ -7,135 +7,132 @@
   List<TypeConge> typeConges = (List<TypeConge>)ViewData["typeConge"];
 }
 <div class="container">
-<section style="background-color: #eee;">
-  <div class="container py-5">
-    <div class="row">
-      <div class="col">
-        <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-          <form class="form-inline my-2 my-lg-0" asp-controller="Conge" asp-action="RechercheEmploye" method="get">
-            <input class="form-control mr-sm-2" width="100%" name="matricule" value="huhu" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </nav>
-      </div>
-    </div>
-    @if (detailsEmploye != null)
-    {
-  
+  <section style="background-color: #eee;">
+    <div class="container py-5">
       <div class="row">
-        <div class="col-lg-4">
-          <div class="card mb-4">
-            <div class="card-body text-center">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                   class="rounded-circle img-fluid" style="width: 150px;">
-              <h5 class="my-3">@detailsEmploye.Nom @detailsEmploye.Prenom</h5>
-              <p class="text-muted mb-1">@detailsEmploye.Poste</p>
-              <p class="text-muted mb-4">@detailsEmploye.DateDeNaissance</p>
-              <div class="d-flex justify-content-center mb-2">
-                <button type="button" class="btn btn-primary">Follow</button>
-                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-              </div>
-            </div>
-          </div>
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <form class="form-inline my-2 my-lg-0" asp-controller="Conge" asp-action="RechercheEmploye" method="get">
+              <input class="form-control mr-sm-2" width="100%" name="matricule" value="huhu" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </nav>
         </div>
-        <div class="col-lg-8">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Full name</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">@detailsEmploye.Nom @detailsEmploye.Prenom</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Email</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">@detailsEmploye.Contact</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Salary</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">@detailsEmploye.Salaire</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Date début</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">@detailsEmploye.DateDebut</p>
-                </div>
-              </div>
-              <hr>
-              <div class="row">
-                <div class="col-sm-3">
-                  <p class="mb-0">Date fin</p>
-                </div>
-                <div class="col-sm-9">
-                  <p class="text-muted mb-0">@detailsEmploye.DateFin</p>
+      </div>
+      @if (detailsEmploye != null)
+      {
+    
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card mb-4">
+              <div class="card-body text-center">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                     class="rounded-circle img-fluid" style="width: 150px;">
+                <h5 class="my-3">@detailsEmploye.Nom @detailsEmploye.Prenom</h5>
+                <p class="text-muted mb-1">@detailsEmploye.Poste</p>
+                <p class="text-muted mb-4">@detailsEmploye.DateDeNaissance</p>
+                <div class="d-flex justify-content-center mb-2">
+                  <button type="button" class="btn btn-primary">Follow</button>
+                  <button type="button" class="btn btn-outline-primary ms-1">Message</button>
                 </div>
               </div>
             </div>
           </div>
-          <form asp-controller="Conge" asp-action="InsertionConge" method="get">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="card mb-4 mb-md-0">
-                  <div class="card-body form-control" style="padding:5%">
-                    <div class="form-floating mb-3"  >
-                      @Html.ValidationSummary();
-                      <input name="Matricule" type = "hidden" value="@detailsEmploye.Matricule"/> 
-                      <label for="conge">Congé</label>
-                      <select class="form-control rounded-2" name="IdTypeConge" id="conge" required>
-                        @foreach (var conge in typeConges)
-                        {
-                          <option value="@conge.IdTypeConge">@conge.Libelle</option>
-                        }
-                      </select>
-                      <br/>
-                  
-                      <div class="form-select">
-                        <label for="exampleInputEmail1">Raison</label>
-                        <input type="text" class="form-control" name="Details" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          <div class="col-lg-8">
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Full name</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">@detailsEmploye.Nom @detailsEmploye.Prenom</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Email</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">@detailsEmploye.Contact</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Salary</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">@detailsEmploye.Salaire</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Date début</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">@detailsEmploye.DateDebut</p>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Date fin</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">@detailsEmploye.DateFin</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <form asp-controller="Conge" asp-action="InsertionConge" method="post">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card mb-4 mb-md-0">
+                    <div class="card-body form-control" style="padding:5%">
+                      <div class="form-floating mb-3"  >
+                        @Html.ValidationSummary();
+                        <input name="Matricule" type = "hidden" value="@detailsEmploye.Matricule"/> 
+                        <label for="conge">Congé</label>
+                        <select class="form-control rounded-2" name="IdTypeConge" id="conge" required>
+                          @foreach (var conge in typeConges)
+                          {
+                            <option value="@conge.IdTypeConge">@conge.Libelle</option>
+                          }
+                        </select>
+                        <br/>
+                    
+                        <div class="form-control">
+                          <label for="exampleInputEmail1">Raison</label>
+                          <input type="text" class="form-control" name="Details" id="exampleInputEmail1" placeholder="...">
+                          <small id="emailHelp" class="form-text text-muted">Raison.</small>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="card mb-4 mb-md-0">
-                  <div class="card-body" style="padding:5%">
-                
-                    <div class="form-select">
-                      <label for="exampleInputEmail1">Date debut congé</label>
-                      <input type="datetime-local" name="DateDebut" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <div class="col-md-6">
+                  <div class="card mb-4 mb-md-0">
+                    <div class="card-body" style="padding:5%">
+                      <div class="form-select">
+                        <label for="exampleInputEmail1">Date debut congé</label>
+                        <input type="datetime-local" name="DateDebut" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      </div>
+                      <div class="form-select">
+                        <label for="exampleInputEmail1">Date declaration congé</label>
+                        <input type="datetime-local" name="DateDeclaration" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
-                    <div class="form-select">
-                      <label for="exampleInputEmail1">Date declaration congé</label>
-                      <input type="datetime-local" name="DateDeclaration" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    }
-  </div>
-  
-</section>
-
+      }
+    </div>
+  </section>
 </div>

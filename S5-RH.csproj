@@ -23,4 +23,8 @@
     <Compile Remove="Models\back\Model.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\listeEmploye\FilterTable.js" />
+  </ItemGroup>
+
 </Project>

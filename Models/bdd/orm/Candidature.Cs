@@ -23,6 +23,13 @@ public class Candidature {
 
     public Candidature(){}
 
+    public Candidature GetCandidatureById()
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            return context.Candidature.Where(c => c.IdCandidature == this.IdCandidature).First();
+        }
+    }
     public List<Candidature> ObtenirListeCandidatureNonValide()
     {
         using (var context = ApplicationDbContextFactory.Create())

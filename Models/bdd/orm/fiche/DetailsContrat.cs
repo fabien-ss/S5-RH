@@ -24,8 +24,7 @@ public class DetailsContrat
     public List<Salaire> Salaires { get; set; }
     [NotMapped] 
     public List<Horaire> Horaires { get; set; }
-    
-    
+
     public void Initializer()
     {
         this.setSalaires();

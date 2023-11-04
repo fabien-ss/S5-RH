@@ -1,14 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
-using S5_RH.Models.back.Embauche;
+using S5_RH.Models.bdd.orm.Conge;
 using S5_RH.Models.bdd.orm.fiche;
 
-namespace S5_RH.Controllers.Contrat;
+namespace S5_RH.Controllers.Employe;
 
 public class EmployeController : Controller{
 
-    public IActionResult
     // Obtenir la liste des candidats admis
-
+    public IActionResult ListeDemandeConge()
+    {
+        string matricule = "FA0000008";
+        DetailsEmploye detailsEmploye = new DetailsEmploye { Matricule = matricule };
+        Console.WriteLine("Matricule controller employe = "+detailsEmploye.Matricule);
+        detailsEmploye = detailsEmploye.GetEmployeByMatricule();
+        Models.bdd.orm.fiche.Employe employe = new Models.bdd.orm.fiche.Employe
+            { IdEmploye = detailsEmploye.IdEmploye };
+        employe = employe.ObtenirEmployeByIdEmploye();
+        // ici on a l'id du superieur
+        List<Models.bdd.orm.fiche.Employe> subordonnees = employe.GetEmployeByIdSuperior();
+        List<Conge> conges = new Conge().ListeConge(subordonnees);
+        ViewData["conges"] = conges;
+        return View();
+    }
     public IActionResult ListeAdmis()
     {
         List<Models.bdd.orm.Candidature> Candidats = new List<Models.bdd.orm.Candidature>();
@@ -46,4 +59,5 @@ public class EmployeController : Controller{
         ViewData["employe"] = new DetailsEmploye().ObtenirTousLesEmployes();
         return View();
     }
+    
 }
