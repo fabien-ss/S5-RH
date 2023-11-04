@@ -6,7 +6,7 @@ namespace S5_RH.Controllers.Contrat;
 
 public class EmployeController : Controller{
 
-    public IActionResult
+    // public IActionResult
     // Obtenir la liste des candidats admis
 
     public IActionResult ListeAdmis()
