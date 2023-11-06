@@ -19,8 +19,7 @@ function ajouterQuestion() {
                         </div>
                         <div style="display:inline;">
                             <input type="text" class="form-control me-2 rounded-0 has-validation" name="${questionName}" id="${questionName}" placeholder="Entrez la question" required/>
-                            <button style="float: right" class="btn btn-default mt-3" onclick="valider(this)" type="button" id="validateButton"><i class="fas fa-check"></i></button>
-                            <button style="float: right" class="btn btn-default mt-3" id="${buttonName}" onclick="ajouterReponse(this)" type="button"><i class="fas fa-plus"></i></button>
+                           
                         </div>
                     </div>
                     
@@ -28,6 +27,8 @@ function ajouterQuestion() {
                         <div class="row mt-3 input-group" id="reponses" >
                         </div>
                     </div>
+                     <button style="float: right" class="btn btn-default mt-3" onclick="valider(this)" type="button" id="validateButton"><i class="fas fa-check"></i></button>
+                            <button style="float: right" class="btn btn-default mt-3" id="${buttonName}" onclick="ajouterReponse(this)" type="button"><i class="fas fa-plus"></i></button>
                 </div>
                 `;
         questionDiv.appendChild(nouvelleQuestion);

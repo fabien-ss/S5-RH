@@ -49,4 +49,5 @@ public class ApplicationDbContext : DbContext
     public DbSet<Classement> Classement { get; set; }
     public DbSet<ListePersonneConge> ListePersonneConges { get; set; }
     public DbSet<EmployeService> EmployeServices { get; set; }
+    public DbSet<HeureSupplementaire> HeureSupplementaires { get; set; }
 }

@@ -9,30 +9,26 @@ public class LoginController : Controller
 {
  
     // Generer fiche de poste
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    public IActionResult TraitementLogin()
-    {
-        string? email = HttpContext.Request.Form["email"];
-        string? password = HttpContext.Request.Form["password"];
-        Boolean isAuth = Authentification.checkUser(email, password);
-        if (isAuth.Equals(true))
-        {
-            return RedirectToAction("Index","Home");
-        }
-        return RedirectToAction("Login");
-    }
-
-    public IActionResult LoginForPersonnal(LoginForPersonal loginForPersonal)
+    public IActionResult Login(Models.Login.LoginForm loginForm)
     {
         if (ModelState.IsValid)
         {
-            DetailsEmploye de = new DetailsEmploye { Matricule = loginForPersonal.matricule };
-            Console.WriteLine("Matricule = "+de.Matricule);
+            Boolean isAuth = Authentification.checkUser(loginForm.Email, loginForm.Password);
+            if (isAuth.Equals(true))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        return View();
+    }
+
+    public IActionResult LoginForPersonnal(LoginForPersonalForm loginForPersonalForm)
+    {
+        if (ModelState.IsValid)
+        {
+            DetailsEmploye de = new DetailsEmploye { Matricule = loginForPersonalForm.matricule };
             de = de.GetEmployeByMatricule();
+            TempData["matricule"] = de.Matricule;
             if(!de.Equals(null)) return RedirectToAction("ListeDemandeConge","Employe");   
         }
         return View();

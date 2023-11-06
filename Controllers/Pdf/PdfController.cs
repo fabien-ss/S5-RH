@@ -24,7 +24,6 @@ public class PdfController : Controller
         contrat.Build();
         return View();
     }
-
     public IActionResult GenererFicheDePaie(string IdEmploye)
     {
         PDFFicheDePaie ficheDePaie = new PDFFicheDePaie("./wwwroot/image/Fiche.pdf", Convert.ToInt32(IdEmploye));

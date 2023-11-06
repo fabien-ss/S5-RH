@@ -3,7 +3,6 @@
 @{
     List<Annonce> annonces = (List<Annonce>)ViewData["Listes"];
 }
-<div class="container">
     <div class="row">
         @foreach (var a in annonces)
         {
@@ -17,4 +16,3 @@
             </div>
         }
     </div>
-</div>

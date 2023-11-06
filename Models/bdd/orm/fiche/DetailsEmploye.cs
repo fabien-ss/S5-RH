@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.EntityFrameworkCore;
 
@@ -60,14 +61,14 @@ public class DetailsEmploye
     
     [NotMapped]
     public DetailsEmploye Superieur { get; set; }
-
+    [NotMapped] 
+    public float _heureSupplementaire { get; set; }
     public void setAvantages()
     {
         this.VAvantages = new VAvantages().ListAvantageByEmp(this.IdEmploye);
     }
     public void setHorraire()
     {
-        //this.VHorraires = new VHorraire().ObtenirHorraireParIdEmploye(this.IdEmploye);
         using (var context = ApplicationDbContextFactory.Create())
         {
             this.VHorraires = context.VHorraires.Where(
@@ -119,8 +120,34 @@ public class DetailsEmploye
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            return context.DetailsEmploye.ToList();
+            List<DetailsEmploye> detailsEmployes = context.DetailsEmploye.ToList();
+          //  SetHeureSup(detailsEmployes, DateTime.Now);
+            return detailsEmployes;
         }
+    }
+    
+    public List<DetailsEmploye> ObtenirTousLesEmployes(DateTime dateDuJour)
+    {
+        using (var context = ApplicationDbContextFactory.Create())
+        {
+            List<DetailsEmploye> detailsEmployes = context.DetailsEmploye.ToList();
+            detailsEmployes = SetHeureSup(detailsEmployes, dateDuJour);
+            return detailsEmployes;
+        }
+    }
+
+    public List<DetailsEmploye> SetHeureSup(List<DetailsEmploye> detailsEmployes, DateTime dateDuJour)
+    {
+        foreach (var de in detailsEmployes)
+        {
+            HeureSupplementaire heureSupplementaire = new HeureSupplementaire();
+            heureSupplementaire.Matricule = de.Matricule;
+            heureSupplementaire.Mois = dateDuJour.Month;
+            heureSupplementaire.Annee = dateDuJour.Year;
+          //  heureSupplementaire.TotalHours = (float)heureSupplementaire.getTotalHours();
+            de._heureSupplementaire = (float)heureSupplementaire.getTotalHours();
+        }
+        return detailsEmployes;
     }
 
     public double CalculateAnciennete(){

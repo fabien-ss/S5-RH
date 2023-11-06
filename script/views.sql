@@ -55,13 +55,13 @@ create or replace view v_horraire as
 
 
 create or replace view v_liste_personne_conge as
-select cd.nom, cd.prenom, c.matricule, c.date_debut, c.date_declaration, c.id_type_conge, tc.libelle
+select cd.nom, cd.prenom, c.matricule, c.date_debut, c.date_declaration, c.id_type_conge, tc.libelle, c.date_fin
 from conge c
-         join details_contrat dc on c.matricule = dc.matricule
+        join details_contrat dc on c.matricule = dc.matricule
         join employe e on e.id_employe = dc.id_employe
         join candidature cd on cd.id_candidature = e.id_candidature
         join type_conge tc on tc.id_type_conge = c.id_type_conge
-where c.date_fin is null and c.validation != 0
+where c.date_fin is null and c.validation != 0 and dc.is_valide = 0
 ;
 
 create or replace view v_employe_par_service as

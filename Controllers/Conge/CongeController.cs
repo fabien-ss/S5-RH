@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Newtonsoft.Json;
+using S5_RH.Models;
 using S5_RH.Models.bdd.orm.Conge;
 using S5_RH.Models.bdd.orm.fiche;
+using S5_RH.Models.Front.Conge;
 
 namespace S5_RH.Controllers.Candidature;
 
@@ -17,8 +19,7 @@ public class CongeController : Controller
     public IActionResult UpdateConge()
     {
         string Matricule = HttpContext.Request.Form["Matricule"];
-        DateTime dateFin = DateTime.Now;
-        Conge c = new Conge { Matricule = Matricule, DateFin = dateFin };
+        Conge c = new Conge { Matricule = Matricule };
         c.update();
         return RedirectToAction("ListePersonneConge");
     }
@@ -51,19 +52,25 @@ public class CongeController : Controller
         ViewData["Message"] = "succes";
         return View();
     }
-    public IActionResult ListePersonneConge(string matricule)
+    public IActionResult ListePersonneConge(FindCongeForm congeForm)
     {
         List<ListePersonneConge> listePersonneConges = new List<ListePersonneConge>();
-        
-        if (matricule != null)
+        if (ModelState.IsValid)
         {
-            ListePersonneConge lc = new ListePersonneConge { Matricule = matricule };
-            lc = lc.ObtenirPersonneCongesByMatricule();
-            listePersonneConges.Add(lc);
-            ViewData["personne"] = listePersonneConges;
-            return View();
+            try
+            {
+                ListePersonneConge lc = new ListePersonneConge { Matricule = congeForm.matricule };
+                lc = lc.ObtenirPersonneCongesByMatricule();
+                listePersonneConges.Add(lc);
+                ViewData["personne"] = listePersonneConges;
+                return View();
+            }
+            catch (Exception e)
+            {
+                ViewData["error"] = "Empty";
+                return Error("Empty list");
+            }
         }
-
         listePersonneConges = new ListePersonneConge().ObtenirPersonneConges();
         ViewData["personne"] = listePersonneConges;
         return View();
@@ -78,7 +85,16 @@ public class CongeController : Controller
             matricule = matricule.Trim();
             string url = "http://localhost:8080/employees/"+matricule;
             Console.WriteLine("Url = "+url);
-            string jsonResponse = await CallApi(url);
+            string jsonResponse = "";
+            try
+            {
+                jsonResponse = await CallApi(url);
+            }
+            catch (Exception e)
+            {
+                return Error("Le matricule entré n'existe pas.");
+            }
+            Console.WriteLine("Api response = "+jsonResponse);
             detailsEmploye = JsonConvert.DeserializeObject<DetailsEmploye>(jsonResponse);
             detailsEmploye.Matricule = matricule;
             ViewData["detailsEmploye"] = detailsEmploye;

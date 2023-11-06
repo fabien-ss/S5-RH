@@ -4,8 +4,6 @@
 @{
   List<DetailsEmploye> listes = (List<DetailsEmploye>)ViewData["employe"];
 }
-<div class="container">
-  
   <div class="row">
     <div class="col-12" style="margin-left: 10px;">
       <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
@@ -44,7 +42,9 @@
                 <td class="genre">@p.Genre</td>
                 <td>
                   <a href="/Pdf/GenererContrat?IdCandidature=@p.IdCandidature">Contrat</a>
+                  <br/>
                   <a href="/Pdf/GenererFicheDePoste?IdCandidature=@p.IdCandidature">Fiche de Poste</a>
+                  <br/>
                   <a href="/Pdf/GenererFicheDePaie?IdEmploye=@p.IdEmploye">Fiche de Paie</a>
                 </td>
               </form>
@@ -55,7 +55,6 @@
       </div>
     </div>
   </div>
-</div>
 
 
   <style>

@@ -3046,3 +3046,10 @@ ALTER TABLE ONLY public.reponse
 -- PostgreSQL database dump complete
 --
 
+create table heure_supplementaire(
+    matricule varchar(10) references details_contrat(matricule),
+    dateDebut timestamp not null ,
+    dateFin timestamp,
+    mois int not null ,
+    annee int not null 
+);

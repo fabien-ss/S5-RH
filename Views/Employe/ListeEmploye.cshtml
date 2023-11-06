@@ -4,7 +4,6 @@
 @{
     List<Candidature> candidatures = (List<Candidature>)ViewData["ListeEmploye"];
 }
-<div class="container">
     <h1>Liste des employés</h1>
     <table class="table table-striped">
         <tr>
@@ -25,7 +24,7 @@
                 <td><a href="/Pdf/GenererContrat?IdCandidature=@emp.IdCandidature">Contrat</a></td>
                 <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
                 <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
+                <td><a href="/Contrat/ContratTravail?IdCandidature=@emp.IdCandidature">Nouveau contrat</a></td>  
             </tr>
         }
     </table>
-</div>

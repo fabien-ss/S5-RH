@@ -1,20 +1,23 @@
 <div class="container mt-5">
     <div class="row">
-        <div class="col-6">Welcome back</div>
         <div class="col-6">
-            <form asp-action="TraitementLogin" asp-controller="Login" method="post">
+            <img src="/image/tana.jpg" />
+        </div>
+        <div class="col-6">
+            <form asp-action="Login" asp-controller="Login" method="post">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" name="email" value="1@gmail.com" id="form2Example1" class="form-control" />
+                    <input type="email" name="Email" value="1@gmail.com" id="form2Example1" class="form-control" />
                     <label class="form-label" for="form2Example1">Email address</label>
                 </div>
             
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" name="password" value="password" id="form2Example2" class="form-control" />
+                    <input type="password" name="Password" value="password" id="form2Example2" class="form-control" />
                     <label class="form-label" for="form2Example2">Password</label>
                 </div>
-            <!-- 2 column grid layout for inline styling -->
+                
+                <!-- 2 column grid layout for inline styling -->
                 <div class="row mb-4">
                     <div class="col d-flex justify-content-center">
                         <!-- Checkbox -->

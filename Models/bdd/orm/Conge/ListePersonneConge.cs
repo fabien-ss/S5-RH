@@ -32,8 +32,7 @@ public class ListePersonneConge
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
-            return context.ListePersonneConges.Where(l => l.Matricule == this.Matricule 
-            ).First();
+            return context.ListePersonneConges.Where(l => l.Matricule == this.Matricule).First();
         }
     }
 }
