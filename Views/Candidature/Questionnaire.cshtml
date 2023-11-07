@@ -1,20 +1,24 @@
-@model List<S5_RH.Models.bdd.orm.Question>
+@Html.Partial("CandidatureOption")
 
-<form action="">
-    <div class="container" style="padding-top: 5%; padding-bottom: 5%;">
-        <h1>Veuillez répondre à toute les questions.</h1>
+@model List<S5_RH.Models.bdd.orm.Question>
+<div class="container">
+<form asp-action="Validation" method="post">
+        <h1>Veuillez répondre à toutes les questions.</h1>
         <div class="row" style="padding-top: 2%; padding-bottom: 5%; display: inline;">
-            @{ int i = 0; }
             @foreach (var item in Model)
             {
                 <div class="col-12 mt-3">
                     <h3>@item.Fanontaniana</h3>
+                    <input type="hidden" name="@item.IdQuestion"/>
                     <ul>
                         @foreach (var r in item.Reponses)
                         {
                             <li>
-                                <input type="checkbox"/>
                                 <label>@r.Valimpanontaniana</label>
+                                <select name="@r.IdReponse">
+                                    <option value="1">Vrai</option>
+                                    <option value="0">Faux</option>
+                                </select>
                             </li>
                         }
                     </ul>
@@ -25,7 +29,6 @@
                 <button type="submit" class="btn btn-secondary mt-5" style="float: right; float: right;">Reset</button>
             </div>
         </div>
-    </div>
 </form>
 <style>
     ul{
@@ -34,3 +37,4 @@
         grid-gap: 3%;
     }
 </style>
+</div>

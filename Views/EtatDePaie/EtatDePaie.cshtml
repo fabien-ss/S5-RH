@@ -1,0 +1,57 @@
+@Html.Partial("Header");
+
+@using S5_RH.Models.back.Paie
+@{
+    List<EtatDePaie> states = (List<EtatDePaie>)ViewData["etat_de_paie"];
+}
+
+<h3>ETAT DE PAIE</h3>
+<table class="table">
+    <form asp-action="EtatDePaie">
+        <label>Selectionner date</label>
+        <input type="date" name="DateEtat"/>
+        <input type="submit"/>
+    </form>
+    <tr>
+        <th>Matricule</th>
+        <th>Date</th>
+        <th>Nom & Prenom</th>
+        <th>Fonction</th>
+        <th>CAT</th>
+        <th>Salaire de Base</th>
+        <th>Heure supplementaire</th>
+        <th>Salaire Brut</th>
+        <th>CNAPS 1%</th>
+        <th>OSTIE 1%</th>
+        <th>Net a payer</th>
+    </tr>
+    @foreach (var state in states)
+    {
+        <tr>
+            <td>@state.Details.Matricule</td>
+            <td>@state.Date</td>
+            <td>@state.Details.Nom @state.Details.Prenom</td>
+            <td>@state.Details.Poste</td>
+            <td>@state.Details.Service</td>
+            <td>@state.Details.Salaire.ToString()</td>
+            <td>@state.GetHeure().ToString()</td>
+            <td>@state.getBrutSalary().ToString()</td>
+            <td>@state.GetCNaPSOnePercent().ToString()</td>
+            <td>@state.GetOSTIEOnePercent().ToString()</td>
+            <td>@state.GetNetAPayer().ToString()</td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><strong>TOTAL</strong></td>
+        <td><strong>@states[0].GetTotalNet().ToString()</strong></td>
+        <td><strong>@states[0].GetTotalHeureSupplementaire().ToString()</strong></td>
+        <td><strong>@states[0].GetTotalBrutSalary().ToString()</strong></td>
+        <td><strong>@states[0].GetTotalOnePercentCNaPS().ToString()</strong></td>
+        <td><strong>@states[0].GetTotalOnePercentOSTIE().ToString()</strong></td>
+        <td><strong>@states[0].GetTotalNetAPayer().ToString()</strong></td>
+    </tr>
+</table>

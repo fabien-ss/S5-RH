@@ -1,0 +1,30 @@
+@Html.Partial("EmployeOption");
+
+@using S5_RH.Models.bdd.orm
+@{
+    List<Candidature> candidatures = (List<Candidature>)ViewData["ListeEmploye"];
+}
+    <h1>Liste des employés</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Contact</th>
+            <th>Poste</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var emp in candidatures)
+        {
+            <tr>
+                <td>@emp.Nom</td>
+                <td>@emp.Prenom</td>
+                <td>@emp.Contact</td>
+                <td>@emp.DateDeNaissance</td>
+                <td><a href="/Pdf/GenererContrat?IdCandidature=@emp.IdCandidature">Contrat</a></td>
+                <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
+                <td><a href="/Pdf/GenererFicheDePoste?IdCandidature=@emp.IdCandidature">Fiche de poste</a></td>
+                <td><a href="/Contrat/ContratTravail?IdCandidature=@emp.IdCandidature">Nouveau contrat</a></td>  
+            </tr>
+        }
+    </table>

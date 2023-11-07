@@ -14,6 +14,4 @@ public class Test
 
     [NotMapped]
     public string? Description { get; set; }
-    
-    
 }

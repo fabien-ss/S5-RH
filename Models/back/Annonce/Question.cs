@@ -3,22 +3,23 @@ using S5_RH.Models.bdd.orm;
 namespace S5_RH.Models.back.Annonce;
 public class Question
 {
-    public int IdAnnonce { get; set; }
     public string? Quest { get; set; }
     public string[]? Reponses { get; set; }
     public string[]? Valeur { get; set; }
 
-    public void TraitementInsertionQuestion()
+    public void TraitementInsertionQuestion(int idAnnonce)
     {
         using (var context = ApplicationDbContextFactory.Create())
         {
             bdd.orm.Question question = new bdd.orm.Question
             {
-                IdAnnonce = this.IdAnnonce,
-                Fanontaniana = this.Quest
+                IdAnnonce = idAnnonce,
+                Fanontaniana = this.Quest,
+                Point = 5
             };
             context.Add(question);
             context.SaveChanges();
+            Console.WriteLine("id=" + question.IdQuestion);
             var reponses = this.Reponses;
             if (reponses != null)
                 for (int i = 0; i < reponses.Length; i++)
@@ -31,6 +32,7 @@ public class Question
                     };
                     context.Add(reponse);
                 }
+
             context.SaveChanges();
         }
     }

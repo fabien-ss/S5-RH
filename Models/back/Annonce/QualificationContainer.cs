@@ -1,5 +1,4 @@
 namespace S5_RH.Models.back.Annonce;
-
 public class QualificationContainer
 {
     public string[] DiplomeId { get; set; }
@@ -34,13 +33,13 @@ public class QualificationContainer
             coefficientSexe = coefficientSexe + this.SexeId[i] + "=" + this.CoefficientSexe[i] + ";";
         }
 
-        S5_RH.Models.bdd.orm.Qualification critereDeSelection = new bdd.orm.Qualification
+        S5_RH.Models.bdd.orm.Qualification CritereDeSelection = new bdd.orm.Qualification
         {
             Diplome = coefficientDiplome,
             Experience = coefficientExperience,
             Sexe = coefficientSexe,
             SituationMatrimoniale = coefficientSituation
         };
-        return critereDeSelection;
+        return CritereDeSelection;
     }
 }

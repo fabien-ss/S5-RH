@@ -7,9 +7,6 @@ using System.Text.Json;
 
 namespace S5_RH.Controllers.Annonce;
 
-/**
- * [author] 01kingMaker
- */
 public class AnnonceController : Controller
 {
     private readonly ILogger<AnnonceController> _logger;
@@ -19,41 +16,39 @@ public class AnnonceController : Controller
         _logger = logger;
     }
 
-    public IActionResult AnnulerAnnonce()
+    public IActionResult ListeAnnonce()
     {
-        TempData.Clear();
-        return NouvelleAnnonce();
+        List<Models.bdd.orm.Annonce> annonce = new List<Models.bdd.orm.Annonce>();
+        annonce = new Models.bdd.orm.Annonce().ObetnirAnnonce();
+        ViewData["Listes"] = annonce;
+        return View();
     }
     [HttpPost]
-    public IActionResult NouvelleAnnonce(NouvelleAnnonce nouvelleAnnonce)
+    public IActionResult TraitementAnnonce(NouvelleAnnonce nouvelleAnnonce)
     {
         if (ModelState.IsValid)
         {
             TempData["NouvelleAnnonce"] = JsonSerializer.Serialize(nouvelleAnnonce);
             return RedirectToAction("Qualification", "Annonce");
-        }
-        ViewData["services"] = nouvelleAnnonce.Services;
-        return View(nouvelleAnnonce);
-        //return RedirectToAction("NouvelleAnnonce");
+        } 
+        return RedirectToAction("NouvelleAnnonce");
     }
 
     public IActionResult TraitementQualification(QualificationContainer qualification)
     {
         if (ModelState.IsValid)
         {
-            Models.bdd.orm.Qualification qualif = 
-                qualification.ValidateQualification();
+            Models.bdd.orm.Qualification qualif = qualification.ValidateQualification();
             TempData["Qualification"] = JsonSerializer.Serialize(qualif);
+            NouvelleAnnonce annonce =
+                JsonSerializer.Deserialize<NouvelleAnnonce>((string)TempData["NouvelleAnnonce"]);
             return RedirectToAction("Questionnaire");
         }
-        ModelState.AddModelError("Tsy mety e", "Tsy mety eh");
         return RedirectToAction("NouvelleAnnonce");
     }
     
     public IActionResult NouvelleAnnonce()
     {
-        
-        // listes des services
         ViewData["students"] = "Nouvelle Annonce";
         NouvelleAnnonce nouvelleAnnonce = new NouvelleAnnonce();
         ViewData["services"] = nouvelleAnnonce.Services;
@@ -75,5 +70,11 @@ public class AnnonceController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+    public IActionResult ListeQualification()
+    {
+        ViewData["qualif"] = new S5_RH.Models.bdd.orm.Qualification().ListAll();
+        ViewData["Score"] = new S5_RH.Models.bdd.orm.Qualification().GetScore(1);
+        return View();
     }
 }

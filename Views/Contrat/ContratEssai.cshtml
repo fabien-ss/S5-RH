@@ -1,0 +1,101 @@
+@Html.Partial("ContratOption");
+@{
+    List<TypeSalaire> typeSalaire = (List<TypeSalaire>)ViewData["TypeSalaire"];
+    List<Jour> Jours = (List<Jour>)ViewData["Jours"];
+    List<TypeAvantage> typeAvantages = (List<TypeAvantage>)ViewData["Avantages"];
+    Candidature candidature = (Candidature)ViewData["Candidat"];
+    List<EmployeService> Superieurs = (List<EmployeService>)ViewData["Superieur"];
+}
+@using S5_RH.Models.bdd.orm.fiche
+@using S5_RH.Models.bdd.orm
+@model S5_RH.Models.back.Embauche.ContratEssai;
+<div class="container">
+            @Html.ValidationSummary()
+            <h1>Contrat d'essai</h1>
+    <form asp-action="TraitementContratEssai" asp-controller="Contrat" method="post">
+        <div class="row" style="padding-top: 5%; padding-bottom: 5%;">
+            <input type="hidden" name="IdCandidature" value=@candidature.IdCandidature>
+            <div class="col-3 border-1">
+                <span>Name :</span> @candidature.Nom
+                <span>First name :</span> @candidature.Prenom
+                <img src="image/person.jpg"/>
+            </div>
+            <div class="col-4 border-1">
+                <div class="form-floating mb-3">
+                    <label for="typesalaire">Type de salaire</label>
+                    <select class="form-control rounded-0" name="TypeSalaire" id="typesalaire">
+                        @foreach (TypeSalaire salaire in typeSalaire)
+                        {
+                            <option value="@salaire.IdTypeSalaire">@salaire.Nom</option>
+                        }
+                    </select>
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.TypeSalaire)</span>
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="Renumeration">Rénuméraion</label>
+                    <input class="form-control rounded-0" name="Renumeration" id="Renumeration" required /> 
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.Renumeration)</span>
+                </div>
+            
+                <div class="form-floating mb-3">
+                    <label for="Duree">Durée</label>
+                    <input type="number" class="form-control rounded-0" name="DureeContrat" id="Duree" required >
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.DureeContrat)</span>
+                </div>
+            
+                <div class="form-floating mb-3">
+                    <label for="DateDebut">Date début</label>
+                    <input type="datetime-local" class="form-control rounded-0" name="DateDebut" id="DateDebut" required >
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.DateDebut)</span>
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="HoraireEntree">Heure d'entrée</label>
+                    <input type="time" class="form-control rounded-0" name="HoraireEntree" id="HoraireEntree" required >
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.HoraireEntree)</span>
+                </div>
+                <div class="form-floating mb-3">
+                    <label for="HoraireSortie">Heure de sortie</label>
+                    <input type="time" class="form-control rounded-0" name="HoraireSortie" id="HoraireSortie" required >
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.HoraireSortie)</span>
+                </div>
+            </div>
+            <div class="col-4">
+            
+                <div class="form-floating mb-3" style="display: flex; grid-gap: 5%;">
+                    @foreach (var jour in Jours)
+                    {
+                        <div class="form-control" style="padding: 3%; display: inline;">
+                            <label for="JourDeTravail" >@jour.Journee</label>
+                            <input type="checkbox" class="border-0" name="JourDeTravail[]" value="@jour.IdJour" id="JourDeTravail" checked>
+                        </div>
+                    }
+                    <span class="Error">@Html.ValidationMessageFor(annonce => annonce.JourDeTravail)</span>
+                </div>
+                <div class="form-floating mb-3" style="display: flex; grid-gap: 5%;">
+                    @foreach (var avantage in typeAvantages)
+                    {
+                        <div class="form-control " style="padding:  3%;">
+                            <label for="Avantage">@avantage.Nom</label>
+                            <input type="checkbox" class="border-0" name="Avantage[]" id="IdAvantage" value="@avantage.IdAvantage"> 
+                        </div>
+                    }
+                </div>
+                <div class="form-floating mb-3" style="display: flex; grid-gap: 5%;">
+                    <label>Superieur</label>
+                    <select name="IdSuperieur">
+                        @foreach (var superieur in Superieurs)
+                        {
+                            <option class="border-0" value="@superieur.IdEmploye">@superieur.Nom @superieur.Prenom</option>
+                        }
+                    </select>
+                </div>
+                
+                <button type="submit"  class="btn btn-primary rounded-0 mt-5">Valider</button>
+                <button type="reset"  class="btn btn-default rounded-0 mt-5 border-1">Annuler</button>
+            </div>
+   
+        </div>
+    </form>
+        
+</div>
+
